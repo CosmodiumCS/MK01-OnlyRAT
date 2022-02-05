@@ -6,7 +6,6 @@ Target Build:
 
 Attacker Build:
 - [x] console build [python3]
-- [ ] ssh append commands
 - [x] update
 
 Installers:
