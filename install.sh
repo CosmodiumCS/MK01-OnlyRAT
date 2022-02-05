@@ -4,10 +4,11 @@
 
 # staging
 echo [*] Staging process...
+mkdir ~/.OnlyRAT
 cd ..
-mv OnlyRAT .OnlyRAT
+mv OnlyRAT/* ~/.OnlyRAT
 rm -rf OnlyRAT
-cd .OnlyRAT
+cd ~/.OnlyRAT
 echo [+] Completed
 
 #  get tools
@@ -23,5 +24,5 @@ echo [+] Completed
 
 # clean up
 echo [+] Installation Completed
-echo "- delete this directory and restart your terminal"
-echo "- type 'onlyrat' into your terminal to launch OnlyRat"
+echo "- please restart your terminal"
+echo "- type 'onlyrat' launch OnlyRat"

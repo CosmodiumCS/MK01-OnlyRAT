@@ -1,4 +1,4 @@
-# OnlyRAT [INCOMPLETE]
+# OnlyRAT [BETA]
 > Blue Cosmo | 01/07/2022
 ---
 
@@ -56,9 +56,10 @@ Once installed we will have remote administrative access to our target. We can c
 git clone https://github.com/CosmodiumCS/OnlyRAT.git
 ```
 - install dependencies for OnlyRAT
+- restart terminal once installation is complete
 ```bash
-chmod +x install.sh
-./install.sh
+cd OnlyRAT
+sh install.sh
 ```
 
 **Attacker Console**

