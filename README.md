@@ -15,6 +15,11 @@
 ## [!!] DISCLAIMER
 We are currently building this RAT on stream, **so it is not done**. But feel free to hop in and join us on this adventure of building this RAT.
 
+TLDR:
+Please use securily and ethically :D
+
+The purpose of this RAT is to teach members of the security community the basics of malware development, so do not use with malintent. Malware development is an essential skill that is often overlooked within the security world. By learning malware development, security researchers can both better understand how hackers think and develop malicious code, as well as learning to develop their own for security purposes. By making a single RAT that can hold all of the teachings in one form factor, it is much easier to connect the lessons.
+
 ## Overview:
 OnlyRAT [Only Remote Access Tool] is the *only RAT* you'll ever need. We will be able to use this tool to remotely command and control windows computers. 
 
@@ -61,14 +66,13 @@ chmod +x install.sh
 ```bash
 onlyrat
 ```
-- Append target IP Address
+- Append configuraiton file to specify target
 ```bash
-onlyrat -t 192.168.1.50
-```
-- Append configuraiton file
-```bash
-onlyrat -f bluecosmo.rat
+onlyrat bluecosmo.rat
 ```
 
 ## Extraneous:
 
+**Configuration file?**
+
+The configuration file `username.rat` is a file we obtain through our OnlyRAT [installers](https://github.com/CosmodiumCS/OnlyRAT/tree/main/installers). It saves obfuscated information that OnlyRAT needs in order to connect back to our target computer. Having configuration files allows hackers to have a database of all the comprimised pc's they have access to.

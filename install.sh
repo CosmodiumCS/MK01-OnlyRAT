@@ -21,6 +21,7 @@ echo [*] Setting up alias...
 echo "alias onlyrat=\"python3 $(pwd)/main.py\"" >> ~/.bash_aliases
 echo [+] Completed
 
+# clean up
 echo [+] Installation Completed
 echo "- delete this directory and restart your terminal"
 echo "- type 'onlyrat' into your terminal to launch OnlyRat"

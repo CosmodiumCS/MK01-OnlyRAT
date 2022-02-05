@@ -131,7 +131,7 @@ def cli(arguments):
             configuration = read_config(sys.argv[1])
     
         except FileNotFoundError: 
-            print("\n[!!] File does not exist [!!]")
+            print("\n[!!] File does not exist")
             exit()
 
         # get config info
@@ -143,11 +143,12 @@ def cli(arguments):
         if option == "0":
             connect(ipv4, password)        
         
-        # options
-        if option == "u":
+        # update option
+        if option == "u" or option == "update":
             update()
 
-        if option == "q":
+        # quit option
+        if option == "q" or option == "quit" or option == "exit":
             exit()
 
     # if arguments don't exist

@@ -1,5 +1,5 @@
 # remove previous version
-rm -rf OnlyRAT
+rm -rf .OnlyRAT
 
 # install new version
 git clone https://github.com/CosmodiumCS/OnlyRAT.git
