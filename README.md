@@ -45,7 +45,7 @@ Once installed we will have remote administrative access to our target. We can c
 **Target Installation**
 - The [installers](https://github.com/CosmodiumCS/OnlyRAT/tree/main/installers) folder contains all the ways we can install the RAT on to our target
 
-**Attacker Console**
+**Attacker Installation**
 - install only rat by cloning this repository
 ```bash
 git clone https://github.com/CosmodiumCS/OnlyRAT.git
@@ -55,6 +55,8 @@ git clone https://github.com/CosmodiumCS/OnlyRAT.git
 chmod +x install.sh
 ./install.sh
 ```
+
+**Attacker Console**
 - Run `onlyrat` in your terminal for help
 ```bash
 onlyrat
