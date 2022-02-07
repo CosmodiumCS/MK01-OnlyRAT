@@ -37,10 +37,11 @@ options_menu = """
             [0] - Remote Console
 
         [+] Options:
-            [h] - Help Menu
-            [u] - Update OnlyRAT
-            [r] - Remove OnlyRAT
-            [q] - Quit
+            [h] or [help]    -- Help Menu
+            [v] or [version] -- Version Number
+            [u] or [update]  -- Update OnlyRAT
+            [r] or [remove]  -- Remove OnlyRAT
+            [q] or [quit]    -- Quit
 
         [*] Select an [option]...
 
@@ -105,7 +106,7 @@ def update():
         # update
         if option == "y":
             os.system(f"sh ~/.OnlyRAT/payloads/update.sh")
-        
+
         # exception
         else:
             main()
@@ -168,13 +169,18 @@ def cli(arguments):
             if option == "0":
                 connect(ipv4, password)
 
-            # help menu
+            # help me
             elif option == "h" or option == "help":
                 main()
             
+            # get version number
+            elif option == "v" or option == "version":
+                os.system(f"cat {local_path}/version.txt")
+
             # update option
             elif option == "u" or option == "update":
                 update()
+                exit()
 
             # remove installation
             elif option == "r" or option == "remove" or option == "uninstall":
