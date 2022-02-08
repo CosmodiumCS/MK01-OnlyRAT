@@ -5,7 +5,7 @@ Target Build:
 - [x] config file builder [.? extension]
 
 Attacker Build:
-- [ ] loop user input field
+- [x] loop user input field
 - [x] console build [python3]
 - [x] update
 
