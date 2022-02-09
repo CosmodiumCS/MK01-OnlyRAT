@@ -4,7 +4,6 @@ function Get-ScreenCapture
     [Switch]$OfWindow        
     )
 
-
     begin {
         Add-Type -AssemblyName System.Drawing
         $jpegCodec = [Drawing.Imaging.ImageCodecInfo]::GetImageEncoders() | 
@@ -30,3 +29,4 @@ function Get-ScreenCapture
     }
 }
 
+Get-ScreenCapture

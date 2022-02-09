@@ -23,7 +23,5 @@ A file used by our `main.py` file in order to check for updates and update the O
 # keylogger.ps1
 A powershell keylogger that can log the keystrokes that user is typing.
 
-# schedule.ps1
-This runs the keylogger on an hourly basis to ensure we can receive
-
 # controller.cmd
+Runs keylogger at startup

