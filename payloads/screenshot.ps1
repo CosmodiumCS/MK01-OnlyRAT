@@ -33,5 +33,5 @@ function Get-ScreenCapture
         $bitmap.Save("cqTbMpzNLx.jpg", $jpegCodec, $ep)
     }
 }
-
+Write-Output "hi"
 Get-ScreenCapture
