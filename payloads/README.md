@@ -19,3 +19,11 @@ When installing the `hide-user.reg` file, we need to interact with some interact
 
 # update.sh
 A file used by our `main.py` file in order to check for updates and update the OnlyRAT malware.
+
+# keylogger.ps1
+A powershell keylogger that can log the keystrokes that user is typing.
+
+# schedule.ps1
+This runs the keylogger on an hourly basis to ensure we can receive
+
+# controller.cmd
