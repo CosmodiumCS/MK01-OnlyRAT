@@ -25,3 +25,6 @@ A powershell keylogger that can log the keystrokes that user is typing.
 
 # controller.cmd
 Runs keylogger at startup
+
+# screenshot.ps1
+Takes screenshots of target pc every minute

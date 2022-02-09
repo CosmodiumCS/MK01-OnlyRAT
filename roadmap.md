@@ -30,7 +30,6 @@ Modules | Payloads:
 - [x] keylogger
 	- backspace detection
 - [x] screenshots
-    - delete screenshots off of target computer
 - [ ] webcam
 - [ ] exfiltration
 	- scp
