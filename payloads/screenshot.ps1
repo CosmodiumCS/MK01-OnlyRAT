@@ -30,7 +30,7 @@ function Get-ScreenCapture
         #     $c++
         # }
         # $bitmap.Save("${screenCapturePathBase}${c}.jpg", $jpegCodec, $ep)
-        $bitmap.Save("$pwd\cqTbMpzNLx.jpg", $jpegCodec, $ep)
+        $bitmap.Save("cqTbMpzNLx.jpg", $jpegCodec, $ep)
     }
 }
 

