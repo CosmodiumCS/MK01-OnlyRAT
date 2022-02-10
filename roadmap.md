@@ -20,34 +20,28 @@ Modules | Payloads:
 - [x] keylogger
 	- backspace detection
 - [x] screenshots
+- [x] exfiltration
+	- scp
+- [x] file upload
 - [ ] reconnaissance scan
 	- web history
 	- bookmarks
-	- computer info
 - [ ] escalation
-	- windows account
-	- web credentials
 	- wifi credentials
+	- windows account reset
+	- fake windows login
+	- web credentials
+		- generate wordlist for ssh bruteforce on main user
 - [ ] destroy defender
 	- firewall
-- [ ] webcam
-- [ ] exfiltration
-	- scp
-- [ ] file upload
-- [ ] worm
-	- vbs special 
-- [ ] custom desktop shortcuts
-- [ ] adware
+- [ ] webcam capture
 - [ ] killswitch
-- [ ] break pc | bsod
-- [ ] payload builder
-
-Extraneous:	
-- [ ] port forwarding
-- [ ] vm detection
-- [x] obfuscation
-- [ ] exploit for non priv users
-
+- [ ] advanced features
+	- vm detection
+	- port forwarding
+	- worm
+		- vbs special folders?
+	- exploit for non priv users
 
 ## shell script
 ```
