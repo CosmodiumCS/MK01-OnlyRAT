@@ -17,6 +17,9 @@ Installers:
 
 Modules | Payloads:
 - [x] remote console
+- [x] keylogger
+	- backspace detection
+- [x] screenshots
 - [ ] reconnaissance scan
 	- web history
 	- bookmarks
@@ -27,9 +30,6 @@ Modules | Payloads:
 	- wifi credentials
 - [ ] destroy defender
 	- firewall
-- [x] keylogger
-	- backspace detection
-- [x] screenshots
 - [ ] webcam
 - [ ] exfiltration
 	- scp
