@@ -55,6 +55,7 @@ options_menu = """
 
         [+] Options:
             [help] ----- Help Menu
+            [module] --- Help Menu For Modules
             [config] --- Display RAT File
             [version] -- Version Number
             [update] --- Update OnlyRAT
@@ -417,6 +418,10 @@ def cli(arguments):
             elif option == "update":
                 update()
                 exit()
+
+            # help menu for modules
+            elif option == "module":
+                os.system(f"xdg-open ")
 
             # remove installation
             elif option == "remove" or option == "uninstall":
