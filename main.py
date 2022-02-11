@@ -8,7 +8,6 @@ import sys
 import getpass
 import random as r
 from datetime import datetime
-from modules import *
 
 # banner for display
 banner = """
