@@ -23,8 +23,13 @@ A file used by our `main.py` file in order to check for updates and update the O
 # keylogger.ps1
 A powershell keylogger that can log the keystrokes that user is typing.
 
-# controller.cmd
-Runs keylogger at startup
-
 # screenshot.ps1
 Takes screenshots of target pc every minute
+
+# confirm-cam.vbs
+
+# webcam.exe
+
+# webcam.ps1
+
+# defender.ps1

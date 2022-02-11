@@ -23,6 +23,7 @@ Modules | Payloads:
 - [x] exfiltration
 	- scp
 - [x] file upload
+- [x] webcam capture
 - [ ] reconnaissance scan
 	- web history
 	- bookmarks
@@ -34,7 +35,6 @@ Modules | Payloads:
 		- generate wordlist for ssh bruteforce on main user
 - [ ] destroy defender
 	- firewall
-- [ ] webcam capture
 - [ ] killswitch
 - [ ] advanced features
 	- vm detection

