@@ -15,6 +15,7 @@ echo [+] Completed
 echo [*] Installing tools...
 sudo apt update
 sudo apt-get install sshpass
+sudo apt-get install python3
 echo [+] Completed
 
 # set up alias workflow

@@ -82,11 +82,12 @@ onlyrat bluecosmo.rat
 ## Payloads:
 ```
 [+] Command and Control:
-    [orconsole] -- Remote Console
-    [upload] ----- Upload File 
-    [downlaod] --- Download File
-    [restart] ---- Restart Target PC
-    [shutdown] --- Shutdown Target PC
+    [orconsole] ------ Remote Console
+    [fix orconsole] -- Fix Remote Console
+    [upload] --------- Upload File 
+    [downlaod] ------- Download File
+    [restart] -------- Restart Target PC
+    [shutdown] ------- Shutdown Target PC
 
 [+] Reconnaissance:
     [install keylogger] ------ Install Keylogger
@@ -98,16 +99,12 @@ onlyrat bluecosmo.rat
 
 [+] Options:
     [help] ----- Help Menu
+    [module] --- Help Menu For Modules
     [config] --- Display RAT File
     [version] -- Version Number
     [update] --- Update OnlyRAT
     [remove] --- Remove OnlyRAT
     [quit] ----- Quit
-
-    * any other commands will be 
-      sent through your terminal
-
-[*] Select an [option]...
 ```
 
 ## Extraneous:

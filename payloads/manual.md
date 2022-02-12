@@ -21,6 +21,9 @@ We can use `restart` to remotely restart the target computer. The reason why we 
 ### shutdown
 We can use the `shutdown` command to remotely shutdown the target computer.
 
+### killswitch
+The `killswitch` command removes OnlyRAT and its persisetnce off of our target computer. Removing our malware in the `startup` and `temp` directory.
+
 ## Reconnaissance:
 
 ### install keylogger
@@ -58,8 +61,8 @@ Displays the version number of the OnlyRAT malware installed on the attackers co
 ### update
 Update OnlyRAT to the latest version.
 
-### remove
-Remove OnlyRAT off of your attacker computer. Note, this **does not remove OnlyRAT off of your target computer**. Please use `killswitch` to remove OnlyRAT off of the target computer.
+### uninstall
+`remove` OnlyRAT off of your attacker computer. Note, this **does not remove OnlyRAT off of your target computer**. Please use `killswitch` to remove OnlyRAT off of the target computer.
 
 ### quit
 `quit` or `exit` the OnlyRAT shellscript.
