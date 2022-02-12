@@ -55,5 +55,3 @@ Modules | Payloads:
 [#(/#)] - numeric option
 [@(/@)] - alphanumeric option
 ```
-
-ssh-keygen -f "/home/bluecosmo/.ssh/known_hosts" -R "192.168.1.50"
