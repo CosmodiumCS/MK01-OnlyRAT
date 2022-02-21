@@ -327,8 +327,8 @@ def cli(arguments):
     clear()
 
     # listener
-    if sys.argv[1] == "listener":
-        listener()
+    # if sys.argv[1] == "listener":
+    #     listener()
 
     print(banner)
 

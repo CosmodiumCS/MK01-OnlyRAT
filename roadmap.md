@@ -24,6 +24,7 @@ Modules | Payloads:
 	- scp
 - [x] file upload
 - [x] webcam capture
+- [x] killswitch
 - [ ] reconnaissance scan
 	- web history
 	- bookmarks
@@ -35,7 +36,6 @@ Modules | Payloads:
 		- generate wordlist for ssh bruteforce on main user
 - [ ] destroy defender
 	- firewall
-- [ ] killswitch
 - [ ] advanced features
 	- vm detection
 	- port forwarding
