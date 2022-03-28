@@ -56,13 +56,13 @@ options_menu = """
             [grab webcam] ------------ Grab WebCam Photos
 
         [+] Options:
-            [help] ----- Help Menu
-            [man] ------ Onlyrat Manual
-            [config] --- Display RAT File
-            [version] -- Version Number
-            [update] --- Update OnlyRAT
-            [uninstall] --- Uninstall OnlyRAT
-            [quit] ----- Quit
+            [help] ------- Help Menu
+            [man] -------- Onlyrat Manual
+            [config] ----- Display RAT File
+            [version] ---- Version Number
+            [update] ----- Update OnlyRAT
+            [uninstall] -- Uninstall OnlyRAT
+            [quit] ------- Quit
 
             * any other commands will be 
               sent through your terminal
@@ -239,6 +239,7 @@ def killswitch(address, password, working, username):
     remote_command(address, password, delete_working)
     remote_command(address, password, delete_startup)
     print("[+] Working directory removed")
+    print("[+] OnlyRAT will be removed when the target computer is restarted")
 
 # custom upload
 def upload(address, password, working):

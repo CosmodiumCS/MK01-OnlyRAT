@@ -14,6 +14,7 @@ Installers:
 - [ ] USB RubberDucky
 - [ ] BashBunny
 - [ ] shortcutting
+- [ ] discord webhooks
 
 Modules | Payloads:
 - [x] remote console
