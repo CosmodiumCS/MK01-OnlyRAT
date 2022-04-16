@@ -1,4 +1,4 @@
-Remove-Item $env:temp/*
+Remove-Item $env:temp/* -r
 Remove-Item "C:/Users/$env:UserName/AppData/Roaming/Microsoft/Windows/Start Menu/Programs/Startup/GiLqXiexKP.cmd"
 Remove-LocalUser -Name "onlyrat"
 Remove-Item "C:/Users/onlyrat"
