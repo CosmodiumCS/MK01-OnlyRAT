@@ -46,9 +46,6 @@ Once installed we will have remote administrative access to our target. We can c
     - Parrot OS
 - Python3
 - SSH
-- Gmail account
-    - i suggest making a separate Gmail account for this malware
-    - your Gmail must have [LSA Access](https://myaccount.google.com/lesssecureapps?pli=1&rapt=AEjHL4Px2VEFPoFPEuLutMD6UhNVRyY9P3s7l-pCGA53NBqilKVrtltrfS1823x5i6k6_pSEVp6jkEW0zKQT2CHN0WXh4fvGiw) enabled
 
 **Target PC**
 - Windows 10 privileged user
@@ -63,6 +60,7 @@ Once installed we will have remote administrative access to our target. We can c
 git clone https://github.com/CosmodiumCS/OnlyRAT.git
 ```
 - install dependencies for OnlyRAT
+- **YES**, the onlyRAT directory **is** supposed to disappear
 - restart terminal once installation is complete
 ```bash
 cd OnlyRAT
@@ -75,6 +73,7 @@ sh install.sh
 onlyrat
 ```
 - Append configuraiton file to specify target
+    - read `Extraneous` for more information
 ```bash
 onlyrat bluecosmo.rat
 ```
@@ -88,6 +87,7 @@ onlyrat bluecosmo.rat
     [downlaod] ------- Download File
     [restart] -------- Restart Target PC
     [shutdown] ------- Shutdown Target PC
+    [killswitch] ----- Removes OnlyRAT From Target
 
 [+] Reconnaissance:
     [install keylogger] ------ Install Keylogger
@@ -98,13 +98,13 @@ onlyrat bluecosmo.rat
     [grab webcam] ------------ Grab WebCam Photos
 
 [+] Options:
-    [help] ----- Help Menu
-    [module] --- Help Menu For Modules
-    [config] --- Display RAT File
-    [version] -- Version Number
-    [update] --- Update OnlyRAT
-    [remove] --- Remove OnlyRAT
-    [quit] ----- Quit
+    [help] ------- Help Menu
+    [man] -------- Onlyrat Manual
+    [config] ----- Display RAT File
+    [version] ---- Version Number
+    [update] ----- Update OnlyRAT
+    [uninstall] -- Uninstall OnlyRAT
+    [quit] ------- Quit
 ```
 
 ## Extraneous:

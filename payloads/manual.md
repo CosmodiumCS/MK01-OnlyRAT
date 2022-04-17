@@ -36,7 +36,7 @@ The `install screencapture` command will install our program that will a screens
 The `install webcam` command will install our webcam highjacking malware on to our target computer. This malware [when executed] will take a picture of the user through their webcam every minute. Please note that the light indicator on their webcam may flash when the photos are being taken. We need to restart the target computer in order to execute the webcam.
 
 ### grab keylogs
-The `grag keylogs` command will grab the keylogs off of the target computer and into the attacker's `Downloads` folder. It will also wipe the logs off of the target computer so the file doesn't grow too large and raise suspicion of our presence.
+The `grab keylogs` command will grab the keylogs off of the target computer and into the attacker's `Downloads` folder. It will also wipe the logs off of the target computer so the file doesn't grow too large and raise suspicion of our presence.
 
 ### grab screenshots
 The `grab screenshots` command will grab screenshots from our screencapture. It will save it to the attacker's `Downloads` folder and wipe the images off of the target computer to avoid suspicion.
@@ -66,3 +66,6 @@ Update OnlyRAT to the latest version.
 
 ### quit
 `quit` or `exit` the OnlyRAT shellscript.
+
+# Extraneous
+All other commands are run directly into the terminal. This ensures ease of access so users can run commands like `ls` and `clear` without interference. 

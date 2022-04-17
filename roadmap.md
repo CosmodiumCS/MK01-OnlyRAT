@@ -10,11 +10,9 @@ Attacker Build:
 - [x] update
 
 Installers:
-- [ ] listener option
+- [x] discord webhooks
 - [ ] USB RubberDucky
 - [ ] BashBunny
-- [ ] shortcutting
-- [ ] discord webhooks
 
 Modules | Payloads:
 - [x] remote console
@@ -32,27 +30,7 @@ Modules | Payloads:
 - [ ] escalation
 	- wifi credentials
 	- windows account reset
-	- fake windows login
 	- web credentials
-		- generate wordlist for ssh bruteforce on main user
 - [ ] destroy defender
 	- firewall
-- [ ] advanced features
-	- vm detection
-	- port forwarding
-	- worm
-		- vbs special folders?
-	- exploit for non priv users
-
-## shell script
-```
-[+] - confirmation
-[-] - denied
-[*] - pending
-[~] - input
-[!] - warning
-[!!] - exception
-[::] - source
-[#(/#)] - numeric option
-[@(/@)] - alphanumeric option
-```
+- [ ] loot via discord
