@@ -6,6 +6,7 @@ The default installer for OnlyRAT. Uses a discord webhook to send the configurat
 
 **Instructions**
 1. create a discord server by clicking the plus button in the bottom left
+
 ![Create Server](https://raw.githubusercontent.com/CosmodiumCS/OnlyRAT/main/assets/create-server.png)
 
 2. go into the `integrations` section in the settings
