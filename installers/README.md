@@ -9,11 +9,11 @@ The default installer for OnlyRAT. Uses a discord webhook to send the configurat
 
 ![Create Server](https://raw.githubusercontent.com/CosmodiumCS/OnlyRAT/main/assets/create-server.png)
 
-2. go into the `integrations` section in the settings
+2. go into the `integrations` section in the server's settings
 3. click `Webhooks`
 ![Integrations](https://raw.githubusercontent.com/CosmodiumCS/OnlyRAT/main/assets/integrations.png)
 
-4. click `New Webhook` and copy the URL
+4. create a new webhook by clicking `New Webhook`
 5. click `Copy Webhook URL` to copy the webhook URL
 ![Webhook](https://raw.githubusercontent.com/CosmodiumCS/OnlyRAT/main/assets/webhook.png)
 
