@@ -11,8 +11,8 @@ Attacker Build:
 
 Installers:
 - [x] discord webhooks
-- [ ] USB RubberDucky
-- [ ] BashBunny
+- [x] USB RubberDucky
+- [x] BashBunny
 
 Modules | Payloads:
 - [x] remote console
@@ -24,6 +24,7 @@ Modules | Payloads:
 - [x] file upload
 - [x] webcam capture
 - [x] killswitch
+- [ ] autolooting
 - [ ] reconnaissance scan
 	- web history
 	- bookmarks

