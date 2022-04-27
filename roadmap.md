@@ -24,14 +24,5 @@ Modules | Payloads:
 - [x] file upload
 - [x] webcam capture
 - [x] killswitch
-- [ ] autolooting
-- [ ] reconnaissance scan
-	- web history
-	- bookmarks
-- [ ] escalation
-	- wifi credentials
-	- windows account reset
-	- web credentials
-- [ ] destroy defender
-	- firewall
-- [ ] loot via discord
+- [ ] autolooting via discord
+- [ ] web credentials
