@@ -84,7 +84,7 @@ local_path = f"/home/{username}/.OnlyRAT" if username != "root" else "/root/.Onl
 # random text generator for obfuscation
 def random_text():
     lower_case = "abcdefghijklmnopqrstuvwxyz"
-    upper_case = "abcdefghijklmnopqrstuvwxyz".upper()
+    upper_case = lower_case.upper()
 
     characters = lower_case + upper_case
     generated_text = ""
