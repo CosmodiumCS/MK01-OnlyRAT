@@ -26,4 +26,4 @@ echo [+] Completed
 # clean up
 echo [+] Installation Completed
 echo "- please restart your terminal"
-echo "- type 'onlyrat' launch OnlyRat"
+echo "- type 'onlyrat' to launch OnlyRat"
