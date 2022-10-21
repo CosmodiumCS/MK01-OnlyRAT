@@ -119,7 +119,7 @@ set connection local
 To switch to a remote connection, run:
 ```bash
 onlyrat <username>.rat
-set connection local
+set connection remote
 ```
 
 ## Updating OnlyRAT:
