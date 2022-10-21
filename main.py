@@ -51,7 +51,8 @@ options_menu = """
         [+] Command and Control:
             [orconsole] -------------- Remote Console
             [fix orconsole] ---------- Fix Remote Console
-            [upload] ----------------- Uplowebhooks.logart Target PC
+            [upload] ----------------- Upload Files to Target PC
+            [download] --------------- Download Files from Target PC
             [set connection local] --- Sets Connection to Local
             [set connection remote] -- Sets Connection to Remote
             [restart] ---------------- Restart Target PC
