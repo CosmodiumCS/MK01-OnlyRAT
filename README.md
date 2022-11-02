@@ -40,6 +40,7 @@ It's advanced network capabilities make it difficult for standard antivirus and 
 - [YouTube Video]()
 - [YouTube Channel](https://youtube.com/cosmodiumcs)
 - [Website](https://cosmodiumcs.com)
+- [Article](https://www.cosmodiumcs.com/post/ssh-network-attacks-in-onlyrat)
 
 ## Requirements:
 **Attacker PC:**
