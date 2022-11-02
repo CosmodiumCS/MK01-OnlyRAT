@@ -21,6 +21,7 @@ echo [+] Completed
 # set up alias workflow
 echo [*] Setting up alias...
 echo "alias onlyrat=\"python3 $(pwd)/main.py\"" >> ~/.bashrc
+echo "alias onlyrat=\"python3 $(pwd)/main.py\"" >> ~/.zshrc
 echo [+] Completed
 
 # clean up

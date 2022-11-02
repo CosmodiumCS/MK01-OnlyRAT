@@ -47,7 +47,7 @@ It's advanced network capabilities make it difficult for standard antivirus and 
 - Security Linux [Debian Based]
     - Kali Linux
     - Parrot OS
-- BASH Terminal
+- Linux Terminal
 - Python3
 - SSH Tools
     - openssh-client
