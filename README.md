@@ -105,6 +105,9 @@ onlyrat --man
 onlyrat --manual
 ```
 
+## How It Works:
+OnlyRAT is a very simple yet complex peice of network oriented malware. To learn how it works and to possibly build up your malware skillset, I highly reccomend checking out [this](https://www.cosmodiumcs.com/post/ssh-network-attacks-in-onlyrat) article that I wrote about OnlyRAT.
+
 ## Connection Types:
 OnlyRAT is capable of connecting to the target both locally and remotely [VPS Install required for remote connections]. OnlyRAT makes this change easy via the following...
 
@@ -167,15 +170,6 @@ killswitch
     [restart] ---------------- Restart Target PC
     [shutdown] --------------- Shutdown Target PC
     [killswitch] ------------- Removes OnlyRAT From Target
-
-[+] Reconnaissance:
-    [install keylogger] ------ Install Keylogger
-    [install screencapture] -- Install ScreenCapture
-    [install webcam] --------- Install WebCam Capture
-    [start keylogger] -------- Start Keylogger
-    [stop keylogger] --------- Stop Keylogger
-    [screenshot] ------------- Take ScreenShot
-    [webcam] ----------------- Take WebCam Photo
 
 [+] Options:
     [help] ------------------- Help Menu

@@ -6,6 +6,7 @@
 import os
 import sys
 import getpass
+import readline
 import random as r
 from datetime import datetime
 
