@@ -184,4 +184,4 @@ killswitch
 
 ## Credits:
 - Shoutout to Oreo for making the ascii art for the repo :)
-- be sure to check his work out [here](https://github.com/OreoByte/art-pool-current/blob/master/program_ascii_art/only_rat_ascii.txt)
+- be sure to check his work out [here](https://github.com/OreoByte/art-pool-current)
