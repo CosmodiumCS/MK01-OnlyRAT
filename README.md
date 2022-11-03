@@ -37,7 +37,7 @@ It's advanced network capabilities make it difficult for standard antivirus and 
 *From VPS* will install OnlyRAT utilizing a Virtual Private Server (VPS) or any computer accessible on the internet to route traffic to and from the target. Meaning with this installer, you can **access your target from anywhere**.
 
 ## Resources:
-- [YouTube Video]()
+- [YouTube Video](https://www.youtube.com/watch?v=jMmLx3Cwy2I)
 - [YouTube Channel](https://youtube.com/cosmodiumcs)
 - [Website](https://cosmodiumcs.com)
 - [Article](https://www.cosmodiumcs.com/post/ssh-network-attacks-in-onlyrat)

