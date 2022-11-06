@@ -20,7 +20,7 @@ o0    _o0"` '`   NN    NN Ll  Yy,yYY  '^%%&VGh%%%%%&&"^%_,,       "%%%,_      _,
 ```
 
 ## Update: 3.1
-- Hide OnlyRAT user from start menu
+- Hides OnlyRAT user from login, stat menu, and more
 - Fixed update bug
 - ZSH support
 
