@@ -83,19 +83,6 @@ header = f"[~] {username}@onlyrat $ " # sets up user input interface
 remote_path = "raw.githubusercontent.com/CosmodiumCS/OnlyRAT/main" # url path for OnlyRAT files
 local_path = f"/home/{username}/.OnlyRAT" if username != "root" else "/root/.OnlyRAT" # gets path of OnlyRAT
 
-# random text generator for obfuscation
-def random_text():
-    lower_case = "abcdefghijklmnopqrstuvwxyz"
-    upper_case = lower_case.upper()
-
-    characters = lower_case + upper_case
-    generated_text = ""
-
-    for i in range(10):
-        generated_text += r.choice(list(characters))
-
-    return generated_text
-
 # read config file
 def read_config(config_file):
     configuration = {}

