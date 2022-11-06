@@ -1,4 +1,4 @@
-# OnlyRAT [BETA]
+# OnlyRAT 3.1
 > Blue Cosmo | 01/07/2022
 ---
 
@@ -18,6 +18,11 @@ o0    _o0"` '`   NN    NN Ll  Yy,yYY  '^%%&VGh%%%%%&&"^%_,,       "%%%,_      _,
 0o,_,oo0"        NN    NN Ll   `YyY`    ``'"lIG9ubHkg,,""''`        ""%%>_,;VyIG5lZ;,   
 "00O"`                                          ``'``""UkFUIHlvdSdsbCBldm;"       `"WQ=,     
 ```
+
+## Update: 3.1
+- hide OnlyRAT user from start menu
+- fixed update bug
+- ZSH Support
 
 ## [!!] DISCLAIMER
 TLDR:

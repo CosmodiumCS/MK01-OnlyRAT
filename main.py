@@ -244,7 +244,7 @@ def update():
         print("\n[+] OnlyRAT already up to date")
         print("[*] Hit any key to continue...\n")
         input(header)
-        main()
+        #main()
 
 # uninstalls onlyrat
 def remove():
