@@ -309,12 +309,17 @@ def setup_vps():
     address = input(header)
     print()
 
+    # user input, port
+    print("[~] What is the VPS Port? : ")
+    port = input(header)
+    print()
+
     # format vps
     vps = f"{user}@{address}"
 
     # confirm values
     print("[~] Is The Following Correct? : [y/n]")
-    print(vps)
+    print(f"{vps} -p {port}")
     confirm = input(header)
     print()
 
@@ -324,7 +329,6 @@ def setup_vps():
             # ssh vps settings
             print("""
             [!] READ ALL INSTRUCTIONS CAREFULLY
-                - or folow written instruction here 
 
             [+] Setting up VPS
             
@@ -349,7 +353,7 @@ def setup_vps():
             # creating ssh key
             os.system("ssh-keygen")
             os.system("chmod 600 key")
-            os.system(f"ssh-copy-id -i key {vps}")
+            os.system(f"ssh-copy-id -i key -p {port} {vps}")
 
             # confirmation
             print(f"""
@@ -362,7 +366,7 @@ def setup_vps():
             """)
 
             # upload ssh key to vps
-            os.system(f"scp -r key {vps}:/home/{user}")
+            os.system(f"scp -P {port} -r key {vps}:/home/{user}")
 
             # final vps settings
             print("""
@@ -398,7 +402,7 @@ def setup_vps():
 
     # if no
     elif confirm == "n" or confirm == "no":
-        setup_vps()()
+        setup_vps()
         
     # exception
     else:
