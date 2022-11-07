@@ -1,4 +1,4 @@
-# OnlyRAT 3.1
+# OnlyRAT
 > Blue Cosmo | 01/07/2022
 ---
 
@@ -19,10 +19,11 @@ o0    _o0"` '`   NN    NN Ll  Yy,yYY  '^%%&VGh%%%%%&&"^%_,,       "%%%,_      _,
 "00O"`                                          ``'``""UkFUIHlvdSdsbCBldm;"       `"WQ=,     
 ```
 
-## Update: 3.1
+## Update: 3.2
 - Hides OnlyRAT user from login, stat menu, and more
 - Fixed update bug
 - ZSH support
+- VPS custom port support
 
 ## [!!] DISCLAIMER
 TLDR:
