@@ -2,7 +2,8 @@
 
 $nkowFESgaO = "USERNAME" # change me, vps username
 $ecPlmJVLRo = "X.X.X.X" # change me, vps ip address
-$YlEQgBmePn = "5656" # change me, vps port [NOT TO DEFAULT SSH PORT]
+$ENyMAhIrsb = "22" # change me, default vps port [default 22]
+$YlEQgBmePn = "5656" # change me, routed vps port [NOT TO DEFAULT SSH PORT]
 
 $dERQpoZWxz = "$nkowFESgaO@$ecPlmJVLRo"
 

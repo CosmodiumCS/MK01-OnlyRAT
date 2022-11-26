@@ -275,6 +275,12 @@ def download_config():
     address = input(header)
     print()
 
+    # user input, address
+    print("[~] What is the VPS Port? : ")
+    port = input(header)
+    print()
+
+
     # format vps
     vps = f"{user}@{address}"
 
@@ -287,7 +293,7 @@ def download_config():
     # if yes
     if confirm == "y" or confirm == "yes":
         print("[*] Downloading configuration...")
-        os.system(f"scp {vps}:/home/{user}/*.rat .")
+        os.system(f"scp -P {port} {vps}:/home/{user}/*.rat .")
     
     # if no
     elif confirm == "n" or confirm == "no":
