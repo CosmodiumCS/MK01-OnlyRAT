@@ -101,6 +101,8 @@ def read_config(config_file):
 
     return configuration
 
+
+
 # display configuration file data
 def print_config(configuration):
 
