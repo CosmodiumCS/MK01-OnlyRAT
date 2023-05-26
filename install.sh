@@ -6,7 +6,7 @@
 echo [*] Staging process...
 mkdir ~/.OnlyRAT
 cd ..
-mv OnlyRAT/* ~/.OnlyRAT
+mv MK01-OnlyRAT/* ~/.OnlyRAT
 rm -rf OnlyRAT
 cd ~/.OnlyRAT
 echo [+] Completed

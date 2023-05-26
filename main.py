@@ -6,8 +6,6 @@
 import os
 import sys
 import getpass
-import readline
-import random as r
 from datetime import datetime
 
 # banner for display
@@ -40,6 +38,7 @@ help_menu = """
             -m, --man ----------------- OnlyRAT Manual
             -v, --version ------------- OnlyRAT Version
             -u, --update -------------- Update OnlyRAT
+import random as r
             -r, --remove -------------- Uninstall OnlyRAT
             -h, --help  --------------- Help Menu
 
@@ -100,8 +99,6 @@ def read_config(config_file):
     configuration["CONNECT"] = read_lines[6].strip()
 
     return configuration
-
-
 
 # display configuration file data
 def print_config(configuration):
@@ -216,7 +213,7 @@ def update():
     print("\n[*] Checking for updates...")
 
     # get latest version nubmer
-    os.system(f"curl https://raw.githubusercontent.com/CosmodiumCS/OnlyRAT/main/version.txt | tee ~/.OnlyRAT/latest.txt")
+    os.system("curl https://raw.githubusercontent.com/CosmodiumCS/OnlyRAT/main/version.txt | tee ~/.OnlyRAT/latest.txt")
 
     # save version nubmers to memory
     current_version = float(open(f"{local_path}/version.txt", "r").read())
@@ -232,10 +229,10 @@ def update():
 
         # user input, option
         option = input(f"{header}")
-        
+
         # update
         if option == "y":
-            os.system(f"bash ~/.OnlyRAT/payloads/update.sh")
+            os.system("bash ~/.OnlyRAT/payloads/update.sh")
 
         # exception
         # else:
