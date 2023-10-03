@@ -27,16 +27,16 @@ o0    _o0"` '`   NN    NN Ll  Yy,yYY  '^%%&VGh%%%%%&&"^%_,,       "%%%,_      _,
 
 ## [!!] DISCLAIMER
 TLDR:
-Please use securily and ethically :D
+Please use securely and ethically :D
 
-Feel free to use this RAT on any computer that you own or have permissions to test malicious code on. It's perfectly legal. But do not install this RAT on targets you don't have permission to test malware on. Not only is it illegal, but by doing so you are putting that computer at risk. Since the RAT needs to be able to remotely connect, it is enabling a persistence that other hackers on the network may target or even bruteforce. 
+Feel free to use this RAT on any computer that you own or have permission to test malicious code on. It's perfectly legal. But do not install this RAT on targets you don't have permission to test malware on. Not only is it illegal, but by doing so you are putting that computer at risk. Since the RAT needs to be able to remotely connect, it is enabling a persistence that other hackers on the network may target or even brute force. 
 
-The purpose of this RAT is to teach members of the security community the basics of malware development, so do not use with malintent. Malware development is an essential skill that is often overlooked within the security world. By learning malware development, security researchers can both better understand how hackers think and develop malicious code, as well as learning to develop their own for security purposes. By making a single RAT that can hold all of the teachings in one form factor, it is much easier to connect the lessons.
+The purpose of this RAT is to teach members of the security community the basics of malware development, so do not use it with malintent. Malware development is an essential skill that is often overlooked within the security world. By learning malware development, security researchers can better understand how hackers think and develop malicious code, as well as learn to develop their own for security purposes. By making a single RAT that can hold all of the teachings in one form factor, it is much easier to connect the lessons.
 
 ## Overview:
-OnlyRAT [Only Remote Access Tool] is the *only RAT* you'll ever need. This tool is an SSH [Secure SHell] RAT that is completely network oriented, making it virtually fileless. It is capable of remotely connecting to the target computer, remote file uploads and downloads, as well as code execution **all** through network commands and communicaiton.
+OnlyRAT [Only Remote Access Tool] is the *only RAT* you'll ever need. This tool is an SSH [Secure SHell] RAT that is completely network-oriented, making it virtually fileless. It is capable of remotely connecting to the target computer, remote file uploads and downloads, as well as code execution **all** through network commands and communication.
 
-It's advanced network capabilities make it difficult for standard antivirus and firewalls to detect. The RAT has a multitude of ways of how it can be installed on to a target pc, including batch file installation and the use of [Hak5](https://hak5.org) gear. Depending on how OnlyRAT is installed, you can have formated as a *from github* or *from vps* install.
+Its advanced network capabilities make it difficult for standard antivirus and firewalls to detect. The RAT has a multitude of ways it can be installed onto a target PC, including batch file installation and the use of [Hak5](https://hak5.org) gear. Depending on how OnlyRAT is installed, you can have formatted as a *from GitHub* or *from VPS* install.
 
 *From GitHub* will install OnlyRAT from GitHub's raw data, allowing no user configuration. But the **connection can only be local** since there is no VPS to route traffic and forward ports from.
 

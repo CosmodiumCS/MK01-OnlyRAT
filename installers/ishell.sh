@@ -1,8 +1,4 @@
 #!/bin/bash
-# onlyrat for ish shell
-# created by : bluecosmo
-
-#!/bin/bash
 # installer for OnlyRAT
 # created by : C0SM0
 
