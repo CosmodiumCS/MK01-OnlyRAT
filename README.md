@@ -20,7 +20,7 @@ o0    _o0"` '`   NN    NN Ll  Yy,yYY  '^%%&VGh%%%%%&&"^%_,,       "%%%,_      _,
 ```
 
 ## Update: 3.2
-- Hides OnlyRAT user from login, stat menu, and more
+- Hides OnlyRAT user from login, start menu, and more
 - Fixed update bug
 - ZSH support
 - VPS custom port support
@@ -56,7 +56,7 @@ Its advanced network capabilities make it difficult for standard antivirus and f
 - Linux Terminal
 - Python3
 - SSH Tools
-    - openssh-client
+    - OpenSSH-client
     - ssh-keygen
     - ssh-copy-id
 
@@ -65,7 +65,7 @@ Its advanced network capabilities make it difficult for standard antivirus and f
 
 ## Installation:
 **Target Installation:**
-- The [installers](https://github.com/CosmodiumCS/OnlyRAT/tree/main/installers) folder contains all the ways we can install the RAT on to our target
+- The [installers](https://github.com/CosmodiumCS/OnlyRAT/tree/main/installers) folder contains all the ways we can install the RAT onto our target
 
 **Attacker Installation:**
 1. Install OnlyRAT by cloning this repository
@@ -74,14 +74,14 @@ git clone https://github.com/CosmodiumCS/OnlyRAT.git
 ```
 2. Install dependencies for OnlyRAT
     - **YES**, the onlyRAT directory **is** supposed to disappear
-    - restart terminal once installation is complete
+    - restart the terminal once the installation is complete
 ```bash
 cd OnlyRAT
 bash install.sh
 ```
 
 ## Configuration File:
-The configuration file `username.rat` is a file we obtain through our OnlyRAT [installers](https://github.com/CosmodiumCS/OnlyRAT/tree/main/installers). It saves information that OnlyRAT needs in order to connect back to our target computer. Having configuration files allows hackers to have a database of all the comprimised pc's they have access to.
+The configuration file `username.rat` is a file we obtain through our OnlyRAT [installers](https://github.com/CosmodiumCS/OnlyRAT/tree/main/installers). It saves information that OnlyRAT needs to connect back to our target computer. Having configuration files allows hackers to have a database of all the compromised PCs they have access to.
 
 If VPS install was used, download configuration by running:
 ```bash
@@ -99,7 +99,7 @@ onlyrat -h
 # or
 onlyrat --help
 ```
-2. Append configuraiton file to specify target
+2. Append the configuration file to specify a target
 ```bash
 onlyrat bluecosmo.rat
 ```
@@ -113,7 +113,7 @@ onlyrat --manual
 ```
 
 ## How It Works:
-OnlyRAT is a very simple yet complex peice of network oriented malware. To learn how it works and to possibly build up your malware skillset, I highly reccomend checking out [this](https://www.cosmodiumcs.com/post/ssh-network-attacks-in-onlyrat) article that I wrote about OnlyRAT.
+OnlyRAT is a very simple yet complex piece of network-oriented malware. To learn how it works and to possibly build up your malware skillset, I highly recommend checking out [this](https://www.cosmodiumcs.com/post/ssh-network-attacks-in-onlyrat) article that I wrote about OnlyRAT.
 
 ## Connection Types:
 OnlyRAT is capable of connecting to the target both locally and remotely [VPS Install required for remote connections]. OnlyRAT makes this change easy via the following...
@@ -133,9 +133,9 @@ set connection remote
 ```
 
 ## Updating OnlyRAT:
-The CosmodiumCS Team will continuously push out updates to OnlyRAT. To prevent users from continuously having to reinstall OnlyRAT themselves. We have autmated the update process.
+The CosmodiumCS Team will continuously push out updates to OnlyRAT. To prevent users from continuously having to reinstall OnlyRAT themselves. We have automated the update process.
 
-1. To check current version, run:
+1. To check the current version, run:
 ```bash
 onlyrat -v
 # or
@@ -150,7 +150,7 @@ onlyrat --update
     - this will automatically check for the latest version and run update
 
 ## Uninstall OnlyRAT:
-To uninstall OnlyRAT from your **atacker computer**, run:
+To uninstall OnlyRAT from your **attacker computer**, run:
 ```bash
 onlyrat -r
 # or
@@ -189,5 +189,5 @@ killswitch
 ```
 
 ## Credits:
-- Shoutout to Oreo for making the ascii art for the repo :)
+- Shoutout to Oreo for making the ASCII art for the repo :)
 - be sure to check his work out [here](https://github.com/OreoByte/art-pool-current)
