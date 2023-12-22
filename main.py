@@ -49,8 +49,8 @@ import random as r
 # option menu
 options_menu = """
         [+] Command and Control:
+            [init] ------------------- Initialize new connection
             [orconsole] -------------- Remote Console
-            [fix orconsole] ---------- Fix Remote Console
             [upload] ----------------- Upload Files to Target PC
             [download] --------------- Download Files from Target PC
             [set connection local] --- Sets Connection to Local
@@ -431,7 +431,7 @@ def cli(arguments):
                 if option == "orconsole":
                     connect(ipv4, password, port)
 
-                elif option == "fix orconsole":
+                elif option == "fix orconsole" or option == "init":
                     os.system(f"sh {local_path}/payloads/fix-orconsole.sh {local_path} {ipv4} {password} {port}")
 
                 elif option == "set connection local":

