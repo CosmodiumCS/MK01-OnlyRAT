@@ -38,7 +38,6 @@ help_menu = """
             -m, --man ----------------- OnlyRAT Manual
             -v, --version ------------- OnlyRAT Version
             -u, --update -------------- Update OnlyRAT
-import random as r
             -r, --remove -------------- Uninstall OnlyRAT
             -h, --help  --------------- Help Menu
 
