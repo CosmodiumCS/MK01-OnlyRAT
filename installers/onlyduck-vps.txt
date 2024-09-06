@@ -34,7 +34,7 @@ END_EXTENSION
 
 
 REM Your VPS IP address
-DEFINE #VPSaddress 104.156.237.99
+DEFINE #VPSaddress X.X.X.X
 
 REM run Command Prompt
 GUI r
