@@ -22,10 +22,10 @@ echo [+] Completed
 echo [*] Installing to /usr/local/bin...
 # Create a wrapper file in /usr/local/bin to call main.py
 sudo touch /usr/local/bin/onlyrat
-echo -e "#!/bin/bash\npython3 ~/.MK01-OnlyRAT/main.py \"\$@\"" | sudo tee /usr/local/bin/onlyrat 
+printf "#!/bin/bash\npython3 ~/.MK01-OnlyRAT/main.py \"\$@\"" | sudo tee /usr/local/bin/onlyrat 
 sudo chmod +x /usr/local/bin/onlyrat
 echo [+] Completed
 
 # clean up
 echo [+] Installation Completed
-echo -e"\n- Type 'onlyrat' to launch OnlyRat"
+printf "\n- Type 'onlyrat' to launch OnlyRat\n"
