@@ -250,6 +250,7 @@ def remove():
     # delete OnlyRAT
     if option == "y":
         os.system("rm -rf ~/.MK01-OnlyRAT")
+        os.system("sudo rm /usr/local/bin/onlyrat")
 
     # cancel
     if option == "n":
