@@ -2,3 +2,7 @@ payloads/1.cmd
 payloads/2.ps1
 partition.sh
 cosmo.rat
+
+# macOS system files
+.DS_Store
+._*
